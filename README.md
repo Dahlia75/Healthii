@@ -13,9 +13,9 @@ The moment you start work on a new feature:
 8) git checkout master
 9) git pull origin master
 10) git checkout feature/cardID-feature-name
-11) git merge master
+11) git merge --no-ff branchname
 12) ...fix conflicts
-13) git commit
+13) git commit -m "Comment"
 14) git push origin feature/cardID-feature-name
 
 Good commit messages:
