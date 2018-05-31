@@ -1,3 +1,7 @@
+##Chris Testing Github clone and push
+- Cloned from https://github.com/Dahlia75/HC2GO
+- Commit and push back.  
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
