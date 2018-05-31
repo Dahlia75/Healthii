@@ -1,6 +1,36 @@
-##Chris Testing Github clone and push
-- Cloned from https://github.com/Dahlia75/HC2GO
-- Commit and push back.  
+##GitHub Workflow
+Git Status first to see if you need to pull from master:
+
+The moment you start work on a new feature:
+1) git checkout master
+2) git pull origin master
+3) git checkout -b feature/cardID-feature-name
+4) git add .    Then : git commit -m "comment"
+5) push to the remote at that branch name - git push origin <topic-branch-name>
+6) create pull request from that branch to master (https://help.github.com/articles/creating-a-pull-request/)
+
+7) if there are any merge conflicts (GitHub will say "Cannot merge because there are conflicts with the base branch") . https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/
+8) git checkout master
+9) git pull origin master
+10) git checkout feature/cardID-feature-name
+11) git merge master
+12) ...fix conflicts
+13) git commit
+14) git push origin feature/cardID-feature-name
+
+Good commit messages:
+Have one header line that is 50 characters or less
+In order to keep it under 50 characters so that it fits in the log:
+Use the imperative mood:
+Good: Add signup flow
+Bad: Adds signup flow
+Bad: Added signup flow
+Don't use punctuation
+Bad: Add signup flow.
+Explain what changes
+Add signup.htm and express routes for registration
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
