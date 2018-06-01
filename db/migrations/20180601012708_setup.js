@@ -7,10 +7,10 @@ exports.up = function(knex, Promise) {
       table.string('provider_id');
       table.string('service_id');
       table.string('date');
-      table.string('from_time');
+      table.string('start_time');
       table.string('end_time');
-      table.string('total_price');
-      table.string('no_hours');
+      table.integer('total_price');
+      table.string('report');
       table.string('status');
     })
   ])

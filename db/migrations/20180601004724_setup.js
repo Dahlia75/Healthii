@@ -6,9 +6,8 @@ exports.up = function(knex, Promise) {
       table.string('name');
       table.string('descripton');
       table.string('thumbnail');
-      table.string('price');
+      table.integer('price');
       table.string('image');
-      table.timestamps();
     })
   ])
 };
