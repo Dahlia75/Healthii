@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       table.string('phone');
       table.string('address');
       table.string('gender');
-      table.string('age');
+      table.integer('age');
       table.string('m_history');
     })
   ])

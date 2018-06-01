@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       table.string('title');
       table.string('bio');
       table.string('gender');
-      table.string('age');
+      table.integer('age');
       table.string('image');
     })
   ])
