@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('appointments', function(table){
       table.increments('id').primary();
-      table.string('client_id');
-      table.string('provider_id');
-      table.string('service_id');
+      table.integer('client_id');
+      table.integer('provider_id');
+      table.integer('service_id');
       table.string('date');
       table.string('start_time');
       table.string('end_time');
