@@ -1,5 +1,5 @@
 {
-  "name": "healthcare-2go",
+  "name": "HC-2Go",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,5 +14,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
+    "node-sass": "^4.9.0"
   }
 }
