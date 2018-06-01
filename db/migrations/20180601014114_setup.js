@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('clients', function(table){
       table.increments('id').primary();
       table.string('user_id');
-      table.string('firstName');
-      table.string('lastName');
+      table.string('first_name');
+      table.string('last_name');
       table.string('phone');
       table.string('address');
       table.string('gender');
