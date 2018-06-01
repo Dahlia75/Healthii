@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('reviews', function(table){
       table.increments('id').primary();
-      table.string('client_id');
-      table.string('provider_id');
-      table.string('rating');
+      table.integer('client_id');
+      table.integer('provider_id');
+      table.integer('rating');
       table.string('description');
       table.string('date');
     })
