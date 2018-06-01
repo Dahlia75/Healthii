@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('service_provider', function(table){
       table.increments('id').primary();
-      table.string('provider_id');
-      table.string('service_id');
+      table.integer('provider_id');
+      table.integer('service_id');
     })
   ])
 };
