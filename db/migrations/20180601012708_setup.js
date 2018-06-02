@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       table.string('start_time');
       table.string('end_time');
       table.integer('total_price');
-      table.string('report');
+      table.text('report');
       table.string('status');
     })
   ])
@@ -18,6 +18,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('appointment')
+    knex.schema.dropTable('appointments')
   ])
 };

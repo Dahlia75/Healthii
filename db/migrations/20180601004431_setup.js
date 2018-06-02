@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       table.integer('client_id');
       table.integer('provider_id');
       table.integer('rating');
-      table.string('description');
+      table.text('description');
       table.string('date');
     })
   ])
