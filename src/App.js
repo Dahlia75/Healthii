@@ -4,8 +4,6 @@ import './App.css';
 
 
 
-
-
 class App extends Component {
   render() {
     return (
@@ -15,7 +13,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload. Hiiiiii
+
+          To get started, edit <code>src/App.js</code> and save to reload.  
         </p>
       </div>
     );
@@ -28,5 +27,11 @@ class App extends Component {
 
 
 }
+t
+quit
+quit
+iquit
+
+t 
 
 export default App;
