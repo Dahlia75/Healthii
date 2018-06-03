@@ -1,0 +1,406 @@
+.container-profile {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: purple;
+    box-shadow: 0 2rem 6rem rgba(0, 0,0,.3);
+
+    min-height: 50rem;
+}
+
+.content-profile {
+    display: flex;
+}
+
+.view-profile {
+    background-color: darkblue;
+
+    flex: 1;
+}
+
+/////////GALLERY
+.gallery {
+    display: flex;
+
+    &__photo {
+        width: 100%;
+        display: block;
+        
+       
+        
+    }
+}
+
+/////////HOTEL OVERVIEW
+.overview {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    
+
+
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
+    }
+
+  
+
+    &__stars {
+        margin-right: auto;
+        flex: 1;
+    }
+
+    &__location {
+        font-size: 1.2rem;
+        display: flex;
+        vertical-align: center;
+    }
+
+    
+    &__rating {
+        background-color: orange;
+        color: #fff;
+        margin-left: 3rem;
+        padding: 0 2.25rem;
+        align-self: stretch;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__rating-average {
+        font-size: 2.25rem;
+        font-weight: 300;
+        margin-bottom: -3px;
+    }
+
+    &__rating-count {
+        font-size: .8rem;
+        text-transform: uppercase;
+    }
+}
+
+
+.gallery__photo_client {
+    height: 100px;
+    width: 100px;
+}
+
+//BUTTON INLINE
+.btn-inline {
+    border: none;
+    color: lightgrey;
+    font-size: inherit;
+    border-bottom: 1px solid currentColor;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s;
+   
+    & span {
+        margin-left: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        color: darkgrey;
+
+        span {
+            margin-left: 8px;
+        }
+    }
+
+    &:hover {
+        color: darkgrey;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0, 0,0,.25);
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+.description {
+    height: 50rem;
+    font-size: 1.4rem;
+    background-color: white;
+    box-shadow: 0 2rem 5rem rgba(0, 0,0,0.06);
+    padding: 3rem;
+    flex: 0 0 60%;
+    margin-right: 4.5rem;
+}
+
+.user-reviews {
+    background-color: lightgrey;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paragraph:not(:last-of-type) {
+}
+
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    border-bottom: 1px solid lightgrey;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        list-style: none;
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+    }
+
+    &__item::before {
+        content: "";
+        display: inline-block;
+        height: 2rem;
+        width: 2rem;
+        margin-right: .7rem;
+
+        // Older browsers
+        // background-image: url(../img/chevron-thin-right.svg);
+        // background-size: cover;
+
+        //Newer browser - masks
+        background-color: lightblue;
+    }
+}
+
+///////Part of the profile,  reviews for the provider
+.review {
+    background-color: #fff;
+    box-shadow: lightsalmon;
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    &__user-box {
+        margin-right: auto;
+    }
+
+    &__user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+
+    &__user-date {
+        font-size: 1rem;
+        color: darkgrey;
+    }
+
+    &__rating {
+        color: pink;
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+
+    &::before {
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 20rem;
+        color: lightgrey;
+        font-family: sans-serif;
+        z-index: 1;
+
+    }
+
+}
+
+////////////////////////////////////////
+// Provider views Client report after appointment
+
+.report {
+    background-color: #fff;
+    box-shadow: orange;
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
+        font-size: 3rem;
+    }
+  
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+  
+    &__photo {
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+  
+    &__user-box {
+        margin-right: auto;
+    }
+  
+    &__user-name {
+        font-size: 5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+  
+    &__user-date {
+        font-size: 2rem;
+        color: darkgrey;
+    }
+  
+    &__rating {
+        color: pink;
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+  
+    &::before {
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 20rem;
+        color: lightgrey;
+        font-family: sans-serif;
+        z-index: 1;
+  
+    }
+  
+  }
+
+////////////////////////////////////////
+// CALL TO ACTION
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    @media only screen and (max-width: 50em) {
+        padding: 2.5rem 0;
+    }
+
+    &__book-now {
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+}
+
+////////////////////////////////////////
+// CALL TO ACTION
+.btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right,(darkblue, lightblue));
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    & > * {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+
+    &__visible {
+        padding: 2rem 7.5rem;
+    }
+
+    &__invisible {
+        position: absolute;
+        padding: 2rem 0;
+        left: 0;
+        top: -100%;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to right,(darkblue, lightblue));
+    }
+
+    &:hover &__visible {
+        transform: translateY(100%);
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}
+
+.gallery__photo-client {
+    height:10rem;
+    width:10rem;
+}
