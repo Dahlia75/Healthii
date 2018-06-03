@@ -7,12 +7,16 @@
 @import "base/typography"; 
 @import "base/utilities"; 
 
-@import "components/button"; 
-
 @import "layout/header";
 @import "layout/grid";
 
 @import "pages/home";
+@import "pages/login";
+@import "pages/bookdate";
+@import "pages/profile";
 
+@import "components/button"; 
 @import "components/card";
+@import "components/pthumb";
+@import "components/bg-video";
 
