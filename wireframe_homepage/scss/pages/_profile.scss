@@ -46,6 +46,8 @@
         padding: 1.5rem 3rem;
     }
 
+  
+
     &__stars {
         margin-right: auto;
         flex: 1;
@@ -83,6 +85,11 @@
     }
 }
 
+
+.gallery__photo_client {
+    height: 100px;
+    width: 100px;
+}
 
 //BUTTON INLINE
 .btn-inline {
@@ -194,6 +201,7 @@
     }
 }
 
+///////Part of the profile,  reviews for the provider
 .review {
     background-color: #fff;
     box-shadow: lightsalmon;
@@ -256,6 +264,73 @@
     }
 
 }
+
+////////////////////////////////////////
+// Provider views Client report after appointment
+
+.report {
+    background-color: #fff;
+    box-shadow: orange;
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
+        font-size: 3rem;
+    }
+  
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+  
+    &__photo {
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+  
+    &__user-box {
+        margin-right: auto;
+    }
+  
+    &__user-name {
+        font-size: 5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+  
+    &__user-date {
+        font-size: 2rem;
+        color: darkgrey;
+    }
+  
+    &__rating {
+        color: pink;
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+  
+    &::before {
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 20rem;
+        color: lightgrey;
+        font-family: sans-serif;
+        z-index: 1;
+  
+    }
+  
+  }
 
 ////////////////////////////////////////
 // CALL TO ACTION
@@ -323,4 +398,9 @@
         outline: none;
         animation: pulsate 1s infinite;
     }
+}
+
+.gallery__photo-client {
+    height:10rem;
+    width:10rem;
 }
