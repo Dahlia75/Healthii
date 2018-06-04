@@ -8,7 +8,7 @@
         background-color: orange;
         color: #fff;
         font-size: 2rem;
-        
+
         height: 52rem;
         transition: all 1.2s ease;
         position: absolute;
@@ -19,7 +19,7 @@
         border-radius: 3px;
         overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-        
+
 
         &--front {
             background-color: $color-white;
@@ -45,21 +45,21 @@
         background-blend-mode: screen;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        
+
 
         &--1 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
-            url(../img/adult-doctor-girl-355934.jpg);      
+            url(../../img/Nurse.png);
         }
 
         &--2 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
-            url(../img/adult-africa-african-1089550.jpg);      
+            url(../img/adult-africa-african-1089550.jpg);
         }
 
         &--3 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
-            url(../img/arms-care-check-905874.jpg);      
+            url(../img/arms-care-check-905874.jpg);
         }
 
     }
@@ -82,8 +82,8 @@
         box-decoration-break: clone;
 
         &--1 {
-            background-image: linear-gradient(to right bottom, 
-            rgba($color-secondary-light, .85), 
+            background-image: linear-gradient(to right bottom,
+            rgba($color-secondary-light, .85),
             rgba($color-secondary-dark, .85));
         }
     }
