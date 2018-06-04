@@ -15,8 +15,8 @@ exports.seed = function(knex, Promise) {
   const password = encrypted_password();
 
   const deleteReviews = Promise.all([
-    knex('service_provider').del(),
     knex('service_provider').del()
+    
     ]);
 
   const deleteServicesProvidersClients = deleteReviews
