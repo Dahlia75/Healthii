@@ -26,7 +26,7 @@ const Home = () => {
           </div>
         </header>
       </section>
-      <Services />
+      <Services cards={this.state.cards}/>
     </div>
   );
 };

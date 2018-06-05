@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Api from '../lib/api.js';
+
 import '../scss/main.scss';
 
 function ProviderReviews(props) {
@@ -21,11 +23,14 @@ function ProviderReviews(props) {
 }
 
 class Provider extends Component {
+
   // const propsoutput = Object.keys(props).map(key => {
   //   return <li>{ key }: { JSON.stringify(props[key]) }</li>
   // });
   constructor(props) {
     super(props);
+
+    console.log("provider params, wheeeeee", this.props.match.params);
 
     this.state = {
       name: 'Daniel',
@@ -33,7 +38,7 @@ class Provider extends Component {
       bio: 'FILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE',
       gender: 'male',
       age: '42',
-      image: '',
+      image: '../img/Nurse.png',
       rating_avg: 3.5,
       reviews: [
         {client_name: 'Nick Smith',
@@ -60,7 +65,7 @@ class Provider extends Component {
         <main className="view-profile">
           <div className="overview">
             <figure className="gallery__item">
-              <img src="../img/Nurse.png" alt="Provider" className="gallery__photo" />
+              <img src={this.state.image} alt="Provider" className="gallery__photo" />
             </figure>
             <h1 className="overview__heading">
               { this.state.name } - { this.state.title }

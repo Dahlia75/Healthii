@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Api from '../lib/api.js';
 
 import '../scss/main.scss';
 
@@ -69,13 +70,20 @@ class Services extends Component {
         }
     }
 
+    load() {
+        Api.get('/').then(cards => {
+          this.setState({
+            cards
+          });
+        });
+      }
+
     componentDidMount() {
-        // make request to server for services data
-        // take response and set state to replace the array of cards
+        this.load();
     }
 
     render() {
-        const cards = this.state.cards.map(card => {
+        const cards = this.props.cards.map(card => {
             return <ServicesCard title={ card.title } price={ card.price } descriptions={ card.descriptions } />
         })
 
