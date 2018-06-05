@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
+import Provider from './components/Provider';
 import Login from './components/Login';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/services/:sid/providers/:pid" component={Provider} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -21,8 +23,3 @@ class App extends Component {
   }
 }
 export default App;
-
-
-// app.get('/users/:id')
-
-// axios.get('/users/' + userId)
