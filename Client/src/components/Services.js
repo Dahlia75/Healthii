@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Api from '../lib/api.js';
 
 import '../scss/main.scss';
 
 function ServicesCard(props) {
-  const descriptions = props.descriptions.map(description => {
-    return <li>{ description }</li>
-  });
+  // const descriptions = props.description.map(description => {
+  //   return <li>{ description }</li>
+  // });
 
   return (
     <div className="col-1-of-3">
@@ -15,11 +16,11 @@ function ServicesCard(props) {
                     &nbsp;
                 </div>
                 <h4 className="card__heading">
-                    <span className="card__heading-span card__heading-span--1">{ props.title }</span>
+                    <span className="card__heading-span card__heading-span--1">{ props.name }</span>
                 </h4>
                 <div className="card__details">
                     <ul>
-                        { descriptions }
+                        { props.descripton }
                     </ul>
                 </div>
             </div>
@@ -42,41 +43,32 @@ class Services extends Component {
         super(props);
 
         this.state = {
-            cards: [
-            {title: 'Nurse',
-            price: '50/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            },
-            {title: 'Physical Therapy',
-            price: '60/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            },
-            {title: 'Mental Wellness',
-            price: '30/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            },
-            {title: 'Nurse',
-            price: '20/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            },
-            {title: 'Physical Therapy',
-            price: '70/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            },{title: 'Mental Wellness',
-            price: '80/houre',
-            descriptions: ['Add Description', 'Add Description', 'Add Description']
-            }]
+            cards:[] 
         }
     }
 
-    componentDidMount() {
-        // make request to server for services data
-        // take response and set state to replace the array of cards
-    }
+
+    // load() {
+    //     Api.get('/api').then(cards => {
+    //       this.setState({
+    //         cards
+    //       });
+    //     });
+    //   }
+
+    // componentDidMount() {
+    //   this.load();
+    // }
+    // componentDidMount() {
+    //     // make request to server for services data
+
+    //     // take response and set state to replace the array of cards
+    // }
 
     render() {
-        const cards = this.state.cards.map(card => {
-            return <ServicesCard title={ card.title } price={ card.price } descriptions={ card.descriptions } />
+        console.log(this.props);
+        const cards = this.props.cards.map(card => {
+            return <ServicesCard name={ card.name } price={ card.price } descripton={ card.descripton } />
         })
 
         return (
