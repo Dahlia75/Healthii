@@ -46,6 +46,25 @@ class Services extends Component {
             {title: 'Nurse',
             price: '50/houre',
             descriptions: ['Add Description', 'Add Description', 'Add Description']
+            },
+            {title: 'Physical Therapy',
+            price: '60/houre',
+            descriptions: ['Add Description', 'Add Description', 'Add Description']
+            },
+            {title: 'Mental Wellness',
+            price: '30/houre',
+            descriptions: ['Add Description', 'Add Description', 'Add Description']
+            },
+            {title: 'Nurse',
+            price: '20/houre',
+            descriptions: ['Add Description', 'Add Description', 'Add Description']
+            },
+            {title: 'Physical Therapy',
+            price: '70/houre',
+            descriptions: ['Add Description', 'Add Description', 'Add Description']
+            },{title: 'Mental Wellness',
+            price: '80/houre',
+            descriptions: ['Add Description', 'Add Description', 'Add Description']
             }]
         }
     }
