@@ -3,14 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-router-dom": "^4.2.2",
-    "react-router-hash-link": "^1.2.0",
-    "react-scripts": "1.1.4",
-    "react-select": "^1.2.1",
-    "bootstrap": "4.0.0-alpha.6",
-    "flag-icon-css": "^2.8.0"
+    "bcrypt": "2.0.0",
+    "knex": "^0.14.6",
+    "knex-logger": "^0.1.0",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3"
   },
   "scripts": {
     "start": "CHOKIDAR_USEPOLLING=true CHOKIDAR_INTERVAL=500 react-scripts start",
@@ -18,11 +15,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "scss": "node-sass --watch src/scss -o src/css"
-  },
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.8.2",
-    "node-sass": "^4.9.0"
   },
   "proxy": "http://localhost:3001"
 }

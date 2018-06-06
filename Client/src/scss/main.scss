@@ -2,10 +2,10 @@
 @import "abstracts/mixin";
 @import "abstracts/variables";
 
-@import "base/animations"; 
-@import "base/base"; 
-@import "base/typography"; 
-@import "base/utilities"; 
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
 
 @import "layout/header";
 @import "layout/grid";
@@ -15,9 +15,10 @@
 @import "pages/bookdate";
 @import "pages/profile";
 
-@import "components/button"; 
+@import "components/button";
 @import "components/card";
 @import "components/pthumb";
 @import "components/bg-video";
 
 @import "layout/navigation";
+@import "pages/providors";

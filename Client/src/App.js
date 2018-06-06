@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import Provider from './components/Provider';
 import Login from './components/Login';
+import Providers from './components/Providers';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/services/:sid/providers/:pid" component={Provider} />
+            <Route exact path="/services/:sid/providers" component={Providers} />
           </Switch>
         </div>
       </BrowserRouter>

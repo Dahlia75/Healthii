@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Api from '../lib/api.js';
 
 import '../scss/main.scss';
+import { HashLink as Link } from 'react-router-hash-link';
 
 function ServicesCard(props) {
   // const descriptions = props.description.map(description => {
   //   return <li>{ description }</li>
   // });
+  const path = `/services/${props.id}/providers`
 
   return (
     <div className="col-1-of-3">
@@ -30,7 +32,8 @@ function ServicesCard(props) {
                         <p className="card__price-only">From</p>
                         <p className="card__price-value">{ props.price }</p>
                     </div>
-                    <a href="#" className="btn btn--white">Book now!</a>
+                    <Link to={path} className="btn btn--white">Book now!
+                   </Link>
                 </div>
             </div>
         </div>
