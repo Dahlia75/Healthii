@@ -1,51 +1,41 @@
 import React, { Component } from 'react';
-//import { getUsers } from './RandomUsers';
-import UserCard from './UserCard';
-import UserCardList from './UserCardList';
+//import { getProviders } from './RandomProviders';
+import ProviderCard from './ProviderCard';
+import ProviderCardList from './ProviderCardList';
 import { without, filter } from 'lodash';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import ServiceSortDropDown from './ServiceSortDropdown';
+import ServiceSortDropDown from './DropdownSelection';
+import Api from '../lib/api.js';
 
 export default class Providers extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            eventName: 'for your chosen service',
-            users: [],
-            selectedGender: '',
+            providers: [],
             filterBy: 'all',
             selectedService: ''
         };
     }
 
+    load() {
+        Api.get('/api/services/:sid/providers').then(props => {
+            this.setState({
+                providers: props.providers,
+                selectedService : props.serviceName,
+            });
+        });
+    }
     componentWillMount() {
         console.log('componentWillMount');
     }
 
-    // Change with Dummy data until the database is in
     componentDidMount() {
-        // getUsers(20, users => {
-        //     this.setState({
-        //         users
-        //     });
-        // })
+        this.load();
     }
 
-    changeSelectedGender(selectedGender) {
-        this.setState({
-            selectedGender
-        });
-    }
-
-    changeSelectedCountry(selectedCountry) {
-        this.setState({
-            selectedCountry
-        });
-    }
-
-    changeServiceSortDropdownValue(filterBy) {
+    changeDropdownSelectionValue(filterBy) {
         this.setState({
             filterBy
         });
@@ -54,13 +44,13 @@ export default class Providers extends Component {
 
     render() {
 
-        let currentUsers = this.state.users;
+        let currentProviders = this.state.providers;
 
         //male | female | all
         const filterBy = this.state.filterBy;
 
         if(filterBy !== 'all') {
-            currentUsers = filter(currentUsers, user => user.gender === filterBy)
+            currentProviders = filter(currentProviders, provider => provider.gender === filterBy)
         }
 
         return (
@@ -71,7 +61,7 @@ export default class Providers extends Component {
                             <div className = "mr-3">
                                 <button>Choose Time</button>
                                 <ServiceSortDropDown
-                                handleServiceSortDropdownValueChange = { this.changeServiceSortDropdownValue.bind(this)}
+                                handleDropdownSelectionValueChange = { this.changeDropdownSelectionValue.bind(this)}
                                 filterBy = { this.state.filterBy }
                                 />
                         </div>
@@ -80,7 +70,7 @@ export default class Providers extends Component {
                     <div className = "col-lg-6">
                         <div>
                             <h3 className = "float-right">
-                                { currentUsers.length } Providers Available { this.state.eventName }
+                                { currentProviders.length } Providers Available for { this.state.selectedService }
                             </h3>
                         </div>
                     </div>
@@ -89,8 +79,8 @@ export default class Providers extends Component {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="card-columns">
-                        <UserCardList
-                            users = { currentUsers }
+                        <ProviderCardList
+                            providers = { currentProviders }
                         />
                     </div>
                 </div>
