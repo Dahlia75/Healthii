@@ -27,7 +27,7 @@ const getProvidersList = (sid) => {
             })
            .catch(function(err){
             console.error("error appointments query", err);
-        }); 
+        });
 
 };
 

@@ -335,7 +335,7 @@ form button[type=submit] {
   flex: 0 0 60%;
   margin-right: 4.5rem; }
 
-.user-reviews {
+.provider-reviews {
   background-color: lightgrey;
   flex: 1;
   display: flex;
@@ -371,7 +371,7 @@ form button[type=submit] {
     margin-bottom: 2rem;
     z-index: 10;
     position: relative; }
-  .review__user {
+  .review__provider {
     display: flex;
     align-items: center; }
   .review__photo {
@@ -379,14 +379,14 @@ form button[type=submit] {
     width: 4.5rem;
     border-radius: 50%;
     margin-right: 1.5rem; }
-  .review__user-box {
+  .review__provider-box {
     margin-right: auto; }
-  .review__user-name {
+  .review__provider-name {
     font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: .4rem; }
-  .review__user-date {
+  .review__provider-date {
     font-size: 1rem;
     color: darkgrey; }
   .review__rating {
@@ -416,7 +416,7 @@ form button[type=submit] {
     z-index: 10;
     position: relative;
     font-size: 3rem; }
-  .report__user {
+  .report__client {
     display: flex;
     align-items: center; }
   .report__photo {
@@ -424,14 +424,14 @@ form button[type=submit] {
     width: 7rem;
     border-radius: 50%;
     margin-right: 1.5rem; }
-  .report__user-box {
+  .report__client-box {
     margin-right: auto; }
-  .report__user-name {
+  .report__client-name {
     font-size: 5rem;
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: .4rem; }
-  .report__user-date {
+  .report__client-date {
     font-size: 2rem;
     color: darkgrey; }
   .report__rating {

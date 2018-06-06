@@ -11,10 +11,10 @@ function ProviderReviews(props) {
         <blockquote className="review__text">
             { props.description }
         </blockquote>
-        <figcaption className="review__user">
-          <div className="review__user-box">
-            <p className="review__user-name">{ props.client_name }</p>
-            <p className="review__user-date">{ props.review_date }</p>
+        <figcaption className="review__provider">
+          <div className="review__provider-box">
+            <p className="review__provider-name">{ props.client_name }</p>
+            <p className="review__provider-date">{ props.review_date }</p>
           </div>
           <div className="review__rating">{ props.rating }</div>
         </figcaption>
@@ -100,7 +100,7 @@ class Provider extends Component {
               <span className="btn__invisible">NOW!!!!</span>
             </button>
           </div>
-          <figure className="user-reviews">
+          <figure className="provider-reviews">
             { reviews }
           </figure>
         </main>
