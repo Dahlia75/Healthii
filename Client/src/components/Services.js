@@ -87,3 +87,4 @@ class Services extends Component {
     }
 };
 
+export default Services;
