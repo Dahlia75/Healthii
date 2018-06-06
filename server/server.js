@@ -36,7 +36,7 @@ app.get("/api",(req,res) => {
 })
 
 app.get("/api/services/:sid/providers",(req,res) => {
-	
+	console.log("++++++");
 	Provider.getServicesList(req.params.sid)
 		.then(value => {
 			res.json(value);
