@@ -7,12 +7,13 @@ function ServicesCard(props) {
   // const descriptions = props.description.map(description => {
   //   return <li>{ description }</li>
   // });
-
+  const classWithPictureID = `card__picture card__picture--${props.id}`
+console.log(props)
   return (
     <div className="col-1-of-3">
         <div className="card">
             <div className="card__side card__side--front">
-                <div className="card__picture card__picture--2">
+                <div className={classWithPictureID}>
                     &nbsp;
                 </div>
                 <h4 className="card__heading">
@@ -68,7 +69,7 @@ class Services extends Component {
     render() {
         console.log(this.props);
         const cards = this.props.cards.map(card => {
-            return <ServicesCard name={ card.name } price={ card.price } descripton={ card.descripton } />
+            return <ServicesCard id={card.id} name={ card.name } price={ card.price } descripton={ card.descripton } />
         })
 
         return (

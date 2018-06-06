@@ -14,6 +14,7 @@ const knexLogger  = require('knex-logger');
 const Appointment = require("./routes/Appointment");
 const Review 	  = require("./routes/Review");
 const Service 	  = require("./routes/Service");
+const Provider 	  = require("./routes/Provider");
 const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -28,6 +29,15 @@ app.use(function(request,response,next){
 
 app.get("/api",(req,res) => {
 	Service.getServicesList()
+		.then(value => {
+			res.json(value);
+		})
+	// res.status(200).send(JSON.stringify(Appointment.getAppointmentList()));
+})
+
+app.get("/api/services/:sid/providers",(req,res) => {
+	
+	Provider.getServicesList(req.params.sid)
 		.then(value => {
 			res.json(value);
 		})
