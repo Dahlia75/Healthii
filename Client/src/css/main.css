@@ -576,13 +576,19 @@ form button[type=submit] {
     background-blend-mode: screen;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-/*    .card__picture--1 {
-      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/adult-doctor-girl-355934.jpg); }
-    .card__picture--2 {
-      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/adult-africa-african-1089550.jpg); }
+   .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Acupuncture.jpg); }
+    .card__picture--4 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Chiropractor.png); }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Physiotherapist.png); }
+    .card__picture--5 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Health_Aide.jpg); }
+    .card__picture--6 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Massage_Therapy.jpg); }
     .card__picture--3 {
-      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/arms-care-check-905874.jpg); }
-*/  .card__heading {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/Nurse.png); }
+  .card__heading {
     font-size: 2.8rem;
     font-weight: 300;
     text-transform: uppercase;
