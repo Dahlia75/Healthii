@@ -33,7 +33,6 @@ const getAppointmentsTimes = (sid,pid) => {
     return knex('appointments')
            .select('*')
            .returning('id')
-           // .where('provider_id', pid  && 'service_id', sid)
            .where({
             provider_id: pid,
             service_id: sid
@@ -42,7 +41,6 @@ const getAppointmentsTimes = (sid,pid) => {
             if (err) {
                 return console.error("error running query", err);
               }
-                console.log("Appoint==>",result);
                 return result;
             })
            .catch(function(err){
@@ -52,5 +50,3 @@ const getAppointmentsTimes = (sid,pid) => {
 
 exports.getProvidersList = getProvidersList;
 exports.getAppointmentsTimes = getAppointmentsTimes;
-
-//&& 'service_id', sid
