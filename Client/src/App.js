@@ -9,6 +9,7 @@ import Provider from './components/Provider';
 import Providers from './components/Providers';
 import Clients from './components/Clients';
 import ClientProfile from './components/ClientProfile';
+import Scheduler from './components/DateTime';
 
 class App extends Component {
   render() {
@@ -22,6 +23,8 @@ class App extends Component {
             <Route exact path="/services/:sid/providers" component={Providers} />
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/clients/:cid" component={ClientProfile} />
+            <Route exact path="/scheduler" component={Scheduler} />
+
           </Switch>
         </div>
       </BrowserRouter>
