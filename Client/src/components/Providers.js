@@ -44,7 +44,7 @@ export default class Providers extends Component {
 
     render() {
 
-        let currentProviders = this.state.providers;
+    let currentProviders = this.state.providers;
 
         //male | female | all
         const filterBy = this.state.filterBy;
