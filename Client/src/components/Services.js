@@ -49,7 +49,6 @@ class Services extends Component {
     }
 
     render() {
-        console.log(this.props);
         const cards = this.props.cards.map(card => {
             return <ServicesCard id={ card.id } name={ card.name } price={ card.price } descripton={ card.descripton } />
         })
