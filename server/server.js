@@ -9,12 +9,13 @@ const app         = express();
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
-const pg 		  = require('pg');
+const pg 		  		= require('pg');
 const knexLogger  = require('knex-logger');
 const Appointment = require("./routes/Appointment");
-const Review 	  = require("./routes/Review");
+const Review 	  	= require("./routes/Review");
 const Service 	  = require("./routes/Service");
 const Provider 	  = require("./routes/Provider");
+const book 	  		= require("./routes/book_App");
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -35,7 +36,6 @@ app.get("/api",(req,res) => {
 })
 
 app.get("/api/services/:sid/providers",(req,res) => {
-	
 	var selected_provider=[];
 	Provider.getProvidersList(req.params.sid)
 		.then(value => {
@@ -55,19 +55,28 @@ app.get("/api/services/:sid/providers",(req,res) => {
 								},
 								]
 					},
-    				);
+    			);
 			});
 			res.json(selected_provider);
 		})
 })
 
-app.post("/", (req, res) => {
-  var cid = req.body.CID;
-  var pid = req.body.PID;
-  var sid = req.body.SID;
-  Appointment.addAppointment(cid, pid, sid);
+app.post("/services/:sid/providers/:pid/book", (req, res) => {
+  // var cid = req.body.CID;
+  var cid = 14;
+  var pid = req.params.pid;
+  var sid = req.params.sid;
+  book.addAppointment(cid, pid, sid);
   res.json({result:"true"});
 });
+
+// app.post("/", (req, res) => {
+//   var cid = req.body.CID;
+//   var pid = req.body.PID;
+//   var sid = req.body.SID;
+//   Appointment.addAppointment(cid, pid, sid);
+//   res.json({result:"true"});
+// });
 
 app.listen(PORT, ()=> {
 	console.log('Listen on port'+ PORT)
