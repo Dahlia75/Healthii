@@ -1,0 +1,17 @@
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    font-size: 14px;
+    color: black;
+    margin-top: 50px;
+  }
+
+.homepage__clients {
+    background-color: white;
+}
+
+.clients-logo {
+     width: 30px;
+     margin: .5em auto .3em;
+     height: 30px;
+}
