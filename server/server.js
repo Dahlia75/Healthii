@@ -15,7 +15,7 @@ const Appointment = require("./routes/Appointment");
 const Review 	  = require("./routes/Review");
 const Service 	  = require("./routes/Service");
 const Provider 	  = require("./routes/Provider");
-const router 	  = express.Router();
+// const router 	  = express.Router();
 
 app.use(knexLogger(knex));
 app.use(bodyParser.json());
@@ -26,7 +26,6 @@ app.use(function(request,response,next){
 	next();
 })
 
-
 app.get("/api",(req,res) => {
 	Service.getServicesList()
 		.then(value => {
@@ -36,12 +35,30 @@ app.get("/api",(req,res) => {
 })
 
 app.get("/api/services/:sid/providers",(req,res) => {
-	console.log("++++++");
-	Provider.getServicesList(req.params.sid)
+	
+	var selected_provider=[];
+	Provider.getProvidersList(req.params.sid)
 		.then(value => {
-			res.json(value);
+			value.forEach(function(entry) {
+    			selected_provider.push(
+				  { sid: entry.id,
+					service_name: entry.name,
+					providers: [{
+								pid: entry.provider_id,
+								name: (entry.first_name) +" "+ (entry.last_name),
+								title: entry.title,
+								bio: entry.bio,
+								gender: entry.gender,
+								age: entry.age,
+								app_slots: [Provider.getAppointmentsTimes(entry.id,entry.provider_id)],
+								image: 'http:\www.hi.ca\cat.jpg'
+								},
+								]
+					},
+    				);
+			});
+			res.json(selected_provider);
 		})
-	// res.status(200).send(JSON.stringify(Appointment.getAppointmentList()));
 })
 
 app.post("/", (req, res) => {

@@ -20,11 +20,18 @@ export default class Providers extends Component {
     }
 
     load() {
-        Api.get('/api/services/:sid/providers').then(props => {
+        const sid = this.props.match.params.sid;
+        Api.get(`/api/services/${sid}/providers`).then(props => {
+
+            const providers = props.reduce((acc, current) => {
+                return acc.concat(current.providers);
+            }, []);
+
             this.setState({
-                providers: props.providers,
-                selectedService : props.serviceName,
+                providers,
+                selectedService : props.service_name
             });
+            
         });
     }
     componentWillMount() {
@@ -32,6 +39,7 @@ export default class Providers extends Component {
     }
 
     componentDidMount() {
+
         this.load();
     }
 
