@@ -7,6 +7,9 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import ServiceSortDropDown from './DropdownSelection';
 import Api from '../lib/api.js';
+import Scheduler from './DateTime';
+
+import "../css/providers.css";
 
 
 export default class Providers extends Component {
@@ -69,6 +72,7 @@ export default class Providers extends Component {
                         <div className ="form-inline">
                             <div className = "mr-3">
                                 <button>Choose Time</button>
+                                <Scheduler/>
                                 <ServiceSortDropDown
                                 handleDropdownSelectionValueChange = { this.changeDropdownSelectionValue.bind(this)}
                                 filterBy = { this.state.filterBy }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import "../css/providers.css";
+
 
 export default class ProviderCard extends Component {
 
@@ -8,6 +10,7 @@ export default class ProviderCard extends Component {
 
     render() {
     const {name, gender, photo, age} = this.props.provider;
+    console.log("Provider", this.props.provider);
     const genderSign = gender === 'female' ? 'fa fa-venus' : 'fa fa-mars';
     const card =
 

@@ -6,11 +6,11 @@ body {
     margin-top: 50px;
   }
 
-.homepage__clients {
-    background-color: lightpink;
+.homepage__feedback {
+    background-color: lightblue;
 }
 
-.clients-logo {
+.feedback-logo {
      width: 30px;
      margin: .5em auto .3em;
      height: 30px;

@@ -51,7 +51,8 @@ app.get("/api/services/:sid/providers",(req,res) => {
 								gender: entry.gender,
 								age: entry.age,
 								app_slots: [Provider.getAppointmentsTimes(entry.id,entry.provider_id)],
-								image: 'http:\www.hi.ca\cat.jpg'
+
+								image: entry.pimage
 								},
 								]
 					},
@@ -62,11 +63,12 @@ app.get("/api/services/:sid/providers",(req,res) => {
 })
 
 app.post("/services/:sid/providers/:pid/book", (req, res) => {
+	// console.log("Heloooo");
   // var cid = req.body.CID;
   var cid = 14;
   var pid = req.params.pid;
   var sid = req.params.sid;
-  book.addAppointment(cid, pid, sid);
+  book.addBook(cid, pid, sid);
   res.json({result:"true"});
 });
 

@@ -4,10 +4,8 @@ import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
 import '../App.css';
-import "../css/clients.css";
+import "../css/feedback.css";
 import Logo from '../img/HC2Go1.png';
-
-
 
 const range = len => {
   const arr = [];
@@ -47,16 +45,13 @@ const newPerson = () => {
   });
 }
 
- 
-
  const Tips = () =>
   <div style={{ textAlign: "center" }}>
     <em>Tip: Hold shift when sorting to multi-sort!</em>
   </div>;
 
 
-
-class Client extends React.Component {
+class Feedback extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -68,36 +63,21 @@ class Client extends React.Component {
     const { data } = this.state;
     return(
       <div className="App">
-        <section className="homepage__clients">
-          <header className="header__clients">
+        <section className="homepage__feedback">
+          <header className="header__feedback">
             
             <div>
 
-
-{/* service_name: 'physiotherapy',
-    name: 'Dude Awesomepants',
-    address: '123 gastown, vancouver',
-    m_history: "Oh I am AMAZING!!!!!",
-    gender: 'female',
-    age: '30',
-    date: 'monday, july 15, 2018',
-    time: { 
-      from : 2452845824, 
-      to: 4248248,
-    },
-    status: 'pending',
-    button: 'if pending, link to profile, if completed can delete?' */}
-
       <div>
-        <h1>Provider Views Client Profile</h1>
+        <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
           <ReactTable
             data={data}
             columns={[
               {
-                Header: "Client Personal Info",
+                Header: "Provider Personal Info",
                 columns: [
                   {
-                    Header: "Name ",
+                    Header: "Name",
                     accessor: "name"
                   },
                   {
@@ -142,7 +122,7 @@ class Client extends React.Component {
           />
           <br />
           <Tips />
-          <img className="clients-logo" src={Logo} 
+          <img className="feedback-logo" src={Logo} 
       />
           </div>
 
@@ -156,4 +136,4 @@ class Client extends React.Component {
   }
 };
 
-export default Client;
+export default Feedback;
