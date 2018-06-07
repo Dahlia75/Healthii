@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Api from '../lib/api.js';
+//import Api from '../lib/api.js';
 
 import '../scss/main.scss';
 

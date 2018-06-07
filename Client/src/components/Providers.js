@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { getProviders } from './RandomProviders';
-import ProviderCard from './ProviderCard';
+// import ProviderCard from './ProviderCard';
 import ProviderCardList from './ProviderCardList';
 import { without, filter } from 'lodash';
 import Select from 'react-select';

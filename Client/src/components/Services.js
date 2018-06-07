@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import Api from '../lib/api.js';
+//import Api from '../lib/api.js';
 
 import '../scss/main.scss';
 import { HashLink as Link } from 'react-router-hash-link';
 
 function ServicesCard(props) {
-  // const descriptions = props.description.map(description => {
-  //   return <li>{ description }</li>
-  // });
   const path = `/services/${props.id}/providers`
   const services_img = `card__picture card__picture--${props.id}`
 
@@ -50,24 +47,6 @@ class Services extends Component {
             cards:[]
         }
     }
-
-
-    // load() {
-    //     Api.get('/api').then(cards => {
-    //       this.setState({
-    //         cards
-    //       });
-    //     });
-    //   }
-
-    // componentDidMount() {
-    //   this.load();
-    // }
-    // componentDidMount() {
-    //     // make request to server for services data
-
-    //     // take response and set state to replace the array of cards
-    // }
 
     render() {
         console.log(this.props);
