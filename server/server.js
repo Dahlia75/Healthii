@@ -40,8 +40,6 @@ app.get("/api/services/:sid/providers",(req,res) => {
 	Provider.getProvidersList(req.params.sid)
 		.then(value => {
 			value.forEach(function(entry) {
-
-               console.log(entry.pimage);
     			selected_provider.push(
 				  { sid: entry.id,
 					service_name: entry.name,
