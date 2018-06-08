@@ -22,7 +22,8 @@ const getProvidersList = (sid) => {
             if (err) {
                 return console.error("error running query", err);
               }
-                return result;
+            console.log(result);
+            return result;
             })
            .catch(function(err){
             console.error("error appointments query", err);
