@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../css/providers.css";
+//import "../css/providers.css";
 
 
 export default class ProviderCard extends Component {
@@ -12,10 +12,12 @@ export default class ProviderCard extends Component {
     const {name, gender, photo, age} = this.props.provider;
     console.log("Provider", this.props.provider);
     const genderSign = gender === 'female' ? 'fa fa-venus' : 'fa fa-mars';
+    const pimg = `../img/providers/${this.props.provider.pid}.jpg`;
+    console.log("image: ", `../img/providers/${this.props.provider.pid}.jpg`);
     const card =
 
     <div className="card text-center">
-        <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { photo } alt="Person" />
+        <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
             <h4 className="card-title">{ name } { age }
                 <i className= { genderSign }> </i>

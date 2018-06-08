@@ -28,7 +28,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return(
         Promise.all([
-          knex('services').del(), 
+          knex('services').del(),
           knex('providers').del(),
           knex('clients').del()])
       )
@@ -147,25 +147,25 @@ exports.seed = function(knex, Promise) {
                 return knex('appointments')
                   .returning('*')
                   .insert([
-                    {id: 1, client_id: 12, provider_id: 7, service_id: 2},
-                    {id: 2, client_id: 14, provider_id: 2, service_id: 4},
-                    {id: 3, client_id: 14, provider_id: 3, service_id: 6},
-                    {id: 4, client_id: 13, provider_id: 1, service_id: 1},
-                    {id: 5, client_id: 14, provider_id: 5, service_id: 5},
-                    {id: 6, client_id: 14, provider_id: 3, service_id: 6},
-                    {id: 7, client_id: 15, provider_id: 4, service_id: 3},
-                    {id: 8, client_id: 13, provider_id: 3, service_id: 5},
-                    {id: 9, client_id: 17, provider_id: 4, service_id: 1},
-                    {id: 10, client_id: 15, provider_id: 4, service_id: 6},
-                    {id: 11, client_id: 14, provider_id: 1, service_id: 4},
-                    {id: 12, client_id: 18, provider_id: 6, service_id: 6},
-                    {id: 13, client_id: 22, provider_id: 1, service_id: 3},
-                    {id: 14, client_id: 24, provider_id: 1, service_id: 5},
-                    {id: 15, client_id: 12, provider_id: 2, service_id: 6},
-                    {id: 16, client_id: 19, provider_id: 7, service_id: 1},
-                    {id: 17, client_id: 16, provider_id: 6, service_id: 2},
-                    {id: 18, client_id: 12, provider_id: 2, service_id: 5},
-                    {id: 19, client_id: 13, provider_id: 3, service_id: 6}
+                    {id: 1, client_id: 12, provider_id: 7, service_id: 2, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 2, client_id: 14, provider_id: 2, service_id: 4, date: 'Jun 7th 18', start_time: '19'},
+                    {id: 3, client_id: 14, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 4, client_id: 13, provider_id: 1, service_id: 1, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 5, client_id: 14, provider_id: 5, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 6, client_id: 14, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 7, client_id: 15, provider_id: 4, service_id: 3, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 8, client_id: 13, provider_id: 3, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 9, client_id: 17, provider_id: 4, service_id: 1, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 10, client_id: 15, provider_id: 4, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 11, client_id: 14, provider_id: 1, service_id: 4, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 12, client_id: 18, provider_id: 6, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 13, client_id: 22, provider_id: 1, service_id: 3, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 14, client_id: 24, provider_id: 1, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 15, client_id: 12, provider_id: 2, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 16, client_id: 19, provider_id: 7, service_id: 1, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 17, client_id: 16, provider_id: 6, service_id: 2, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 18, client_id: 12, provider_id: 2, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
+                    {id: 19, client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20'}
                 ]);
               });
     });

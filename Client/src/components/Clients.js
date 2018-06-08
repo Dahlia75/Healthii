@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import React from 'react';
+// import { HashLink as Link } from 'react-router-hash-link';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
 import '../App.css';
-import "../css/clients.css";
+//import "../css/clients.css";
 import Logo from '../img/HC2Go1.png';
 
 
@@ -18,7 +18,7 @@ const range = len => {
 };
 
 const newPerson = () => {
-  const statusChance = Math.random();
+  // const statusChance = Math.random();
   return {
     service_name: 'physiotherapy',
     name: 'Dude Awesomepants',
@@ -27,8 +27,8 @@ const newPerson = () => {
     gender: 'female',
     age: '30',
     date: 'monday, july 15, 2018',
-    time: { 
-      from : 2452845824, 
+    time: {
+      from : 2452845824,
       to: 4248248,
     },
     status: 'pending',
@@ -47,7 +47,7 @@ const newPerson = () => {
   });
 }
 
- 
+
 
  const Tips = () =>
   <div style={{ textAlign: "center" }}>
@@ -70,7 +70,7 @@ class Client extends React.Component {
       <div className="App">
         <section className="homepage__clients">
           <header className="header__clients">
-            
+
             <div>
 
 
@@ -81,8 +81,8 @@ class Client extends React.Component {
     gender: 'female',
     age: '30',
     date: 'monday, july 15, 2018',
-    time: { 
-      from : 2452845824, 
+    time: {
+      from : 2452845824,
       to: 4248248,
     },
     status: 'pending',
@@ -108,18 +108,18 @@ class Client extends React.Component {
                     Header: "Gender",
                     accessor: "gender"
                   },
-                 
+
                 ]
               },
               {
                 Header: "Appointment Info",
                 columns: [
-                  
+
                   {
                     Header: "Address",
                     accessor: "address"
                   },
-                
+
                   {
                     Header: "Status",
                     accessor: "status"
@@ -133,7 +133,7 @@ class Client extends React.Component {
                     Header: "View Report",
                     accessor: "button"
                   }
-                
+
                 ]
               }
             ]}
@@ -142,13 +142,12 @@ class Client extends React.Component {
           />
           <br />
           <Tips />
-          <img className="clients-logo" src={Logo} 
-      />
+          <img className="clients-logo" src={Logo} alt="clients-logo" />
           </div>
 
             </div>
 
-         
+
           </header>
         </section>
       </div>
