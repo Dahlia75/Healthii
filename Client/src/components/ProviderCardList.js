@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ProviderCard from './ProviderCard';
+import "../css/providers.css";
+
 
 export default class ProviderCardList extends Component {
 

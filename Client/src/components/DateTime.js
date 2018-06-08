@@ -12,15 +12,23 @@ class Scheduler extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      startDate: moment()
+      startDate: moment(),//.format("YYYY-MM-DD HH:mm:ss"),
+      adate: '',
+      atime: ''
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(date) {
+    window.theDate = date;
     this.setState({
-      startDate: date
+      adate: date.format("MMM Do YY"),
+      atime: date.hour()
     });
+    console.log("date", date.format("MMM Do YY"));
+    console.log("hr", date.hour());
+
+
   }
 
   render() {
@@ -28,7 +36,7 @@ class Scheduler extends React.Component {
       selected={this.state.startDate}
       onChange={this.handleChange}
       showTimeSelect
-      minTime={moment().hours(8).minutes(0)}
+      minTime={moment().hours(7).minutes(0)}
       maxTime={moment().hours(20).minutes(0)}
       dateFormat="LLL"
     />
