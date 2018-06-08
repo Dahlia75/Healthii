@@ -15,18 +15,22 @@ function encrypted_password(){
 exports.seed = function(knex, Promise) {
   const password = encrypted_password();
 
-  const deleteReviews = Promise.all([
-    knex('service_provider').del()
-    
+  const deleteAppointments = Promise.all([
+      knex('appointments').del()
     ]);
 
-  const deleteServicesProvidersClients = deleteReviews
+  const deleteService_Provider = deleteAppointments
+    .then(() => {
+      return knex('service_provider').del();
+    });
+
+  const deleteServicesProvidersClients = deleteService_Provider
     .then(() => {
       return(
         Promise.all([
-        knex('services').del(), 
-        knex('providers').del(),
-        knex('clients').del()])
+          knex('services').del(), 
+          knex('providers').del(),
+          knex('clients').del()])
       )
     });
 
@@ -138,7 +142,32 @@ exports.seed = function(knex, Promise) {
                   {id: 18, provider_id: 10, service_id: 5},
                   {id: 19, provider_id: 10, service_id: 6}
               ]);
-            });
+            })
+              .then(function () {
+                return knex('appointments')
+                  .returning('*')
+                  .insert([
+                    {id: 1, client_id: 12, provider_id: 7, service_id: 2},
+                    {id: 2, client_id: 14, provider_id: 2, service_id: 4},
+                    {id: 3, client_id: 14, provider_id: 3, service_id: 6},
+                    {id: 4, client_id: 13, provider_id: 1, service_id: 1},
+                    {id: 5, client_id: 14, provider_id: 5, service_id: 5},
+                    {id: 6, client_id: 14, provider_id: 3, service_id: 6},
+                    {id: 7, client_id: 15, provider_id: 4, service_id: 3},
+                    {id: 8, client_id: 13, provider_id: 3, service_id: 5},
+                    {id: 9, client_id: 17, provider_id: 4, service_id: 1},
+                    {id: 10, client_id: 15, provider_id: 4, service_id: 6},
+                    {id: 11, client_id: 14, provider_id: 1, service_id: 4},
+                    {id: 12, client_id: 18, provider_id: 6, service_id: 6},
+                    {id: 13, client_id: 22, provider_id: 1, service_id: 3},
+                    {id: 14, client_id: 24, provider_id: 1, service_id: 5},
+                    {id: 15, client_id: 12, provider_id: 2, service_id: 6},
+                    {id: 16, client_id: 19, provider_id: 7, service_id: 1},
+                    {id: 17, client_id: 16, provider_id: 6, service_id: 2},
+                    {id: 18, client_id: 12, provider_id: 2, service_id: 5},
+                    {id: 19, client_id: 13, provider_id: 3, service_id: 6}
+                ]);
+              });
     });
   return createUsers;
 };
