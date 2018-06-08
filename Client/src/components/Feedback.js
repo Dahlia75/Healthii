@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import React from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
 import '../App.css';
-import "../css/feedback.css";
+//import "../css/feedback.css";
 import Logo from '../img/HC2Go1.png';
 
 const range = len => {
@@ -16,7 +15,7 @@ const range = len => {
 };
 
 const newPerson = () => {
-  const statusChance = Math.random();
+  // const statusChance = Math.random();
   return {
     service_name: 'physiotherapy',
     name: 'Dude Awesomepants',
@@ -25,8 +24,8 @@ const newPerson = () => {
     gender: 'female',
     age: '30',
     date: 'monday, july 15, 2018',
-    time: { 
-      from : 2452845824, 
+    time: {
+      from : 2452845824,
       to: 4248248,
     },
     status: 'pending',
@@ -65,7 +64,7 @@ class Feedback extends React.Component {
       <div className="App">
         <section className="homepage__feedback">
           <header className="header__feedback">
-            
+
             <div>
 
       <div>
@@ -88,18 +87,18 @@ class Feedback extends React.Component {
                     Header: "Gender",
                     accessor: "gender"
                   },
-                 
+
                 ]
               },
               {
                 Header: "Appointment Info",
                 columns: [
-                  
+
                   {
                     Header: "Address",
                     accessor: "address"
                   },
-                
+
                   {
                     Header: "Status",
                     accessor: "status"
@@ -113,7 +112,7 @@ class Feedback extends React.Component {
                     Header: "View Report",
                     accessor: "button"
                   }
-                
+
                 ]
               }
             ]}
@@ -122,13 +121,12 @@ class Feedback extends React.Component {
           />
           <br />
           <Tips />
-          <img className="feedback-logo" src={Logo} 
-      />
+          <img className="feedback-logo" src={Logo} alt="feedback"/>
           </div>
 
             </div>
 
-         
+
           </header>
         </section>
       </div>

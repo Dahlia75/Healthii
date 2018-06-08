@@ -38,28 +38,39 @@ app.get("/api",(req,res) => {
 app.get("/api/services/:sid/providers",(req,res) => {
 	var selected_provider=[];
 	Provider.getProvidersList(req.params.sid)
-		.then(value => {
-			value.forEach(function(entry) {
-    			selected_provider.push(
-				  { sid: entry.id,
-					service_name: entry.name,
-					providers: [{
-								pid: entry.provider_id,
-								name: (entry.first_name) +" "+ (entry.last_name),
-								title: entry.title,
-								bio: entry.bio,
-								gender: entry.gender,
-								age: entry.age,
-								app_slots: [Provider.getAppointmentsTimes(entry.id,entry.provider_id)],
-
-								image: entry.pimage
-								},
-								]
-					},
-    			);
-			});
-			res.json(selected_provider);
+		.then(providers => {
+      // console.dir(providers, {colors:true});
+      if (providers.length === 0) {
+        return res.status(404).json({ error: 'Provider not found' });
+      }
+      const [{ service_name, service_id }] = providers;
+      return Promise.all(providers.map((provider, i) => {
+        return Provider.getAppointmentsTimes(service_id, provider.id)
+          .then(app_slots => {
+            return {
+              pid: provider.id,
+              name: `${provider.first_name} ${provider.last_name}`,
+              title: provider.title,
+              bio: provider.bio,
+              gender: provider.gender,
+              age: provider.age,
+              app_slots,
+              image: provider.image
+            }
+          })
+      }))
+      .then(providers_with_slots => {
+        res.json({
+          sid: service_id,
+          service_name,
+          providers: providers_with_slots,
+        })
+      })
 		})
+    .catch(ex => {
+      console.error(ex);
+      res.status(500).json({ error: ex.message })
+    });
 })
 
 app.post("/services/:sid/providers/:pid/book", (req, res) => {

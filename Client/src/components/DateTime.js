@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
- 
+
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
@@ -8,11 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-class Scheduler extends React.Component {
+class Scheduler extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      startDate: moment(),//.format("YYYY-MM-DD HH:mm:ss"),
+      startDate: moment(),
       adate: '',
       atime: ''
     };
@@ -20,15 +20,13 @@ class Scheduler extends React.Component {
   }
 
   handleChange(date) {
-    window.theDate = date;
     this.setState({
       adate: date.format("MMM Do YY"),
       atime: date.hour()
     });
-    console.log("date", date.format("MMM Do YY"));
-    console.log("hr", date.hour());
-
-
+    // console.log("date", date.format("MMM Do YY"));
+    // console.log("hr", date.hour());
+    this.props.onDateTimeChanged(date.format("MMM Do YY"), date.hour());
   }
 
   render() {
