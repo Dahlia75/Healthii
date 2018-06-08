@@ -1,12 +1,13 @@
 
-var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
+// var bcrypt = require('bcrypt');
+// var salt = bcrypt.genSaltSync(10);
 
 let hash = [];
 function encrypted_password(){
   for (var i = 1; i < 26; ++i) {
     let pass = "pass" + i;
-    hash[i-1] = bcrypt.hashSync("pass", salt);
+    // hash[i-1] = bcrypt.hashSync("pass", salt);
+    hash[i-1] = "pass";
   }
   return hash;
 }

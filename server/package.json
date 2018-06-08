@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bcrypt": "2.0.0",
+    "bcrypt": "^2.0.0",
     "dotenv": "^6.0.0",
     "knex": "^0.14.6",
     "knex-logger": "^0.1.0",

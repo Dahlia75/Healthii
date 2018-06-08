@@ -51,7 +51,7 @@ app.get("/api/services/:sid/providers",(req,res) => {
 								gender: entry.gender,
 								age: entry.age,
 								app_slots: [Provider.getAppointmentsTimes(entry.id,entry.provider_id)],
-								image: 'http:\www.hi.ca\cat.jpg'
+								image: entry.image
 								},
 								]
 					},
