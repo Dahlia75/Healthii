@@ -20,6 +20,7 @@ export default class Providers extends Component {
           providers: [],
           filterBy: 'all',
           selectedService: '',
+          selectedSid: '',
           selectedDate: '',
           selectedTime: '',
           selectedList: []
@@ -32,12 +33,13 @@ export default class Providers extends Component {
             // const providers = service.providers.reduce((acc, provider) => {
             //     return acc.concat(current.providers);
             // }, []);
-        console.log("service: ", service.providers);
+        // console.log("service: ", service.providers);
 
             this.setState({
                 providers: service.providers,
                 selectedService : service.service_name,
-                selectedList : service.providers
+                selectedList : service.providers,
+                selectedSid : sid
             });
         });
     }
@@ -45,7 +47,7 @@ export default class Providers extends Component {
         //console.log('componentWillMount');
         this.load();
 
-        console.log("state: ", this.state);
+        // console.log("state: ", this.state);
     }
 
     // componentDidMount() {
@@ -91,14 +93,18 @@ export default class Providers extends Component {
           selectedDate,
           selectedTime
         });
-      console.log(this.state.selectedDate, this.state.selectedTime)
+      //console.log(this.state.selectedDate, this.state.selectedTime)
       this.setSelectedList(this.filterProvidersByTime());
     }
 
     render() {
 
-    let currentProviders = this.state.selectedList || [];
-    console.log("SelectedList ", currentProviders);
+    // let currentProviders = this.state.selectedList;
+      let currentProviders = {
+        providers: this.state.selectedList,
+        sid: this.state.selectedSid
+      }
+    // console.log("SelectedList ", currentProviders);
         //male | female | all
         // const filterBy = this.state.filterBy;
 
@@ -124,7 +130,7 @@ export default class Providers extends Component {
                     <div className = "col-lg-6">
                         <div>
                             <h3 className = "float-right">
-                                { currentProviders.length } Providers Available for { this.state.selectedService }
+                                { currentProviders.providers.length } Providers Available for { this.state.selectedService }
                             </h3>
                         </div>
                     </div>

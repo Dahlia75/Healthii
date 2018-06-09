@@ -50,7 +50,7 @@ class Services extends Component {
 
     render() {
         const cards = this.props.cards.map(card => {
-            return <ServicesCard id={ card.id } name={ card.name } price={ card.price } descripton={ card.descripton } />
+            return <ServicesCard key = { card.id } id={ card.id } name={ card.name } price={ card.price } descripton={ card.descripton } />
         })
 
         return (
@@ -58,7 +58,7 @@ class Services extends Component {
                 <div className="u-center-text u-margin-bottom-big">
                     <h2 className="heading-secondary">Our Services</h2>
                 </div>
-                <div className="row">
+                <div className="gridrow">
                     { cards }
                 </div>
             </section>
