@@ -91,7 +91,7 @@ app.get("/api/clients",(req,res) => {
       return Promise.all(
 
         clients.map((clients, i) => {
-          
+
           return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
@@ -107,12 +107,12 @@ app.get("/api/clients",(req,res) => {
       .then(clients_of_pid => {
         // console.log("clients==> ",clients);
         res.json({
-              id: id, 
-              service_name: service_name, 
-              service_id: service_id, 
-              provider_id: provider_id, 
-              date: date, 
-              start_time: start_time, 
+              id: id,
+              service_name: service_name,
+              service_id: service_id,
+              provider_id: provider_id,
+              date: date,
+              start_time: start_time,
               status: status,
               clientList: clients
             });
@@ -128,6 +128,7 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   Provider.getProviderInfo(req.params.pid)
   .then(providerInfo =>{
     const provider = providerInfo;
+    console.log("providerInfo: ", providerInfo)
     return Provider.getReviews(req.params.pid)
     // console.log("===> ",Provider.getReviews(req.params.pid));
   //   .then(providers_with_reviews => {
@@ -146,9 +147,8 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   // })
 
   .then(provider_with_reviews => {
-        res.json({
-        reviews: provider_with_reviews
-      })
+      console.log("reviews: ", provider_with_reviews)
+        res.json( provider_with_reviews)
     })
   })
   .catch(ex => {
