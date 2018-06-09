@@ -129,38 +129,16 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   Provider.getProviderInfo(req.params.pid)
   .then(providerInfo =>{
     const provider = providerInfo;
-    console.log("providerInfo: ", providerInfo)
     return Provider.getReviews(req.params.pid)
     .then(reviews => {
         return {
                 p_info: providerInfo,
                 reviews: reviews
-
-<<<<<<< HEAD
-                }
-    })
-    .then(provider_with_reviews => {
-        res.json({
-        reviews: provider_with_reviews
-      })
-=======
-  //     return Promise.all(providers.map((provider, i) => {
-  //       return Provider.getAppointmentsTimes(service_id, provider.id)
-          .then(reviews => {
-            return {
-              p_info: providerInfo,
-              reviews: reviews
-
-            }
-          })
-
-  //     }))
-  // })
+              }
+  })
 
   .then(provider_with_reviews => {
-      console.log("reviews: ", provider_with_reviews)
         res.json( provider_with_reviews)
->>>>>>> 0d9e2e212daf874afd4358747ccb5c3847cd0f63
     })
   })
   .catch(ex => {
@@ -194,16 +172,6 @@ app.post("api/appointments/:aid/confirmation", (req, res) => {
 });
 
 
-
-
-
-
-
-approve or decline the appointment by provider:
-
-{ aid: 24,
-status: 'approved'
-}
 
 // app.post("/", (req, res) => {
 //   var cid = req.body.CID;
