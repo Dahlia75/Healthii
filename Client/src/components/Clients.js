@@ -6,6 +6,7 @@ import 'react-table/react-table.css'
 import '../App.css';
 //import "../css/clients.css";
 import Logo from '../img/HC2Go1.png';
+import PopupReport from './PopupReport';
 
 
 
@@ -32,7 +33,8 @@ const newPerson = () => {
       to: 4248248,
     },
     status: 'pending',
-    button: 'if pending, link to profile, if completed can delete?'
+    button: <PopupReport/>
+
 
     //if pending, want to link to profile, then in profile, will accept or decline
   };
