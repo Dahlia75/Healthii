@@ -92,6 +92,7 @@ class Provider extends Component {
             <figure className="gallery__item">
               <img src={this.state.image} alt="Provider" className="gallery__photo" />
             </figure>
+            
             <h1 className="overview__heading">
               { this.state.name } - { this.state.title }
             </h1>
