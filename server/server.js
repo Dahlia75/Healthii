@@ -91,7 +91,7 @@ app.get("/api/clients",(req,res) => {
       return Promise.all(
 
         clients.map((clients, i) => {
-          
+
           return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
@@ -108,10 +108,12 @@ app.get("/api/clients",(req,res) => {
       )
       .then(clients_of_pid => {
         res.json({
-              id: aid, 
-              provider_id: pid, 
-              date: date, 
-              start_time: time, 
+              id: id,
+              service_name: service_name,
+              service_id: service_id,
+              provider_id: provider_id,
+              date: date,
+              start_time: start_time,
               status: status,
               clientList: clients_of_pid
             });
@@ -127,18 +129,38 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   Provider.getProviderInfo(req.params.pid)
   .then(providerInfo =>{
     const provider = providerInfo;
+    console.log("providerInfo: ", providerInfo)
     return Provider.getReviews(req.params.pid)
     .then(reviews => {
         return {
                 p_info: providerInfo,
                 reviews: reviews
 
+<<<<<<< HEAD
                 }
     })
     .then(provider_with_reviews => {
         res.json({
         reviews: provider_with_reviews
       })
+=======
+  //     return Promise.all(providers.map((provider, i) => {
+  //       return Provider.getAppointmentsTimes(service_id, provider.id)
+          .then(reviews => {
+            return {
+              p_info: providerInfo,
+              reviews: reviews
+
+            }
+          })
+
+  //     }))
+  // })
+
+  .then(provider_with_reviews => {
+      console.log("reviews: ", provider_with_reviews)
+        res.json( provider_with_reviews)
+>>>>>>> 0d9e2e212daf874afd4358747ccb5c3847cd0f63
     })
   })
   .catch(ex => {

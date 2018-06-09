@@ -2,9 +2,17 @@ import React from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
+import FeedbackForm from './FeedbackForm';
+import PopupFeedback from './PopupFeedback';
+import Star from './Star';
+ 
+
+
 import '../App.css';
 //import "../css/feedback.css";
 import Logo from '../img/HC2Go1.png';
+
+
 
 const range = len => {
   const arr = [];
@@ -29,7 +37,7 @@ const newPerson = () => {
       to: 4248248,
     },
     status: 'pending',
-    button: 'if pending, link to profile, if completed can delete?'
+    button: <PopupFeedback />
 
     //if pending, want to link to profile, then in profile, will accept or decline
   };
@@ -54,9 +62,12 @@ class Feedback extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: makeData()
+      data: makeData(),
+      showPopup: false, 
+      popup: <PopupFeedback />
     };
   }
+
 
   render() {
     const { data } = this.state;
@@ -69,6 +80,7 @@ class Feedback extends React.Component {
 
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
+          
           <ReactTable
             data={data}
             columns={[
@@ -135,3 +147,13 @@ class Feedback extends React.Component {
 };
 
 export default Feedback;
+
+
+
+
+
+
+
+
+
+
