@@ -33,6 +33,8 @@ class Provider extends Component {
     console.log("provider params, wheeeeee", this.props.match.params);
 
     this.state = {
+      provider_info: {},
+      reviews: [],
       name: 'Daniel',
       title: 'Physical Therapist',
       bio: 'FILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE',
@@ -56,23 +58,17 @@ class Provider extends Component {
   }
 
 
-   load() {
-      const sid = this.props.match.params.sid;
-      const pid = this.props.match.params.pid;
+  load() {
+    const sid = this.props.match.params.sid;
+    const pid = this.props.match.params.pid;
 
-      Api.get(`/api/services/${sid}/providers/${pid}`).then(provider => {
-          // const providers = clients.clientList.reduce((acc, provider) => {
-          //     return acc.concat(current.providers);
-          // }, []);
+    Api.get(`/api/services/${sid}/providers/${pid}`).then(provider => {
       console.log("provider: ", provider);
-
-          this.setState({
-              // data: clients
-              // providers: service.providers,
-              // selectedService : service.service_name,
-              // selectedList : service.providers
-          });
+      this.setState({
+          provider_info: provider.p_info[0],
+          reviews: provider.reviews
       });
+    });
   }
 
   componentDidMount(){
@@ -81,7 +77,9 @@ class Provider extends Component {
 
 
   render() {
-    const reviews = this.state.reviews.map((review, index) => {
+    const provider = this.state;
+    const pimg = `http://localhost:3001/img/providers/${provider.provider_info.id}.jpg`;
+    const reviews = provider.reviews.map((review, index) => {
       return <ProviderReviews key={index} client_name={ review.client_name } review_date={ review.review_date } rating={ review.rating } description={ review.description} />
     })
     return (
@@ -90,11 +88,11 @@ class Provider extends Component {
         <main className="view-profile">
           <div className="overview">
             <figure className="gallery__item">
-              <img src={this.state.image} alt="Provider" className="gallery__photo" />
+              <img src={pimg} alt="Provider" className="gallery__photo" />
             </figure>
             
             <h1 className="overview__heading">
-              { this.state.name } - { this.state.title }
+              { provider.provider_info.first_name } { provider.provider_info.last_name } - { provider.provider_info.title }
             </h1>
             <div className="overview__stars">
               <i className="fas fa-star"></i>
@@ -103,11 +101,6 @@ class Provider extends Component {
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
             </div>
-
-            <div className="overview__location">
-              <i className="fas fa-map-marker-alt"></i>
-              <button className="btn-inline">Vancouver, Canada</button>
-            </div>
             <div className="overview__rating">
               <div className="overview__rating-average"> { this.state.rating_avg }</div>
             </div>
@@ -115,7 +108,13 @@ class Provider extends Component {
 
           <div className="detail">
             <div className="description">
-              <p className="paragraph"> { this.state.bio } </p>
+              <p className="paragraph">
+                <span> Gender: </span>
+                <span>{ provider.provider_info.gender } </span>
+                <span> Age: </span>
+                <span>{ provider.provider_info.age } </span>
+              </p>
+              <p className="paragraph"> <h4> Biography:</h4> { provider.provider_info.bio } </p>
             </div>
 
             <figure className="provider-reviews">
@@ -123,7 +122,6 @@ class Provider extends Component {
             </figure>
 
           </div>
-          <button className="btn-inline">Show all <span></span></button>
           <div className="cta">
             <button className="btn">
               <span className="btn__visible">Book now</span>
