@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Api from '../lib/api.js';
 //import Api from '../lib/api.js';
 
 import '../scss/main.scss';
@@ -54,6 +54,31 @@ class Provider extends Component {
       ]
     }
   }
+
+
+   load() {
+      const sid = this.props.match.params.sid;
+      const pid = this.props.match.params.pid;
+
+      Api.get(`/api/services/${sid}/providers/${pid}`).then(provider => {
+          // const providers = clients.clientList.reduce((acc, provider) => {
+          //     return acc.concat(current.providers);
+          // }, []);
+      console.log("provider: ", provider);
+
+          this.setState({
+              // data: clients
+              // providers: service.providers,
+              // selectedService : service.service_name,
+              // selectedList : service.providers
+          });
+      });
+  }
+
+  componentDidMount(){
+    this.load();
+  }
+
 
   render() {
     const reviews = this.state.reviews.map(review => {

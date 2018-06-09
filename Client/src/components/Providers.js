@@ -36,6 +36,7 @@ export default class Providers extends Component {
 
             this.setState({
                 providers: service.providers,
+                reviews: service.reviews,
                 selectedService : service.service_name,
                 selectedList : service.providers
             });

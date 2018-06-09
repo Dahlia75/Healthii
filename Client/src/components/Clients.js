@@ -2,7 +2,7 @@ import React from 'react';
 // import { HashLink as Link } from 'react-router-hash-link';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
-
+import Api from '../lib/api.js';
 import '../App.css';
 //import "../css/clients.css";
 import Logo from '../img/HC2Go1.png';
@@ -47,23 +47,42 @@ const newPerson = () => {
   });
 }
 
-
-
  const Tips = () =>
   <div style={{ textAlign: "center" }}>
     <em>Tip: Hold shift when sorting to multi-sort!</em>
   </div>;
 
 
-
 class Client extends React.Component {
   constructor() {
     super();
     this.state = {
+      // data: makeData()
       data: makeData()
     };
   }
 
+  load() {
+      const sid = this.props.match.params.sid;
+
+      Api.get(`/api/clients`).then(clients => {
+          // const providers = clients.clientList.reduce((acc, provider) => {
+          //     return acc.concat(current.providers);
+          // }, []);
+      console.log("clients: ", clients);
+
+          this.setState({
+              // data: clients
+              // providers: service.providers,
+              // selectedService : service.service_name,
+              // selectedList : service.providers
+          });
+      });
+  }
+
+  componentDidMount(){
+    this.load();
+  }
   render() {
     const { data } = this.state;
     return(
