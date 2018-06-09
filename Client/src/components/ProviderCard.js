@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 //import "../css/providers.css";
 import { HashLink as Link } from 'react-router-hash-link';
 
-import Provider from './Provider';
-
 export default class ProviderCard extends Component {
 
     onRemoveProvider() {

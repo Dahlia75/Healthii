@@ -30,7 +30,7 @@ class Provider extends Component {
   constructor(props) {
     super(props);
 
-    //console.log("provider params, wheeeeee", this.props.match.params);
+    console.log("provider params, wheeeeee", this.props.match.params);
 
     this.state = {
       name: 'Daniel',
@@ -56,8 +56,8 @@ class Provider extends Component {
   }
 
   render() {
-    const reviews = this.state.reviews.map(review => {
-      return <ProviderReviews client_name={ review.client_name } review_date={ review.review_date } rating={ review.rating } description={ review.description} />
+    const reviews = this.state.reviews.map((review, index) => {
+      return <ProviderReviews key={index} client_name={ review.client_name } review_date={ review.review_date } rating={ review.rating } description={ review.description} />
     })
     return (
 
