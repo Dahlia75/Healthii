@@ -10,12 +10,13 @@ export default class ProviderCardList extends Component {
     }
 
     render() {
-        const cards = this.props.providers.map((provider, index) => {
+        const cards = this.props.providers.providers.map((provider, index) => {
             return <ProviderCard
                 key = { index }
                 provider = { provider }
                 onRemoveProvider = { this.onRemoveProvider.bind(this) }
                 currentProvider = {provider}
+                serviceId = {this.props.providers.sid}
             />;
         });
         return (

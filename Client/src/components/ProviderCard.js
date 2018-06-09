@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 //import "../css/providers.css";
+import { HashLink as Link } from 'react-router-hash-link';
 
+import Provider from './Provider';
 
 export default class ProviderCard extends Component {
 
@@ -9,26 +11,25 @@ export default class ProviderCard extends Component {
     }
 
     render() {
-    const {name, gender, photo, age} = this.props.provider;
-    console.log("Provider", this.props.provider);
+    const {pid, name, title, gender, age} = this.props.provider;
+    const sid = this.props.serviceId;
+    const path = `/services/${sid}/providers/${pid}`;
+    console.log("path for provider ", path);
     const genderSign = gender === 'female' ? 'fa fa-venus' : 'fa fa-mars';
-    const pimg = `../img/providers/${this.props.provider.pid}.jpg`;
-    console.log("image: ", `../img/providers/${this.props.provider.pid}.jpg`);
+    const pimg = `http://localhost:3001/img/providers/${pid}.jpg`;
     const card =
 
     <div className="card text-center">
         <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
-            <h4 className="card-title">{ name } { age }
-                <i className= { genderSign }> </i>
-            </h4>
-            <p>
-
-                    <i/>  { "Job Title" }
-
-            </p>
+            <h4 className="card-title">Name: { name }</h4>
+            <p > { age } years old</p>
+            <i className= { genderSign }> </i>
+            <p>Job Title: { title }</p>
             <p className="card-text">
                 <small className="text-muted"> { "View Profile" }
+                    <Link to={path} className="btn btn--white">View Profile
+                   </Link>
                     {/* <span className = {flagClassName}> </span> */}
                 </small>
             </p>

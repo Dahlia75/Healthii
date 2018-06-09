@@ -27,6 +27,8 @@ app.use(function(request,response,next){
 	next();
 })
 
+app.use(express.static('public'));
+
 app.get("/api",(req,res) => {
 	Service.getServicesList()
 		.then(value => {

@@ -30,7 +30,7 @@ class Provider extends Component {
   constructor(props) {
     super(props);
 
-    console.log("provider params, wheeeeee", this.props.match.params);
+    //console.log("provider params, wheeeeee", this.props.match.params);
 
     this.state = {
       name: 'Daniel',
@@ -92,6 +92,10 @@ class Provider extends Component {
               <p className="paragraph"> { this.state.bio } </p>
             </div>
 
+            <figure className="provider-reviews">
+              { reviews }
+            </figure>
+
           </div>
           <button className="btn-inline">Show all <span></span></button>
           <div className="cta">
@@ -100,9 +104,7 @@ class Provider extends Component {
               <span className="btn__invisible">NOW!!!!</span>
             </button>
           </div>
-          <figure className="provider-reviews">
-            { reviews }
-          </figure>
+
         </main>
       </div>
     );
