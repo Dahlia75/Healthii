@@ -12,7 +12,7 @@ const knex = require('knex')({
 });
 
 const addBook = (cid, pid, sid, date, time) => {
-	console.log("==>",cid, pid, sid);
+
   return knex('appointments')
           .insert({client_id: cid, provider_id: pid, service_id: sid, date: date, start_time: time, status: 'pending' })
           .returning('id')
@@ -22,6 +22,17 @@ const addBook = (cid, pid, sid, date, time) => {
   });
 };
 
+const confirm = (aid) => {
+  return knex('appointments')
+          .insert({status: 'approved' })
+          .where('id', aid)
+          .then((arrayOfResults) => arrayOfResults[0])
+          .catch(function(err){
+            console.error("error appointments query", err);
+  });
+};
+
 exports.addBook = addBook;
+exports.confirm = confirm;
 
 

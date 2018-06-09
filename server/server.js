@@ -108,12 +108,12 @@ app.get("/api/clients",(req,res) => {
       )
       .then(clients_of_pid => {
         res.json({
-              id: id,
+              id: aid,
               service_name: service_name,
-              service_id: service_id,
-              provider_id: provider_id,
+              service_id: sid,
+              provider_id: pid,
               date: date,
-              start_time: start_time,
+              start_time: time,
               status: status,
               clientList: clients_of_pid
             });
@@ -161,16 +161,11 @@ app.post("api/services/:sid/providers/:pid/book", (req, res) => {
 
 app.post("api/appointments/:aid/confirmation", (req, res) => {
   // console.log("Heloooo");
-  // var cid = req.body.CID;
-  var cid = 14;
-  var pid = req.params.pid;
-  var sid = req.params.sid;
-  var date="";
-  var time="";
-  book.addBook(cid, pid, sid, date, time);
+   // var cid = req.params.pid;
+  var aid = req.params.aid;
+  book.confirm(aid);
   res.json({result:"true"});
 });
-
 
 
 // app.post("/", (req, res) => {
