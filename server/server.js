@@ -87,7 +87,7 @@ app.get("/api/clients",(req,res) => {
       if (clients.length === 0) {
         return res.status(404).json({ error: 'clients not found' });
       }
-      const [{ id, service_name, service_id, provider_id, date, start_time, status}] = clients;
+      const [{ aid, service_name, sid, pid, date, time, status}] = clients;
       return Promise.all(
 
         clients.map((clients, i) => {
@@ -95,26 +95,25 @@ app.get("/api/clients",(req,res) => {
           return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
+                  service_name: service_name, 
+                  service_id: sid,
                   phone: clients.phone,
                   address: clients.address,
                   m_history: clients.m_history,
                   gender: clients.gender,
                   age: clients.age,
-                  report: clients.report,
+                  report: clients.report
                 })
        })
       )
       .then(clients_of_pid => {
-        // console.log("clients==> ",clients);
         res.json({
-              id: id, 
-              service_name: service_name, 
-              service_id: service_id, 
-              provider_id: provider_id, 
+              id: aid, 
+              provider_id: pid, 
               date: date, 
-              start_time: start_time, 
+              start_time: time, 
               status: status,
-              clientList: clients
+              clientList: clients_of_pid
             });
       })
     })
@@ -129,23 +128,14 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   .then(providerInfo =>{
     const provider = providerInfo;
     return Provider.getReviews(req.params.pid)
-    // console.log("===> ",Provider.getReviews(req.params.pid));
-  //   .then(providers_with_reviews => {
+    .then(reviews => {
+        return {
+                p_info: providerInfo,
+                reviews: reviews
 
-  //     return Promise.all(providers.map((provider, i) => {
-  //       return Provider.getAppointmentsTimes(service_id, provider.id)
-          .then(reviews => {
-            return {
-              p_info: providerInfo,
-              reviews: reviews
-
-            }
-          })
-
-  //     }))
-  // })
-
-  .then(provider_with_reviews => {
+                }
+    })
+    .then(provider_with_reviews => {
         res.json({
         reviews: provider_with_reviews
       })
@@ -157,17 +147,41 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   });
 });
 
-
-app.post("/services/:sid/providers/:pid/book", (req, res) => {
+app.post("api/services/:sid/providers/:pid/book", (req, res) => {
 	// console.log("Heloooo");
   // var cid = req.body.CID;
   var cid = 14;
   var pid = req.params.pid;
   var sid = req.params.sid;
-  book.addBook(cid, pid, sid);
+  var date="";
+  var time="";
+  book.addBook(cid, pid, sid, date, time);
   res.json({result:"true"});
 });
 
+app.post("api/appointments/:aid/confirmation", (req, res) => {
+  // console.log("Heloooo");
+  // var cid = req.body.CID;
+  var cid = 14;
+  var pid = req.params.pid;
+  var sid = req.params.sid;
+  var date="";
+  var time="";
+  book.addBook(cid, pid, sid, date, time);
+  res.json({result:"true"});
+});
+
+
+
+
+
+
+
+approve or decline the appointment by provider:
+
+{ aid: 24,
+status: 'approved'
+}
 
 // app.post("/", (req, res) => {
 //   var cid = req.body.CID;
@@ -180,3 +194,4 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
 app.listen(PORT, ()=> {
 	console.log('Listen on port'+ PORT)
 })
+

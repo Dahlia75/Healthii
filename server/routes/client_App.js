@@ -12,11 +12,19 @@ const knex = require('knex')({
 });
 
 const getCLientApp = (pid) => {
-    return knex('clients')
-           .join('appointments', 'appointments.client_id', '=', 'clients.user_id')
-           .join('services', 'services.id', '=', 'appointments.service_id')
-           .select('*')
-           .returning('id')
+    return knex('appointments')
+           .join('clients', 'appointments.client_id', '=', 'clients.id')
+           .join('services', 'appointments.service_id', '=', 'services.id')
+           .select(
+                    {'aid': 'appointments.id'},
+                    {'pid': 'appointments.provider_id'},
+                    {'sid': 'services.id'},
+                    {'service_name': 'services.name'},
+                    {'date': 'appointments.date'},
+                    {'time': 'appointments.start_time'},
+                    {'status': 'appointments.status'},
+                    'clients.*'
+              )
            .where('appointments.provider_id', pid)
         //    .asCallback( function (err, result){
         //     if (err) {
@@ -30,5 +38,4 @@ const getCLientApp = (pid) => {
 };
 
 exports.getCLientApp = getCLientApp;
-
-
+         

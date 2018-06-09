@@ -11,7 +11,7 @@ const knex = require('knex')({
   }
 });
 
-const addBook = (cid, pid, sid) => {
+const addBook = (cid, pid, sid, date, time) => {
 	console.log("==>",cid, pid, sid);
   return knex('appointments')
           .insert({client_id: cid, provider_id: pid, service_id: sid, date: date, start_time: time, status: 'pending' })
