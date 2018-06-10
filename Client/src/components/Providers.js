@@ -45,10 +45,7 @@ export default class Providers extends Component {
         });
     }
     componentWillMount() {
-        //console.log('componentWillMount');
         this.load();
-
-        // console.log("state: ", this.state);
     }
 
     // componentDidMount() {

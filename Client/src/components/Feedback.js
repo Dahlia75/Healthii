@@ -68,6 +68,28 @@ class Feedback extends React.Component {
     };
   }
 
+  load() {
+      const rid = this.props.match.params.rid;
+
+      Api.post(`/api/reviews/${rid}/feedback`).then(service => {
+          // const providers = service.providers.reduce((acc, provider) => {
+          //     return acc.concat(current.providers);
+          // }, []);
+      // console.log("service: ", service.providers);
+
+          this.setState({
+              // providers: service.providers,
+              // reviews: service.reviews,
+              // selectedService : service.service_name,
+              // selectedList : service.providers,
+              // selectedSid : sid
+          });
+      });
+  }
+
+  componentDidMount() {
+    this.load();
+  }
 
   render() {
     const { data } = this.state;

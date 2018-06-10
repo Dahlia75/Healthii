@@ -1,22 +1,24 @@
 "use strict";
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 3001;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const app         = express();
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const pg 		  		= require('pg');
-const knexLogger  = require('knex-logger');
-const Appointment = require("./routes/Appointment");
-const Review 	  	= require("./routes/Review");
-const Service 	  = require("./routes/Service");
-const Provider 	  = require("./routes/Provider");
-const book        = require("./routes/book_App");
-const clientsApp	= require("./routes/client_App");
+const PORT          = process.env.PORT || 3001;
+const ENV           = process.env.ENV || "development";
+const express       = require("express");
+const bodyParser    = require("body-parser");
+const cookieSession = require('cookie-session');
+const app           = express();
+const knexConfig    = require("./knexfile");
+const knex          = require("knex")(knexConfig[ENV]);
+const morgan        = require('morgan');
+const pg 		  		  = require('pg');
+const knexLogger    = require('knex-logger');
+const Appointment   = require("./routes/Appointment");
+const Review 	  	  = require("./routes/Review");
+const Service 	    = require("./routes/Service");
+const Provider 	    = require("./routes/Provider");
+const book          = require("./routes/book_App");
+const clientsApp    = require("./routes/client_App");
+const users	        = require("./routes/users");
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -27,6 +29,10 @@ app.use(function(request,response,next){
 	response.header("Access-Control-Allow-Headers", "Origin, X-Requested, Content-Type, Accept");
 	next();
 })
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 
 app.use(express.static('public'));
 
@@ -172,6 +178,32 @@ app.post("api/reviews/:rid/feedback", (req, res) => {
   var pid = 6;
   var rating = '';
   var description = '';
+  Review.postFeedback(rid, cid, pid, rating, description);
+  res.json({result:"true"});
+});
+
+app.post("api/login", (req, res) => {
+
+  // Reading parameters from "req.body.CID";
+
+  let email = req.body.email;
+  const password = req.body.password;
+  user = users.login(email,password)
+  if(user){
+
+        req.session.userID = user.id;
+        res.redirect("/api");
+        // return;
+
+  }else{
+      res.json({result:"Login failed"});
+  }
+
+  res.end("Email or Password not correctly entered");
+
+
+
+  var id = 0;
   Review.postFeedback(rid, cid, pid, rating, description);
   res.json({result:"true"});
 });

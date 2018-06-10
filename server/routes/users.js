@@ -1,18 +1,23 @@
 "use strict";
+const settings = require("./settings");
+const knex = require('knex')({
+  client: 'pg',
+  version: '7.2',
+  connection: {
+  user     : settings.user,
+  password : settings.password,
+  database : settings.database,
+  host     : settings.hostname,
+  }
+});
 
-const express = require('express');
-const router  = express.Router();
-
-module.exports = (knex) => {
-
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
-  });
-
-  return router;
+const login = (email,password) => {
+    return knex('users')
+           .select('*')
+           .where({
+            email: email,
+            password: password
+           })
 };
+
+exports.login = login;

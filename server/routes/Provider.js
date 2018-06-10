@@ -63,16 +63,6 @@ const getReviews = (pid) => {
            .where({
             provider_id: pid,
            })
-        //    .asCallback( function (err, result){
-        //     if (err) {
-        //         return console.error("error running query", err);
-        //       }
-        //         console.log("appoinments ", result);
-        //         return result;
-        //     })
-        //    .catch(function(err){
-        //     console.error("error appointments query", err);
-        // });
 };
 
 exports.getProvidersList = getProvidersList;
