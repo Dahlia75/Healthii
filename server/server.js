@@ -42,8 +42,7 @@ app.get("/api/services/:sid/providers",(req,res) => {
 	var selected_provider=[];
 	Provider.getProvidersList(req.params.sid)
 		.then(providers => {
-      // console.dir(providers, {colors:true});
-      if (providers.length === 0) {
+       if (providers.length === 0) {
         return res.status(404).json({ error: 'Provider not found' });
       }
       const [{ service_name, service_id }] = providers;
@@ -148,8 +147,8 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
 });
 
 app.post("api/services/:sid/providers/:pid/book", (req, res) => {
-	// console.log("Heloooo");
-  // var cid = req.body.CID;
+	
+  // Reading parameters from "cookies" or "req.body.CID";
   var cid = 14;
   var pid = req.params.pid;
   var sid = req.params.sid;
@@ -160,13 +159,22 @@ app.post("api/services/:sid/providers/:pid/book", (req, res) => {
 });
 
 app.post("api/appointments/:aid/confirmation", (req, res) => {
-  // console.log("Heloooo");
-   // var cid = req.params.pid;
   var aid = req.params.aid;
   book.confirm(aid);
   res.json({result:"true"});
 });
 
+app.post("api/reviews/:rid/feedback", (req, res) => {
+
+  // Reading parameters from "cookies" or "req.body.CID";
+  var rid = req.params.rid;
+  var cid = 13;
+  var pid = 6;
+  var rating = '';
+  var description = '';
+  Review.postFeedback(rid, cid, pid, rating, description);
+  res.json({result:"true"});
+});
 
 // app.post("/", (req, res) => {
 //   var cid = req.body.CID;
