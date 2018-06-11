@@ -1,149 +1,121 @@
 import React, { Component } from 'react';
-//import { getProviders } from './RandomProviders';
-// import ProviderCard from './ProviderCard';
 import ProviderCardList from './ProviderCardList';
 import { filter } from 'lodash';
-// import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import ServiceSortDropDown from './DropdownSelection';
+// import ServiceSortDropDown from './DropdownSelection';
 import Api from '../lib/api.js';
 import Scheduler from './DateTime';
 
-//import "../css/providers.css";
+// import "../css/providers.css";
 
+class Providers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      providers: [],
+      filterBy: 'all',
+      selectedService: '',
+      selectedSid: '',
+      selectedDate: '',
+      selectedTime: '',
+      selectedList: []
+    };
+  }
 
-export default class Providers extends Component {
-
-    constructor(props) {
-      super(props);
-      this.state = {
-          providers: [],
-          filterBy: 'all',
-          selectedService: '',
-          selectedSid: '',
-          selectedDate: '',
-          selectedTime: '',
-          selectedList: []
-      };
-    }
-
-    load() {
-        const sid = this.props.match.params.sid;
-        Api.get(`/api/services/${sid}/providers`).then(service => {
-            // const providers = service.providers.reduce((acc, provider) => {
-            //     return acc.concat(current.providers);
-            // }, []);
-        // console.log("service: ", service.providers);
-
-            this.setState({
-                providers: service.providers,
-                reviews: service.reviews,
-                selectedService : service.service_name,
-                selectedList : service.providers,
-                selectedSid : sid
-            });
-        });
-    }
-    componentWillMount() {
-        this.load();
-    }
-
-    // componentDidMount() {
-
-    // }
-
-    setSelectedList(selectedList) {
-      this.setState({
-          selectedList
-        });
-      console.log("selectedList ", this.state.selectedList);
-    }
-
-    changeDropdownSelectionValue(filterBy) {
+  load() {
+    const sid = this.props.match.params.sid;
+    Api.get(`/api/services/${sid}/providers`)
+      .then(service => {
         this.setState({
-            filterBy
+          providers: service.providers,
+          reviews: service.reviews,
+          selectedService : service.service_name,
+          selectedList : service.providers,
+          selectedSid : sid
         });
-    }
+      });
+  }
 
-    findObjectByKey(array, key, value) {
-      for (var i = 0; i < array.length; i++) {
-          if (array[i][key] === value) {
-              return array[i];
-          }
+  componentWillMount() {
+      this.load();
+  }
+
+  // componentDidMount() {
+  //   this.load();
+  // }
+
+  setSelectedList(selectedList) {
+    this.setState({
+      selectedList
+    });
+  }
+
+  changeDropdownSelectionValue(filterBy) {
+    this.setState({
+      filterBy
+    });
+  }
+
+  findObjectByKey(array, key, value) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i][key] === value) {
+        return array[i];
       }
-      return null;
     }
+    return null;
+  }
 
-    filterProvidersByTime(){
-      //let current = this.state.providers;
-      // const appoinments = currentProviders.reduce((acc, current) => {
-      //           return acc.concat(current.app_slots);
-      //       }, []);
+  filterProvidersByTime(selectedDate, selectedTime){
+    let current = filter(this.state.providers, provider => !this.findObjectByKey(provider.app_slots, 'date', selectedDate));
+    console.log("provider appoinments", current);
+    return current;
+  }
 
+  chooseTime(selectedDate, selectedTime){
+    this.setState({
+      selectedDate,
+      selectedTime
+    });
+    this.setSelectedList(this.filterProvidersByTime(selectedDate, selectedTime));
+  }
 
-      let current = filter(this.state.providers, provider => !this.findObjectByKey(provider.app_slots, 'date', this.state.selectedDate));
-      console.log("provider appoinments", current);
-      return current;
+  handleBooking(providerId){
+    console.log("providerId: ", providerId);
+    const data = {
+      selectedDate: this.state.selectedDate,
+      selectedTime: this.state.selectedTime
     }
+    const sid = this.props.match.params.sid;
+    Api.post(`/services/${sid}/providers/${providerId}/book`, { data })
+  }
 
-    chooseTime(selectedDate, selectedTime){
-      this.setState({
-          selectedDate,
-          selectedTime
-        });
-      //console.log(this.state.selectedDate, this.state.selectedTime)
-      this.setSelectedList(this.filterProvidersByTime());
-    }
+  render() {
+    let currentProviders = {
+      providers: this.state.selectedList,
+      sid: this.state.selectedSid
+  }
 
-    render() {
-
-    // let currentProviders = this.state.selectedList;
-      let currentProviders = {
-        providers: this.state.selectedList,
-        sid: this.state.selectedSid
-      }
-    // console.log("SelectedList ", currentProviders);
-        //male | female | all
-        // const filterBy = this.state.filterBy;
-
-        // if(filterBy !== 'all') {
-        //     currentProviders = filter(currentProviders, provider => provider.gender === filterBy)
-        // }
-
-        return (
-            <div>
-                <div className="row mb-3">
-                    <div className="col-lg-6">
-                        <div className ="form-inline">
-                            <div className = "mr-3">
-                                <button>Choose Time</button>
-                                <Scheduler onDateTimeChanged={this.chooseTime.bind(this)}/>
-                                <ServiceSortDropDown
-                                handleDropdownSelectionValueChange = { this.changeDropdownSelectionValue.bind(this)}
-                                filterBy = { this.state.filterBy }
-                                />
-                        </div>
-                        </div>
-                    </div>
-                    <div className = "col-lg-6">
-                        <div>
-                            <h3 className = "float-right">
-                                { currentProviders.providers.length } Providers Available for { this.state.selectedService }
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-            <div className="row">
-                <div className="col-lg-12">
-                    <div className="card-columns">
-                        <ProviderCardList
-                            providers = { currentProviders }
-                        />
-                    </div>
-                </div>
-            </div>
+    return (
+      <div>
+        <h4>Choose Time</h4>
+        <div>
+          <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
         </div>
-        );
-    }
+        <div>
+          <h3 className = "float-right">
+            { currentProviders.providers.length } Providers Available for { this.state.selectedService }
+          </h3>
+        </div>
+        <div className="card-columns">
+          <ProviderCardList
+              providers = { currentProviders }
+              handleBooking = { this.handleBooking.bind(this) }
+          />
+        </div>
+      </div>
+
+    );
+  }
 }
+
+export default Providers;

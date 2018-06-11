@@ -1,24 +1,24 @@
 "use strict";
 require('dotenv').config();
 
-const PORT          = process.env.PORT || 3001;
-const ENV           = process.env.ENV || "development";
-const express       = require("express");
-const bodyParser    = require("body-parser");
+const PORT        = process.env.PORT || 3001;
+const ENV         = process.env.ENV || "development";
+const express     = require("express");
+const bodyParser  = require("body-parser");
+const app         = express();
+const knexConfig  = require("./knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
+const morgan      = require('morgan');
+const pg 		  		= require('pg');
+const knexLogger  = require('knex-logger');
+const Appointment = require("./routes/Appointment");
+const Review 	  	= require("./routes/Review");
+const Service 	  = require("./routes/Service");
+const Provider 	  = require("./routes/Provider");
+const book        = require("./routes/book_App");
+const clientsApp	= require("./routes/client_App");
 const cookieSession = require('cookie-session');
-const app           = express();
-const knexConfig    = require("./knexfile");
-const knex          = require("knex")(knexConfig[ENV]);
-const morgan        = require('morgan');
-const pg 		  		  = require('pg');
-const knexLogger    = require('knex-logger');
-const Appointment   = require("./routes/Appointment");
-const Review 	  	  = require("./routes/Review");
-const Service 	    = require("./routes/Service");
-const Provider 	    = require("./routes/Provider");
-const book          = require("./routes/book_App");
-const clientsApp    = require("./routes/client_App");
-const users	        = require("./routes/users");
+const getUserByEmailAndPassword = require("./routes/Login");
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -34,7 +34,12 @@ app.use(cookieSession({
   keys: ['key1', 'key2']
 }))
 
+app.use(cookieSession({
+  secret: 'Health Care to Go',
+}));
 app.use(express.static('public'));
+
+
 
 app.get("/api",(req,res) => {
 	Service.getServicesList()
@@ -100,7 +105,7 @@ app.get("/api/clients",(req,res) => {
           return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
-                  service_name: service_name, 
+                  service_name: service_name,
                   service_id: sid,
                   phone: clients.phone,
                   address: clients.address,
@@ -136,32 +141,19 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
     const provider = providerInfo;
     return Provider.getReviews(req.params.pid)
     .then(reviews => {
-        return {
-                p_info: providerInfo,
-                reviews: reviews
-              }
-  })
-
-  .then(provider_with_reviews => {
-        res.json( provider_with_reviews)
+      return {
+        p_info: providerInfo,
+        reviews: reviews
+      }
+    })
+    .then(provider_with_reviews => {
+      res.json( provider_with_reviews)
     })
   })
   .catch(ex => {
     console.error(ex);
     res.status(500).json({ error: ex.message })
   });
-});
-
-app.post("api/services/:sid/providers/:pid/book", (req, res) => {
-	
-  // Reading parameters from "cookies" or "req.body.CID";
-  var cid = 14;
-  var pid = req.params.pid;
-  var sid = req.params.sid;
-  var date="";
-  var time="";
-  book.addBook(cid, pid, sid, date, time);
-  res.json({result:"true"});
 });
 
 app.post("api/appointments/:aid/confirmation", (req, res) => {
@@ -182,30 +174,58 @@ app.post("api/reviews/:rid/feedback", (req, res) => {
   res.json({result:"true"});
 });
 
-app.post("api/login", (req, res) => {
+// app.post("api/login", (req, res) => {
 
-  // Reading parameters from "req.body.CID";
+//   // Reading parameters from "req.body.CID";
 
-  let email = req.body.email;
-  const password = req.body.password;
-  user = users.login(email,password)
-  if(user){
+//   let email = req.body.email;
+//   const password = req.body.password;
+//   user = users.login(email,password)
+//   if(user){
 
-        req.session.userID = user.id;
-        res.redirect("/api");
-        // return;
+//         req.session.userID = user.id;
+//         res.redirect("/api");
+//         // return;
 
-  }else{
-      res.json({result:"Login failed"});
-  }
+//   }else{
+//       res.json({result:"Login failed"});
+//   }
 
-  res.end("Email or Password not correctly entered");
+//   res.end("Email or Password not correctly entered");
 
+//   var id = 0;
+//   Review.postFeedback(rid, cid, pid, rating, description);
+//   res.json({result:"true"});
 
+app.post("api/services/:sid/providers/:pid/book", (req, res) => {
 
-  var id = 0;
-  Review.postFeedback(rid, cid, pid, rating, description);
+  // Reading parameters from "cookies" or "req.body.CID";
+
+app.post("/services/:sid/providers/:pid/book", (req, res) => {
+	// console.log("Heloooo ", req.body);
+  // var cid = req.body.CID;
+  var cid = 14;
+  var pid = req.params.pid;
+  var sid = req.params.sid;
+  book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
   res.json({result:"true"});
+});
+
+app.post('/api/login', (req, res) => {
+  getUserByEmailAndPassword(req.body.email, req.body.password)
+    .then((user) => {
+      // console.log("Loooogin", user);
+      if (user) {
+        req.session.userId = user.id;
+        res.json(user[0]);
+      } else {
+        res.status(400).json({ error: 'No user' });
+      }
+    });
+});
+app.post('/api/logout', (req, res) => {
+  req.session = null;
+  res.json({ message: 'You logged out.' });
 });
 
 // app.post("/", (req, res) => {

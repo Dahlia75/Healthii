@@ -35,25 +35,25 @@ class Provider extends Component {
     this.state = {
       provider_info: {},
       reviews: [],
-      name: 'Daniel',
-      title: 'Physical Therapist',
-      bio: 'FILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE',
-      gender: 'male',
-      age: '42',
-      image: '../img/Nurse.png',
-      rating_avg: 3.5,
-      reviews: [
-        {client_name: 'Nick Smith',
-        review_date: 'Feb 23rd, 2017',
-        rating: 3,
-        description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
-        },
-        {client_name: 'Nick Smith',
-        review_date: 'Feb 3rd, 2017',
-        rating: 5,
-        description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
-        }
-      ]
+      // name: 'Daniel',
+      // title: 'Physical Therapist',
+      // bio: 'FILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE',
+      // gender: 'male',
+      // age: '42',
+      // image: '../img/Nurse.png',
+      // rating_avg: 3.5,
+      // reviews: [
+      //   {client_name: 'Nick Smith',
+      //   review_date: 'Feb 23rd, 2017',
+      //   rating: 3,
+      //   description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
+      //   },
+      //   {client_name: 'Nick Smith',
+      //   review_date: 'Feb 3rd, 2017',
+      //   rating: 5,
+      //   description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
+      //   }
+      // ]
     }
   }
 
@@ -61,14 +61,15 @@ class Provider extends Component {
   load() {
     const sid = this.props.match.params.sid;
     const pid = this.props.match.params.pid;
-
-    Api.get(`/api/services/${sid}/providers/${pid}`).then(provider => {
-      console.log("provider: ", provider);
-      this.setState({
-          provider_info: provider.p_info[0],
-          reviews: provider.reviews
+    // const date = this.props.match.search.date;
+    Api.get(`/api/services/${sid}/providers/${pid}`)
+      .then(provider => {
+        console.log("provider: ", provider.p_info[0]);
+        this.setState({
+            provider_info: provider.p_info[0],
+            reviews: provider.reviews
+        });
       });
-    });
   }
 
   componentDidMount(){
@@ -90,7 +91,7 @@ class Provider extends Component {
             <figure className="gallery__item">
               <img src={pimg} alt="Provider" className="gallery__photo" />
             </figure>
-            
+
             <h1 className="overview__heading">
               { provider.provider_info.first_name } { provider.provider_info.last_name } - { provider.provider_info.title }
             </h1>
@@ -114,7 +115,9 @@ class Provider extends Component {
                 <span> Age: </span>
                 <span>{ provider.provider_info.age } </span>
               </p>
-              <p className="paragraph"> <h4> Biography:</h4> { provider.provider_info.bio } </p>
+              <div className="paragraph">
+                <h4> Biography:</h4> { provider.provider_info.bio }
+              </div>
             </div>
 
             <figure className="provider-reviews">
@@ -123,7 +126,7 @@ class Provider extends Component {
 
           </div>
           <div className="cta">
-            <button className="btn">
+            <button className="btn" onClick={ this.props.history.goBack() }>
               <span className="btn__visible">Book now</span>
               <span className="btn__invisible">NOW!!!!</span>
             </button>

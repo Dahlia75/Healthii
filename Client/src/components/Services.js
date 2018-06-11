@@ -28,7 +28,7 @@ function ServicesCard(props) {
                 <div className="card__cta">
                     <div className="card__price_box">
                         <p className="card__price-only">From</p>
-                        <p className="card__price-value">{ props.price }</p>
+                        <p className="card__price-value">{ props.price }$ / hr</p>
                     </div>
                     <Link to={path} className="btn btn--white">Book now!
                    </Link>

@@ -1,28 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
- 
+
 class Star extends React.Component {
   constructor() {
     super();
- 
+
     this.state = {
       rating: 1
     };
   }
- 
+
   onStarClick(nextValue, prevValue, name) {
     this.setState({rating: nextValue});
   }
- 
+
   render() {
     const { rating } = this.state;
-    
-    return (                
+
+    return (
       <div id='star'>
         <h2>stars</h2>
-        <StarRatingComponent 
-          name="rate1" 
+        <StarRatingComponent
+          name="rate1"
           starCount={5}
           value={rating}
           onStarClick={this.onStarClick.bind(this)}

@@ -9,6 +9,7 @@
     "flag-icon-css": "^2.8.0",
     "moment": "^2.22.2",
     "react": "^16.4.0",
+    "react-bootstrap": "^0.32.1",
     "react-datepicker": "^1.5.0",
     "react-dom": "^16.4.0",
     "react-form": "^3.5.5",
