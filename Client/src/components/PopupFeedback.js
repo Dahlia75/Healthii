@@ -12,7 +12,7 @@ import FeedbackForm from "./FeedbackForm";
 export default () => (
     <Popup trigger={<button className="button"> Leave Feedback </button>} modal>
       {close => (
-        <div className="modal">
+        <div >
           <div className="content">
           <div><FeedbackForm/></div>
 

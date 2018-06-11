@@ -18,10 +18,11 @@ export default class ProviderCard extends Component {
     render() {
     const {pid, name, title, gender, age} = this.props.provider;
     const sid = this.props.serviceId;
-    const path = `/services/${sid}/providers/${pid}?date=${123}`;
+    const path = `/services/${sid}/providers/${pid}`;
     console.log("path for provider ", path);
     const genderSign = gender === 'female' ? 'fa fa-venus' : 'fa fa-mars';
     const pimg = `http://localhost:3001/img/providers/${pid}.jpg`;
+    console.log("pimg", pimg);
     const card =
 
     <div className="card text-center">
