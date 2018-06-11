@@ -17,6 +17,8 @@ const Service 	  = require("./routes/Service");
 const Provider 	  = require("./routes/Provider");
 const book        = require("./routes/book_App");
 const clientsApp	= require("./routes/client_App");
+const cookieSession = require('cookie-session');
+const getUserByEmailAndPassword = require("./routes/Login");
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -28,7 +30,12 @@ app.use(function(request,response,next){
 	next();
 })
 
+app.use(cookieSession({
+  secret: 'Health Care to Go',
+}));
 app.use(express.static('public'));
+
+
 
 app.get("/api",(req,res) => {
 	Service.getServicesList()
@@ -128,7 +135,7 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   Provider.getProviderInfo(req.params.pid)
   .then(providerInfo =>{
     const provider = providerInfo;
-    console.log("providerInfo: ", providerInfo)
+    // console.log("providerInfo: ", providerInfo)
     return Provider.getReviews(req.params.pid)
     // console.log("===> ",Provider.getReviews(req.params.pid));
   //   .then(providers_with_reviews => {
@@ -139,15 +146,12 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
             return {
               p_info: providerInfo,
               reviews: reviews
-
             }
           })
-
   //     }))
   // })
-
   .then(provider_with_reviews => {
-      console.log("reviews: ", provider_with_reviews)
+      // console.log("reviews: ", provider_with_reviews)
         res.json( provider_with_reviews)
     })
   })
@@ -159,15 +163,31 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
 
 
 app.post("/services/:sid/providers/:pid/book", (req, res) => {
-	// console.log("Heloooo");
+	// console.log("Heloooo ", req.body);
   // var cid = req.body.CID;
   var cid = 14;
   var pid = req.params.pid;
   var sid = req.params.sid;
-  book.addBook(cid, pid, sid);
+  book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
   res.json({result:"true"});
 });
 
+app.post('/api/login', (req, res) => {
+  getUserByEmailAndPassword(req.body.email, req.body.password)
+    .then((user) => {
+      // console.log("Loooogin", user);
+      if (user) {
+        req.session.userId = user.id;
+        res.json(user[0]);
+      } else {
+        res.status(400).json({ error: 'No user' });
+      }
+    });
+});
+app.post('/api/logout', (req, res) => {
+  req.session = null;
+  res.json({ message: 'You logged out.' });
+});
 
 // app.post("/", (req, res) => {
 //   var cid = req.body.CID;

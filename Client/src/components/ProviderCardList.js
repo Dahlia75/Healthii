@@ -9,6 +9,10 @@ export default class ProviderCardList extends Component {
         this.props.handleRemoveProvider(provider);
     }
 
+    onBook(providerId) {
+        this.props.handleBooking(providerId);
+    }
+
     render() {
         const cards = this.props.providers.providers.map((provider, index) => {
             return <ProviderCard
@@ -17,6 +21,7 @@ export default class ProviderCardList extends Component {
                 onRemoveProvider = { this.onRemoveProvider.bind(this) }
                 currentProvider = {provider}
                 serviceId = {this.props.providers.sid}
+                onBook = { this.onBook.bind(this) }
             />;
         });
         return (

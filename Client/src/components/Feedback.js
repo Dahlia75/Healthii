@@ -2,10 +2,10 @@ import React from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
-import FeedbackForm from './FeedbackForm';
+// import FeedbackForm from './FeedbackForm';
 import PopupFeedback from './PopupFeedback';
-import Star from './Star';
- 
+// import Star from './Star';
+
 
 
 import '../App.css';
@@ -63,7 +63,7 @@ class Feedback extends React.Component {
     super();
     this.state = {
       data: makeData(),
-      showPopup: false, 
+      showPopup: false,
       popup: <PopupFeedback />
     };
   }
@@ -80,7 +80,7 @@ class Feedback extends React.Component {
 
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
-          
+
           <ReactTable
             data={data}
             columns={[
