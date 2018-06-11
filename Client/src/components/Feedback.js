@@ -4,7 +4,7 @@ import 'react-table/react-table.css'
 
 // import FeedbackForm from './FeedbackForm';
 import PopupFeedback from './PopupFeedback';
-//import Api from '../lib/api.js';
+import Api from '../lib/api.js';
 // import Star from './Star';
 
 import '../App.css';

@@ -85,8 +85,8 @@ app.get("/api/services/:sid/providers",(req,res) => {
     .catch(ex => {
       console.error(ex);
       res.status(500).json({ error: ex.message })
-    });
-})
+    })
+});
 
 app.get("/api/clients",(req,res) => {
   var selected_provider=[];
@@ -196,8 +196,6 @@ app.post("api/reviews/:rid/feedback", (req, res) => {
 //   var id = 0;
 //   Review.postFeedback(rid, cid, pid, rating, description);
 //   res.json({result:"true"});
-
-app.post("api/services/:sid/providers/:pid/book", (req, res) => {
 
   // Reading parameters from "cookies" or "req.body.CID";
 

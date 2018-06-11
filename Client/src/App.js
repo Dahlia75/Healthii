@@ -11,7 +11,6 @@ import Provider from './components/Provider';
 import Clients from './components/Clients';
 import ClientProfile from './components/ClientProfile';
 import Feedback from './components/Feedback';
-import Login from './components/Login';
 
 import './App.css';
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import ReportForm from "./ReportForm";
-import Api from '../lib/api.js';
+// import Api from '../lib/api.js';
 
 // export default () => (
 //   <Popup trigger={<button> Trigger</button>} position="right center">
@@ -17,10 +17,10 @@ export default () => (
           <div><ReportForm/></div>
 
             <br />
-         
+
           </div>
           <div className="actions">
-            
+
             <button
               className="button"
               onClick={() => {
@@ -28,7 +28,7 @@ export default () => (
                 close()
               }}
             >
-              close 
+              close
             </button>
         </div>
         </div>
