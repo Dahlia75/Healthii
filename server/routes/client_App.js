@@ -26,16 +26,6 @@ const getCLientApp = (pid) => {
                     'clients.*'
               )
            .where('appointments.provider_id', pid)
-        //    .asCallback( function (err, result){
-        //     if (err) {
-        //         return console.error("error running query", err);
-        //       }
-        //         return result;
-        //     })
-        //    .catch(function(err){
-        //     console.error("error appointments query", err);
-        // });
 };
 
 exports.getCLientApp = getCLientApp;
-         

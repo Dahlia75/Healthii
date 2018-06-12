@@ -53,6 +53,7 @@ class App extends Component {
             path="/login"
             render={props => <Login setUser={this.setUser} history={props.history} />}
           />
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/services/:sid/providers" component={Providers} />

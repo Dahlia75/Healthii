@@ -17,8 +17,10 @@ const Service 	  = require("./routes/Service");
 const Provider 	  = require("./routes/Provider");
 const book        = require("./routes/book_App");
 const clientsApp	= require("./routes/client_App");
+const users         = require("./routes/users");
 const cookieSession = require('cookie-session');
-const getUserByEmailAndPassword = require("./routes/Login");
+const getUser     = require("./routes/Login");
+
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -38,7 +40,6 @@ app.use(cookieSession({
   secret: 'Health Care to Go',
 }));
 app.use(express.static('public'));
-
 
 
 app.get("/api",(req,res) => {
@@ -89,9 +90,17 @@ app.get("/api/services/:sid/providers",(req,res) => {
 });
 
 app.get("/api/clients",(req,res) => {
-  var selected_provider=[];
-  var pid = 4;
-  clientsApp.getCLientApp(pid)
+  var pid;
+   getUser.getUserById(req.session.userId, 'providers')
+     .then((id) => {
+       if (id !== undefined) {
+         pid = id[0].id;
+         return pid;
+       } else {
+         res.status(401).json({ error: 'You are dumb' });
+       }
+     })
+    .then((pid) => {return clientsApp.getCLientApp(pid)})
     .then(clients => {
 
       if (clients.length === 0) {
@@ -101,7 +110,6 @@ app.get("/api/clients",(req,res) => {
       return Promise.all(
 
         clients.map((clients, i) => {
-
           return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
@@ -112,27 +120,66 @@ app.get("/api/clients",(req,res) => {
                   m_history: clients.m_history,
                   gender: clients.gender,
                   age: clients.age,
-                  report: clients.report
+                  report: clients.report,
+                  aid: clients.aid,
+                  service_name: clients.service_name,
+                  service_id: clients.sid,
+                  provider_id: clients.pid,
+                  date: clients.date,
+                  start_time: clients.time,
+                  status: clients.status,
                 })
        })
       )
       .then(clients_of_pid => {
-        res.json({
-              id: aid,
-              service_name: service_name,
-              service_id: sid,
-              provider_id: pid,
-              date: date,
-              start_time: time,
-              status: status,
-              clientList: clients_of_pid
-            });
+        // console.log("clients_of_pid", clients_of_pid);
+        res.json(
+              clients_of_pid
+            );
       })
     })
     .catch(ex => {
       console.error(ex);
       res.status(500).json({ error: ex.message })
     });
+});
+
+app.get("/api/reviews",(req,res) =>{
+  // var cid = req.session.userId;
+  var cid = 15;
+  Review.getReviews(cid)
+  .then(allReviews => {
+    // const [{ aid, service_name, date}] = allReviews;
+    return Promise.all(
+
+      allReviews.map((providers, i) => {
+        const [{ aid, service_name, date}] = allReviews;
+        
+        return ({
+                aid: aid,
+                service_name: service_name,
+                date: date,
+                pid: providers.user_id,
+                service_name: providers.service_name,
+                name: providers.first_name+" "+ providers.last_name,
+                m_history: providers.m_history,
+                gender: providers.gender,
+              })
+     })
+    )
+    .then(providersList => {
+      res.json(
+            // aid: providersList.aid,
+            // service_name: providersList.service_name,
+            // date: providersList.date,
+            providersList
+          );
+    })
+  })
+  .catch(ex => {
+    console.error(ex);
+    res.status(500).json({ error: ex.message })
+  });
 });
 
 app.get("/api/services/:sid/providers/:pid",(req,res) =>{
@@ -174,31 +221,6 @@ app.post("api/reviews/:rid/feedback", (req, res) => {
   res.json({result:"true"});
 });
 
-// app.post("api/login", (req, res) => {
-
-//   // Reading parameters from "req.body.CID";
-
-//   let email = req.body.email;
-//   const password = req.body.password;
-//   user = users.login(email,password)
-//   if(user){
-
-//         req.session.userID = user.id;
-//         res.redirect("/api");
-//         // return;
-
-//   }else{
-//       res.json({result:"Login failed"});
-//   }
-
-//   res.end("Email or Password not correctly entered");
-
-//   var id = 0;
-//   Review.postFeedback(rid, cid, pid, rating, description);
-//   res.json({result:"true"});
-
-  // Reading parameters from "cookies" or "req.body.CID";
-
 app.post("/services/:sid/providers/:pid/book", (req, res) => {
 	// console.log("Heloooo ", req.body);
   // var cid = req.body.CID;
@@ -210,29 +232,23 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-  getUserByEmailAndPassword(req.body.email, req.body.password)
+  getUser.getUserByEmailAndPassword(req.body.email, req.body.password)
     .then((user) => {
       // console.log("Loooogin", user);
       if (user) {
-        req.session.userId = user.id;
+        req.session.userId = user[0].id;
+        // console.log("req.session.userId login", req.session.userId);
         res.json(user[0]);
       } else {
         res.status(400).json({ error: 'No user' });
       }
     });
 });
+
 app.post('/api/logout', (req, res) => {
   req.session = null;
   res.json({ message: 'You logged out.' });
 });
-
-// app.post("/", (req, res) => {
-//   var cid = req.body.CID;
-//   var pid = req.body.PID;
-//   var sid = req.body.SID;
-//   Appointment.addAppointment(cid, pid, sid);
-//   res.json({result:"true"});
-// });
 
 app.listen(PORT, ()=> {
 	console.log('Listen on port'+ PORT)

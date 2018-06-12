@@ -12,7 +12,9 @@ import Api from '../lib/api.js';
 export default () => (
     <Popup trigger={<button className="button"> Leave Feedback </button>} modal>
       {close => (
+
         <div className="">
+
           <div className="content">
           <div><FeedbackForm/></div>
 

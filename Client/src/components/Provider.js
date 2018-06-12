@@ -30,30 +30,11 @@ class Provider extends Component {
   constructor(props) {
     super(props);
 
-    console.log("provider params, wheeeeee", this.props.match.params);
+    // console.log("provider params, wheeeeee", this.props.match.params);
 
     this.state = {
       provider_info: {},
       reviews: [],
-      // name: 'Daniel',
-      // title: 'Physical Therapist',
-      // bio: 'FILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE FILL IN BIO HEREFILL IN BIO HEREFILL IN BIO HERE',
-      // gender: 'male',
-      // age: '42',
-      // image: '../img/Nurse.png',
-      // rating_avg: 3.5,
-      // reviews: [
-      //   {client_name: 'Nick Smith',
-      //   review_date: 'Feb 23rd, 2017',
-      //   rating: 3,
-      //   description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
-      //   },
-      //   {client_name: 'Nick Smith',
-      //   review_date: 'Feb 3rd, 2017',
-      //   rating: 5,
-      //   description: 'ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW ADD REVIEW.'
-      //   }
-      // ]
     }
   }
 
@@ -74,14 +55,13 @@ class Provider extends Component {
   componentDidMount(){
     this.load();
   }
-
-
   render() {
     const provider = this.state;
     const pimg = `http://localhost:3001/img/providers/${provider.provider_info.id}.jpg`;
     const reviews = provider.reviews.map((review, index) => {
       return <ProviderReviews key={index} client_name={ review.client_name } review_date={ review.review_date } rating={ review.rating } description={ review.description} />
-    })
+    });
+
     return (
 
       <div className="container-profile">
@@ -126,8 +106,9 @@ class Provider extends Component {
           </div>
           <div className="cta">
             <button className="btn" onClick={ () => this.props.history.goBack() }>
-              <span className="btn__visible">Book now</span>
-              <span className="btn__invisible">NOW!!!!</span>
+
+              <span className="btn__visible">Back</span>
+              <span className="btn__invisible">To provious page</span>
             </button>
           </div>
 

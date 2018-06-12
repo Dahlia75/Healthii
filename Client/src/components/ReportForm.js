@@ -9,7 +9,8 @@ class ReportForm extends Component {
     return(
       <div>
         <form id="formfeedback" action="">
-          <label></label>
+
+          <label ></label>
 
           <input type="Feedback" name="" id="" className="Feedback" />
           <button type="submit">Enter Notes</button>

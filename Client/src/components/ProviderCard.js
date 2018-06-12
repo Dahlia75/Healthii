@@ -25,6 +25,7 @@ export default class ProviderCard extends Component {
     console.log("path for provider ", path);
     const genderSign = gender === 'female' ? 'fa fa-venus' : 'fa fa-mars';
     const pimg = `http://localhost:3001/img/providers/${pid}.jpg`;
+    console.log("pimg", pimg);
     const card =
 
     <div className="card text-center">

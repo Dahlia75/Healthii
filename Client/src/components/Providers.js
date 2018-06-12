@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+// import ReactDom from 'react-dom';
+
 import ProviderCardList from './ProviderCardList';
 import { filter } from 'lodash';
 import 'react-select/dist/react-select.css';
 // import ServiceSortDropDown from './DropdownSelection';
 import Api from '../lib/api.js';
 import Scheduler from './DateTime';
+// import ConfirmationPopup from './ConfirmationPopup.js'
 
 import "../css/providers.css";
 
@@ -56,9 +59,9 @@ class Providers extends Component {
     });
   }
 
-  findObjectByKey(array, key, value) {
+  findObjectByKey(array, key, key2, value, value2) {
     for (var i = 0; i < array.length; i++) {
-      if (array[i][key] === value) {
+      if (array[i][key] === value /*&& array[i][key2] === value2*/) {
         return array[i];
       }
     }
@@ -66,7 +69,7 @@ class Providers extends Component {
   }
 
   filterProvidersByTime(selectedDate, selectedTime){
-    let current = filter(this.state.providers, provider => !this.findObjectByKey(provider.app_slots, 'date', selectedDate));
+    let current = filter(this.state.providers, provider => !this.findObjectByKey(provider.app_slots, 'date', 'first_time', selectedDate, selectedTime));
     console.log("provider appoinments", current);
     return current;
   }
@@ -87,13 +90,14 @@ class Providers extends Component {
     }
     const sid = this.props.match.params.sid;
     Api.post(`/services/${sid}/providers/${providerId}/book`, { data })
+    .then(console.log("boking data", data))
   }
 
   render() {
     let currentProviders = {
       providers: this.state.selectedList,
       sid: this.state.selectedSid
-  }
+    }
 
     return (
       <div>

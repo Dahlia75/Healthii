@@ -14,24 +14,21 @@ export default () => (
       {close => (
         <div className="">
           <div className="content">
+
           <div><ReportForm/></div>
-
-            <br />
-
-          </div>
-          <div className="actions">
-
-            <button
-              className="button"
-              onClick={() => {
-                console.log('modal closed ')
-                close()
-              }}
-            >
-              close
-            </button>
+          <br />
         </div>
+        <div className="actions">
+          <button
+            className="button"
+            onClick={() => {
+              console.log('modal closed ')
+              close()
+            }}>
+            close
+          </button>
         </div>
-      )}
-    </Popup>
-  );
+      </div>
+    )}
+  </Popup>
+);
