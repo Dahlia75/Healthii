@@ -41,9 +41,9 @@ import BookingApproval from './BookingApproval';
 // };
 
 const Tips = () =>
-  <div style={{ textAlign: "center" }}>
-    <em>Tip: Hold shift when sorting to multi-sort!</em>
-  </div>;
+ <div style={{ textAlign: "center" }}>
+   <em>Tip: Hold shift when sorting to multi-sort!</em>
+ </div>;
 
 
 class Client extends React.Component {
