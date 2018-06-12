@@ -250,4 +250,3 @@ app.post('/api/logout', (req, res) => {
 app.listen(PORT, ()=> {
 	console.log('Listen on port'+ PORT)
 })
-

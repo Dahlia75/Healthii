@@ -12,6 +12,7 @@ import Popup from "reactjs-popup";
 
 import "../css/providers.css";
 
+
 class Providers extends Component {
   constructor(props) {
     super(props);
@@ -112,14 +113,22 @@ class Providers extends Component {
 
     return (
       <div>
-        <h4>Choose Time</h4>
-        <div>
+        <header className='provider-header'>List of providers</header>
+        <div >
+          <h4>Choose Time</h4>
+        <div className='flexy'>
+        <span className='inline-b'>
           <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
-        </div>
-        <div>
-          <h3 className = "">
+          </span>
+        <span className='inline-b'>
+        <h3 className='providers-available'>
             { currentProviders.providers.length } Providers Available for { this.state.selectedService }
           </h3>
+        </span>
+        </div>
+        </div>
+        <div>
+         
         </div>
         <div className="card-columns" >
           <ProviderCardList
