@@ -1,66 +1,12 @@
 import React from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
-
-
-import FeedbackForm from './FeedbackForm';
 import PopupFeedback from './PopupFeedback';
 import Api from '../lib/api.js';
-import Star from './Star';
-
 import '../App.css';
-import "../css/feedback.css";
-
-import PopupReport from './PopupReport';
-import Api from '../lib/api.js';
-import '../App.css';
-
 import Logo from '../img/HC2Go1.png';
 //import "../css/feedback.css";
 // import Star from './Star';
-
-
-
-
-const range = len => {
-  console.log("THIS IS LEN", len)
-  const arr = [];
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
-
-const newPerson = () => {
-  // const statusChance = Math.random();
-  return {
-    service_name: 'physiotherapy',
-    name: 'Dude Awesomepants',
-    address: '123 gastown, vancouver',
-    m_history: "Oh I am AMAZING!!!!!",
-    gender: 'female',
-    age: '30',
-    date: 'monday, july 15, 2018',
-    time: {
-      from : 2452845824,
-      to: 4248248,
-    },
-    status: 'pending',
-    button: <PopupFeedback />
-
-    //if pending, want to link to profile, then in profile, will accept or decline
-  };
-};
-
- function makeData(len = 10) {
-  return range(len).map(d => {
-    return {
-      ...newPerson(),
-      children: range(10).map(newPerson)
-    };
-  });
-}
-
 
 const Tips = () =>
   <div style={{ textAlign: "center" }}>
@@ -80,35 +26,16 @@ class Feedback extends React.Component {
 
   makeData(providers) {
    return providers.forEach(function(element){
-    element['button'] = <PopupReport />
+    element['button'] = <PopupFeedback pid={element.pid}/>
    });
   }
 
   load() {
-      // const rid = this.props.match.params.rid;
-
-      // Api.post(`/api/reviews/${rid}/feedback`).then(service => {
-      //     // const providers = service.providers.reduce((acc, provider) => {
-      //     //     return acc.concat(current.providers);
-      //     // }, []);
-      // // console.log("service: ", service.providers);
-      // // console.log("##### ",makeData());
-      //     this.setState({
-
-      //         // providers: service.providers,
-      //         // reviews: service.reviews,
-      //         // selectedService : service.service_name,
-      //         // selectedList : service.providers,
-      //         // selectedSid : sid
-      //     });
-      // });
       Api.get(`/api/reviews`).then(providers => {
-        // providers.push('button: <PopupReport/>');
         this.makeData(providers);
-        
-         this.setState({
-                       data: providers
-                      });
+          this.setState({
+            data: providers
+          });
       })
   }
 
@@ -127,8 +54,7 @@ class Feedback extends React.Component {
 
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
-        <PopupFeedback />
-        <FeedbackForm />
+
           <ReactTable
             data={data}
             columns={[
@@ -171,10 +97,7 @@ class Feedback extends React.Component {
           <Tips />
           <img className="feedback-logo" src={Logo} alt="feedback"/>
           </div>
-
             </div>
-
-
           </header>
         </section>
       </div>
@@ -183,13 +106,3 @@ class Feedback extends React.Component {
 };
 
 export default Feedback;
-
-
-
-
-
-
-
-
-
-
