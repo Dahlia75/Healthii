@@ -4,14 +4,17 @@ import "../css/bootstrap.min.css"
 import { HashLink as Link } from 'react-router-hash-link';
 
 export default class ProviderCard extends Component {
-
+    constructor(props) {
+    super(props);
+    this.state = { open: false };
+    }
     onRemoveProvider() {
         this.props.onRemoveProvide(this.props.currentProvider);
     }
 
     onBook(){
-        this.props.onBook(this.props.provider.pid)
-        console.log("pid: ", this.props.provider.pid);
+        this.props.onBook(this.props.provider.pid);
+        //console.log("pid: ", this.props.provider.pid);
 
     }
 

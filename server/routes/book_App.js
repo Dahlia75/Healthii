@@ -27,9 +27,9 @@ const addBook = (cid, pid, sid, date, time) => {
   });
 };
 
-const confirm = (aid) => {
+const confirm = (aid, status) => {
   return knex('appointments')
-          .insert({status: 'approved' })
+          .update({status: status })
           .where('id', aid)
           .then((arrayOfResults) => arrayOfResults[0])
           .catch(function(err){
