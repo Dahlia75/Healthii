@@ -57,7 +57,6 @@ class Provider extends Component {
     }
   }
 
-
   load() {
     const sid = this.props.match.params.sid;
     const pid = this.props.match.params.pid;
@@ -126,7 +125,7 @@ class Provider extends Component {
 
           </div>
           <div className="cta">
-            <button className="btn" onClick={ this.props.history.goBack() }>
+            <button className="btn" onClick={ () => this.props.history.goBack() }>
               <span className="btn__visible">Book now</span>
               <span className="btn__invisible">NOW!!!!</span>
             </button>

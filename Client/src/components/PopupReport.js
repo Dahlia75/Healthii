@@ -12,7 +12,7 @@ import ReportForm from "./ReportForm";
 export default () => (
     <Popup trigger={<button className="button"> Enter Notes from Meeting </button>} modal>
       {close => (
-        <div className="modal">
+        <div className="">
           <div className="content">
           <div><ReportForm/></div>
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-//import { HashLink as Link } from 'react-router-hash-link';
-//import { Form, TextArea } from 'react-form';
+import { HashLink as Link } from 'react-router-hash-link';
+import { Form, TextArea } from 'react-form';
 import Star from './Star';
-// import Api from '../lib/api.js';
+import Api from '../lib/api.js';
 
 class FeedbackForm extends Component {
 

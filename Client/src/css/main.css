@@ -349,10 +349,12 @@ form button[type=submit] {
 .gallery {
   display: flex; }
   .gallery__photo {
-    width: 100%;
+    width: 100px;
+    height: 100px;
     display: block; }
 
 .overview {
+  height: 100px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgrey; }
@@ -909,3 +911,4 @@ form button[type=submit] {
 .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg); }
+

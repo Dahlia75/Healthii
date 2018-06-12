@@ -2,18 +2,19 @@ import React from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
-// import FeedbackForm from './FeedbackForm';
+import FeedbackForm from './FeedbackForm';
 import PopupFeedback from './PopupFeedback';
 import Api from '../lib/api.js';
-// import Star from './Star';
+import Star from './Star';
 
 import '../App.css';
-//import "../css/feedback.css";
+import "../css/feedback.css";
 import Logo from '../img/HC2Go1.png';
 
 
 
 const range = len => {
+  console.log("THIS IS LEN", len)
   const arr = [];
   for (let i = 0; i < len; i++) {
     arr.push(i);
@@ -101,7 +102,8 @@ class Feedback extends React.Component {
 
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
-
+        <PopupFeedback />
+        <FeedbackForm />
           <ReactTable
             data={data}
             columns={[

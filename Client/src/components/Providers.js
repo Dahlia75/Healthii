@@ -6,7 +6,7 @@ import 'react-select/dist/react-select.css';
 import Api from '../lib/api.js';
 import Scheduler from './DateTime';
 
-// import "../css/providers.css";
+import "../css/providers.css";
 
 class Providers extends Component {
   constructor(props) {
@@ -102,11 +102,11 @@ class Providers extends Component {
           <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
         </div>
         <div>
-          <h3 className = "float-right">
+          <h3 className = "">
             { currentProviders.providers.length } Providers Available for { this.state.selectedService }
           </h3>
         </div>
-        <div className="card-columns">
+        <div className="card-columns" >
           <ProviderCardList
               providers = { currentProviders }
               handleBooking = { this.handleBooking.bind(this) }
