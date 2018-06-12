@@ -123,7 +123,7 @@ app.get("/api/clients",(req,res) => {
                   gender: clients.gender,
                   age: clients.age,
                   report: clients.report,
-                  id: clients.aid,
+                  aid: clients.aid,
                   service_name: clients.service_name,
                   service_id: clients.sid,
                   provider_id: clients.pid,

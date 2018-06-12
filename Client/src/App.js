@@ -4,7 +4,7 @@ import { BrowserRouter, Route, /*Redirect,*/ Switch} from 'react-router-dom';
 // import Api from './lib/api.js';
 
 import Home from './components/Home';
-import Sidebar from './components/Sidebar';
+// import Sidebar from './components/Sidebar';
 import Login from './components/Login';
 import Providers from './components/Providers';
 import Provider from './components/Provider';

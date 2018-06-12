@@ -10,46 +10,37 @@ import PopupReport from './PopupReport';
 
 
 
-const range = len => {
-  const arr = [];
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+// const range = len => {
+//   const arr = [];
+//   for (let i = 0; i < len; i++) {
+//     arr.push(i);
+//   }
+//   return arr;
+// };
 
-const newPerson = () => {
-  // const statusChance = Math.random();
-  return {
-    service_name: 'physiotherapy',
-    name: 'Dude Awesomepants',
-    address: '123 gastown, vancouver',
-    m_history: "Oh I am AMAZING!!!!!",
-    gender: 'female',
-    age: '30',
-    date: 'monday, july 15, 2018',
-    time: {
-      from : 2452845824,
-      to: 4248248,
-    },
-    status: 'pending',
-    button: <PopupReport/>
+// const newPerson = () => {
+//   // const statusChance = Math.random();
+//   return {
+//     service_name: 'physiotherapy',
+//     name: 'Dude Awesomepants',
+//     address: '123 gastown, vancouver',
+//     m_history: "Oh I am AMAZING!!!!!",
+//     gender: 'female',
+//     age: '30',
+//     date: 'monday, july 15, 2018',
+//     time: {
+//       from : 2452845824,
+//       to: 4248248,
+//     },
+//     status: 'pending',
+//     button: <PopupReport/>
 
 
-    //if pending, want to link to profile, then in profile, will accept or decline
-  };
-};
+//     //if pending, want to link to profile, then in profile, will accept or decline
+//   };
+// };
 
- function makeData(len = 10) {
-  return range(len).map(d => {
-    return {
-      ...newPerson(),
-      children: range(10).map(newPerson)
-    };
-  });
-}
-
- const Tips = () =>
+const Tips = () =>
   <div style={{ textAlign: "center" }}>
     <em>Tip: Hold shift when sorting to multi-sort!</em>
   </div>;
@@ -63,22 +54,19 @@ class Client extends React.Component {
       data: []
     };
   }
+  makeData(clients){
+    return clients.forEach(function(element){
+      element["button"] = <PopupReport aid={2}/>;
+    });
+  }
 
   load() {
     // const sid = this.props.match.params.sid;
     Api.get(`/api/clients`)
     .then(clients => {
-        // const providers = clients.clientList.reduce((acc, provider) => {
-        //     return acc.concat(current.providers);
-        // }, []);
-      console.log("clients: ", clients);
-      console.log("data: ", clients[0]);
-
+      this.makeData(clients);
       this.setState({
-          data: clients
-          // providers: service.providers,
-          // selectedService : service.service_name,
-          // selectedList : service.providers
+        data: clients
       });
     });
   }
@@ -94,6 +82,7 @@ class Client extends React.Component {
         Header: "Client Personal Info",
         columns: [
           {
+            id: "Name",
             Header: "Name",
             accessor: "name"
           },
