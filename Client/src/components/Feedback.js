@@ -12,7 +12,6 @@ import '../App.css';
 import "../css/feedback.css";
 
 import PopupReport from './PopupReport';
-import Api from '../lib/api.js';
 import '../App.css';
 
 import Logo from '../img/HC2Go1.png';
@@ -105,7 +104,7 @@ class Feedback extends React.Component {
       Api.get(`/api/reviews`).then(providers => {
         // providers.push('button: <PopupReport/>');
         this.makeData(providers);
-        
+
          this.setState({
                        data: providers
                       });
