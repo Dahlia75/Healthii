@@ -7,6 +7,7 @@ import 'react-select/dist/react-select.css';
 // import ServiceSortDropDown from './DropdownSelection';
 import Api from '../lib/api.js';
 import Scheduler from './DateTime';
+import Popup from "reactjs-popup";
 // import ConfirmationPopup from './ConfirmationPopup.js'
 
 import "../css/providers.css";
@@ -35,7 +36,8 @@ class Providers extends Component {
           reviews: service.reviews,
           selectedService : service.service_name,
           selectedList : service.providers,
-          selectedSid : sid
+          selectedSid : sid,
+          open: false
         });
       });
   }
@@ -47,6 +49,14 @@ class Providers extends Component {
   // componentDidMount() {
   //   this.load();
   // }
+  openModal = () => {
+    console.log("open Popup");
+      this.setState({ open: true });
+  }
+
+  closeModal = () => {
+      this.setState({ open: false });
+  }
 
   setSelectedList(selectedList) {
     this.setState({
@@ -92,6 +102,7 @@ class Providers extends Component {
     const sid = this.props.match.params.sid;
     Api.post(`/services/${sid}/providers/${providerId}/book`, { data })
     .then(console.log("boking data", data))
+    .then(this.openModal)
   }
 
   render() {
@@ -124,6 +135,18 @@ class Providers extends Component {
               providers = { currentProviders }
               handleBooking = { this.handleBooking.bind(this) }
           />
+          <Popup
+            open={this.state.open}
+            closeOnDocumentClick
+            onClose={this.closeModal}>
+            <div >
+              <a className="close" onClick={this.closeModal}>
+                &times;
+              </a>
+              Your booking request has been submitted waiting for approval.
+              Thanks for chosing our services.
+            </div>
+          </Popup>
         </div>
       </div>
 
