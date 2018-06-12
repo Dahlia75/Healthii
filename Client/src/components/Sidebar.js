@@ -18,10 +18,10 @@ const Sidebare = () => {
       <div className="navigation__background">&nbsp;</div>
       <nav className="navigation__nav">
         <ul className="navigation__list">
-          <li className="navigation__item"><Link to="/#services" className="navigation__link"><span></span>Our Services</Link></li>
-          <li className="navigation__item"><a href="#repors" className="navigation__link"><span>02</span>Client Reports (Provider View)</a></li>
-          <li className="navigation__item"><a href="#bookservices" className="navigation__link"><span>03</span>Book Services</a></li>
-          <li className="navigation__item"><a href="#upcoming" className="navigation__link"><span>04</span>Upcoming Appointments</a></li>
+          <li className="navigation__item"><a href="/#services" className="navigation__link"><span>01</span>Services</a></li>
+          <li className="navigation__item"><a href="/clients" className="navigation__link"><span>02</span>Client Reports</a></li>
+          <li className="navigation__item"><a href="/services/6/providers" className="navigation__link"><span>03</span>Providers</a></li>
+          <li className="navigation__item"><a href="/" className="navigation__link"><span>04</span>Home</a></li>
           <li className="navigation__item"><a href="#upcoming" className="navigation__link"><span>05</span>Logout</a></li>
         </ul>
       </nav>

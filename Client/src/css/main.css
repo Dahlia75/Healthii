@@ -67,9 +67,13 @@ body {
     letter-spacing: 3.5rem; }
   .heading-primary--sub {
     display: block;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    letter-spacing: 1.75rem; }
+    letter-spacing: 1.75rem;
+    padding-top: 30px;
+
+  
+  }
 
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
@@ -573,7 +577,6 @@ form button[type=submit] {
   text-transform: uppercase;
   border-radius: 100px;
   border: none;
-  background-image: linear-gradient(to right, darkblue, lightblue);
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -657,7 +660,7 @@ form button[type=submit] {
   .card__side {
     background-color: orange;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.9rem;
     height: 52rem;
     transition: all 1.2s ease;
     position: absolute;
@@ -912,3 +915,24 @@ form button[type=submit] {
   top: 0;
   transform: rotate(-135deg); }
 
+.hi {
+  display:inline-block;
+}
+
+.inline-b {
+  display:inline-block;
+}
+
+.flexy {
+  display: flex;
+}
+
+.providers-available {
+  padding-left: 100px;
+}
+
+.listproviders {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding: 20px;
+}

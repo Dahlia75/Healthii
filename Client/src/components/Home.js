@@ -4,6 +4,7 @@ import Api from '../lib/api.js';
 
 import '../App.css';
 import Services from './Services';
+import Sidebar from './Sidebar';
 
 // import images for services
 import Logo from '../img/HC2Go1.png';
@@ -37,13 +38,16 @@ class Home extends React.Component {
             </div>
             <div className="header__text-box">
               <h1 className="heading-primary">
-                <span className="heading-primary--sub">Healthcare To Go</span>
+              <span className="heading-primary--main">Healthii</span>
+
+                <span className="heading-primary--sub">Mobile Health Services</span>
               </h1>
               <Link to="/#services" className="btn btn--white btn--animated">
                 Discover our services
               </Link>
             </div>
           </header>
+          <Sidebar/>
         </section>
         <Services cards={this.state.cards} />
       </div>
