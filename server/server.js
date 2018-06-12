@@ -203,9 +203,9 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   });
 });
 
-app.post("api/appointments/:aid/confirmation", (req, res) => {
+app.post("/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
-  book.confirm(aid);
+  book.confirm(aid, req.body.status);
   res.json({result:"true"});
 });
 

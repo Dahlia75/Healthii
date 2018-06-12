@@ -7,7 +7,7 @@ import '../App.css';
 //import "../css/clients.css";
 import Logo from '../img/HC2Go1.png';
 import PopupReport from './PopupReport';
-
+import BookingApproval from './BookingApproval';
 
 
 // const range = len => {
@@ -54,9 +54,11 @@ class Client extends React.Component {
       data: []
     };
   }
+
   makeData(clients){
     return clients.forEach(function(element){
-      element["button"] = <PopupReport aid={2}/>;
+      element["button"] = <PopupReport aid={element.aid} />;
+      element["button2"] = <BookingApproval aid={element.aid} status={element.status}/>;
     });
   }
 
@@ -117,15 +119,15 @@ class Client extends React.Component {
             accessor: "start_time"
           },
 
-          {
-            Header: "Status",
-            accessor: "status"
-          }
         ]
       },
       {
         Header: 'Action',
         columns: [
+          {
+            Header: "Status",
+            accessor: "button2"
+          },
           {
             Header: "View Report",
             accessor: "button"
