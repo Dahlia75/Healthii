@@ -33,8 +33,23 @@ const postFeedback = (rid, cid, pid, rating, description) => {
   });
 };
 
+const getReviews = (cid) => {
+  return knex('appointments')
+     .join('services', 'appointments.service_id', '=', 'services.id')
+     .join('providers', 'appointments.provider_id', '=', 'providers.id')
+     .select(
+              {'aid': 'appointments.id'},
+              {'service_name': 'services.name'},
+              {'date': 'appointments.date'},
+              'providers.*'
+        )
+     .where('appointments.client_id', cid)
+};
+
+
 
 exports.addReview = addReview;
 exports.postFeedback = postFeedback;
+exports.getReviews = getReviews;
 
 
