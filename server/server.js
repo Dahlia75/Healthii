@@ -20,6 +20,7 @@ const clientsApp	= require("./routes/client_App");
 const users         = require("./routes/users");
 const cookieSession = require('cookie-session');
 const getUser     = require("./routes/Login");
+
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -119,21 +120,22 @@ app.get("/api/clients",(req,res) => {
                   m_history: clients.m_history,
                   gender: clients.gender,
                   age: clients.age,
-                  report: clients.report
+                  report: clients.report,
+                  aid: clients.aid,
+                  service_name: clients.service_name,
+                  service_id: clients.sid,
+                  provider_id: clients.pid,
+                  date: clients.date,
+                  start_time: clients.time,
+                  status: clients.status,
                 })
        })
       )
       .then(clients_of_pid => {
-        res.json({
-              id: aid,
-              service_name: service_name,
-              service_id: sid,
-              provider_id: pid,
-              date: date,
-              start_time: time,
-              status: status,
-              clientList: clients_of_pid
-            });
+        // console.log("clients_of_pid", clients_of_pid);
+        res.json(
+              clients_of_pid
+            );
       })
     })
     .catch(ex => {
@@ -235,6 +237,7 @@ app.post('/api/login', (req, res) => {
       // console.log("Loooogin", user);
       if (user) {
         req.session.userId = user[0].id;
+        // console.log("req.session.userId login", req.session.userId);
         res.json(user[0]);
       } else {
         res.status(400).json({ error: 'No user' });

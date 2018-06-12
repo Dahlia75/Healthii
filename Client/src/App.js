@@ -53,6 +53,7 @@ class App extends Component {
             path="/login"
             render={props => <Login setUser={this.setUser} history={props.history} />}
           />
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/services/:sid/providers" component={Providers} />
@@ -60,8 +61,6 @@ class App extends Component {
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/clients/:cid" component={ClientProfile} />
             <Route exact path="/reviews" component={Feedback} />
-            <Route exact path="/login" component={Login} />
-
           </Switch>
         </div>
       </BrowserRouter>
