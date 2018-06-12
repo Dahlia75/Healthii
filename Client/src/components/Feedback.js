@@ -5,7 +5,6 @@ import 'react-table/react-table.css'
 
 import FeedbackForm from './FeedbackForm';
 import PopupFeedback from './PopupFeedback';
-import Api from '../lib/api.js';
 import Star from './Star';
 
 import '../App.css';
@@ -16,6 +15,8 @@ import Api from '../lib/api.js';
 import '../App.css';
 
 import Logo from '../img/HC2Go1.png';
+import Sidebar from './Sidebar';
+
 //import "../css/feedback.css";
 // import Star from './Star';
 
@@ -128,7 +129,6 @@ class Feedback extends React.Component {
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
         <PopupFeedback />
-        <FeedbackForm />
           <ReactTable
             data={data}
             columns={[
@@ -176,6 +176,7 @@ class Feedback extends React.Component {
 
 
           </header>
+          <Sidebar/>
         </section>
       </div>
     );

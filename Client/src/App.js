@@ -42,7 +42,6 @@ class App extends Component {
   //login details finished
 
   render() {
-    const userInfoSection = this.state.me ? <p>Welcome { this.state.me.name }</p> : <p>Welcome</p>;
     return (
       <BrowserRouter>
         <div>

@@ -134,3 +134,7 @@ a {
   .cta-provider {
     padding: 1rem;
   }
+
+  .choose-time {
+    display: inline-block;
+  }

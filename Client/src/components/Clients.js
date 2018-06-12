@@ -41,122 +41,122 @@ import PopupReport from './PopupReport';
 // };
 
 const Tips = () =>
-  <div style={{ textAlign: "center" }}>
-    <em>Tip: Hold shift when sorting to multi-sort!</em>
-  </div>;
+ <div style={{ textAlign: "center" }}>
+   <em>Tip: Hold shift when sorting to multi-sort!</em>
+ </div>;
 
 
 class Client extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      // data: makeData()
-      data: []
-    };
-  }
-  makeData(clients){
-    return clients.forEach(function(element){
-      element["button"] = <PopupReport aid={2}/>;
-    });
-  }
+ constructor() {
+   super();
+   this.state = {
+     // data: makeData()
+     data: []
+   };
+ }
+ makeData(clients){
+   return clients.forEach(function(element){
+     element["button"] = <PopupReport aid={2}/>;
+   });
+ }
 
-  load() {
-    // const sid = this.props.match.params.sid;
-    Api.get(`/api/clients`)
-    .then(clients => {
-      this.makeData(clients);
-      this.setState({
-        data: clients
-      });
-    });
-  }
+ load() {
+   // const sid = this.props.match.params.sid;
+   Api.get(`/api/clients`)
+   .then(clients => {
+     this.makeData(clients);
+     this.setState({
+       data: clients
+     });
+   });
+ }
 
-  componentDidMount(){
-    this.load();
-  }
+ componentDidMount(){
+   this.load();
+ }
 
-  render() {
-    const { data } = this.state;
-    const columns = [
-      {
-        Header: "Client Personal Info",
-        columns: [
-          {
-            id: "Name",
-            Header: "Name",
-            accessor: "name"
-          },
-          {
-            id: "Age",
-            Header: "Age",
-            accessor: "age"
-          },
-          {
-            id: "Gender",
-            Header: "Gender",
-            accessor: "gender"
-          },
-          {
-            id: "Address",
-            Header: "Address",
-            accessor: "address"
-          },
-        ]
-      },
-      {
-        Header: "Appointment Info",
-        columns: [
+ render() {
+   const { data } = this.state;
+   const columns = [
+     {
+       Header: "Client Personal Info",
+       columns: [
+         {
+           id: "Name",
+           Header: "Name",
+           accessor: "name"
+         },
+         {
+           id: "Age",
+           Header: "Age",
+           accessor: "age"
+         },
+         {
+           id: "Gender",
+           Header: "Gender",
+           accessor: "gender"
+         },
+         {
+           id: "Address",
+           Header: "Address",
+           accessor: "address"
+         },
+       ]
+     },
+     {
+       Header: "Appointment Info",
+       columns: [
 
-          {
-            Header: "Date",
-            accessor: "date"
-          },
+         {
+           Header: "Date",
+           accessor: "date"
+         },
 
-          {
-            Header: "Time",
-            accessor: "start_time"
-          },
+         {
+           Header: "Time",
+           accessor: "start_time"
+         },
 
-          {
-            Header: "Status",
-            accessor: "status"
-          }
-        ]
-      },
-      {
-        Header: 'Action',
-        columns: [
-          {
-            Header: "View Report",
-            accessor: "button"
-          }
-        ]
-      }
-    ]
+         {
+           Header: "Status",
+           accessor: "status"
+         }
+       ]
+     },
+     {
+       Header: 'Action',
+       columns: [
+         {
+           Header: "View Report",
+           accessor: "button"
+         }
+       ]
+     }
+   ]
 
-    return(
-      <div className="App">
-        <section className="homepage__clients">
-          <header className="header__clients">
-            <div>
-              <div>
-                <h1>Provider Views Client Profile</h1>
-                <ReactTable
-                  data={data}
-                  columns={columns}
-                  defaultPageSize={10}
-                  className="-striped -highlight"
-                />
-                <br />
-                <Tips />
-                <img className="clients-logo" src={Logo} alt="clients-logo" />
-              </div>
-            </div>
-          </header>
-        </section>
-      </div>
-    );
-  }
+   return(
+     <div className="App">
+       <section className="homepage__clients">
+         <header className="header__clients">
+           <div>
+             <div>
+               <h1>Provider Views Client Profile</h1>
+               <ReactTable
+                 data={data}
+                 columns={columns}
+                 defaultPageSize={10}
+                 className="-striped -highlight"
+               />
+               <br />
+               <Tips />
+               <img className="clients-logo" src={Logo} alt="clients-logo" />
+             </div>
+           </div>
+         </header>
+       </section>
+     </div>
+   );
+ }
 };
 
 export default Client;

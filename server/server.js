@@ -102,13 +102,13 @@ app.get("/api/clients",(req,res) => {
      })
     .then((pid) => {return clientsApp.getCLientApp(pid)})
     .then(clients => {
-
+ 
       if (clients.length === 0) {
         return res.status(404).json({ error: 'clients not found' });
       }
       const [{ aid, service_name, sid, pid, date, time, status}] = clients;
       return Promise.all(
-
+ 
         clients.map((clients, i) => {
           return ({
                   cid: clients.user_id,
@@ -142,7 +142,7 @@ app.get("/api/clients",(req,res) => {
       console.error(ex);
       res.status(500).json({ error: ex.message })
     });
-});
+ });
 
 app.get("/api/reviews",(req,res) =>{
   // var cid = req.session.userId;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Api from '../lib/api.js';
-//import Api from '../lib/api.js';
 
 import '../scss/main.scss';
+import Sidebar from './Sidebar';
+
 
 function ProviderReviews(props) {
   return (
@@ -66,6 +67,7 @@ class Provider extends Component {
 
       <div className="container-profile">
         <main className="view-profile">
+      
           <div className="overview">
             <figure className="gallery__item">
               <img src={pimg} alt="Provider" className="gallery__photo" />
@@ -74,6 +76,7 @@ class Provider extends Component {
             <h1 className="overview__heading">
               { provider.provider_info.first_name } { provider.provider_info.last_name } - { provider.provider_info.title }
             </h1>
+            <Sidebar/>
             <div className="overview__stars">
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
