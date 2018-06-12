@@ -11,8 +11,13 @@ const knex = require('knex')({
   }
 });
 
+function getUserById(id, tableName) {
+  return knex(tableName)
+        .select('id')
+        .where('user_id', id)
+}
+
 const getUserByEmailAndPassword = (email, password) => {
-  console.log("getUserByEmailAndPassword")
   return knex('users')
         .select('*')
         .where({
@@ -21,4 +26,4 @@ const getUserByEmailAndPassword = (email, password) => {
         })
 };
 
-module.exports = getUserByEmailAndPassword;
+module.exports = {getUserByEmailAndPassword, getUserById};

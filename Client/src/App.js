@@ -4,7 +4,7 @@ import { BrowserRouter, Route, /*Redirect,*/ Switch} from 'react-router-dom';
 // import Api from './lib/api.js';
 
 import Home from './components/Home';
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 import Login from './components/Login';
 import Providers from './components/Providers';
 import Provider from './components/Provider';
@@ -53,6 +53,7 @@ class App extends Component {
             path="/login"
             render={props => <Login setUser={this.setUser} history={props.history} />}
           />
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/services/:sid/providers" component={Providers} />
@@ -60,7 +61,6 @@ class App extends Component {
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/clients/:cid" component={ClientProfile} />
             <Route exact path="/reviews" component={Feedback} />
-
           </Switch>
         </div>
       </BrowserRouter>

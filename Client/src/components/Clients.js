@@ -60,115 +60,109 @@ class Client extends React.Component {
     super();
     this.state = {
       // data: makeData()
-      data: makeData()
+      data: []
     };
   }
 
   load() {
-      // const sid = this.props.match.params.sid;
-
-      Api.get(`/api/clients`).then(clients => {
-          // const providers = clients.clientList.reduce((acc, provider) => {
-          //     return acc.concat(current.providers);
-          // }, []);
+    // const sid = this.props.match.params.sid;
+    Api.get(`/api/clients`)
+    .then(clients => {
+        // const providers = clients.clientList.reduce((acc, provider) => {
+        //     return acc.concat(current.providers);
+        // }, []);
       console.log("clients: ", clients);
+      console.log("data: ", clients[0]);
 
-          this.setState({
-              // data: clients
-              // providers: service.providers,
-              // selectedService : service.service_name,
-              // selectedList : service.providers
-          });
+      this.setState({
+          data: clients
+          // providers: service.providers,
+          // selectedService : service.service_name,
+          // selectedList : service.providers
       });
+    });
   }
 
   componentDidMount(){
     this.load();
   }
+
   render() {
     const { data } = this.state;
+    const columns = [
+      {
+        Header: "Client Personal Info",
+        columns: [
+          {
+            Header: "Name",
+            accessor: "name"
+          },
+          {
+            id: "Age",
+            Header: "Age",
+            accessor: "age"
+          },
+          {
+            id: "Gender",
+            Header: "Gender",
+            accessor: "gender"
+          },
+          {
+            id: "Address",
+            Header: "Address",
+            accessor: "address"
+          },
+        ]
+      },
+      {
+        Header: "Appointment Info",
+        columns: [
+
+          {
+            Header: "Date",
+            accessor: "date"
+          },
+
+          {
+            Header: "Time",
+            accessor: "start_time"
+          },
+
+          {
+            Header: "Status",
+            accessor: "status"
+          }
+        ]
+      },
+      {
+        Header: 'Action',
+        columns: [
+          {
+            Header: "View Report",
+            accessor: "button"
+          }
+        ]
+      }
+    ]
+
     return(
       <div className="App">
         <section className="homepage__clients">
           <header className="header__clients">
-
             <div>
-
-
-{/* service_name: 'physiotherapy',
-    name: 'Dude Awesomepants',
-    address: '123 gastown, vancouver',
-    m_history: "Oh I am AMAZING!!!!!",
-    gender: 'female',
-    age: '30',
-    date: 'monday, july 15, 2018',
-    time: {
-      from : 2452845824,
-      to: 4248248,
-    },
-    status: 'pending',
-    button: 'if pending, link to profile, if completed can delete?' */}
-
-      <div>
-        <h1>Provider Views Client Profile</h1>
-          <ReactTable
-            data={data}
-            columns={[
-              {
-                Header: "Client Personal Info",
-                columns: [
-                  {
-                    Header: "Name ",
-                    accessor: "name"
-                  },
-                  {
-                    Header: "Age",
-                    accessor: "age"
-                  },
-                  {
-                    Header: "Gender",
-                    accessor: "gender"
-                  },
-
-                ]
-              },
-              {
-                Header: "Appointment Info",
-                columns: [
-
-                  {
-                    Header: "Address",
-                    accessor: "address"
-                  },
-
-                  {
-                    Header: "Status",
-                    accessor: "status"
-                  }
-                ]
-              },
-              {
-                Header: 'Action',
-                columns: [
-                  {
-                    Header: "View Report",
-                    accessor: "button"
-                  }
-
-                ]
-              }
-            ]}
-            defaultPageSize={10}
-            className="-striped -highlight"
-          />
-          <br />
-          <Tips />
-          <img className="clients-logo" src={Logo} alt="clients-logo" />
-          </div>
-
+              <div>
+                <h1>Provider Views Client Profile</h1>
+                <ReactTable
+                  data={data}
+                  columns={columns}
+                  defaultPageSize={10}
+                  className="-striped -highlight"
+                />
+                <br />
+                <Tips />
+                <img className="clients-logo" src={Logo} alt="clients-logo" />
+              </div>
             </div>
-
-
           </header>
         </section>
       </div>
