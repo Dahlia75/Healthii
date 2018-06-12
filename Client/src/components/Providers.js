@@ -113,7 +113,7 @@ class Providers extends Component {
 
     return (
       <div>
-        <header className='listproviders'>List of providers</header>
+        <header className='provider-header'>List of providers</header>
         <div >
           <h4>Choose Time</h4>
         <div className='flexy'>

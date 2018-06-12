@@ -45,9 +45,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <header className="App-header">
-            <h1 className="App-title">{userInfoSection}</h1>
-          </header>
           <Route
             path="/login"
             render={props => <Login setUser={this.setUser} history={props.history} />}
