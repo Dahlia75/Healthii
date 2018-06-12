@@ -18,7 +18,8 @@ const Provider 	  = require("./routes/Provider");
 const book        = require("./routes/book_App");
 const clientsApp	= require("./routes/client_App");
 const cookieSession = require('cookie-session');
-const getUserByEmailAndPassword = require("./routes/Login");
+const getUser = require("./routes/Login");
+
 // const router 	  = express.Router();
 
 app.use(knexLogger(knex));
@@ -90,19 +91,28 @@ app.get("/api/services/:sid/providers",(req,res) => {
 
 app.get("/api/clients",(req,res) => {
   var selected_provider=[];
-  var pid = 4;
-  clientsApp.getCLientApp(pid)
-    .then(clients => {
-
-      if (clients.length === 0) {
-        return res.status(404).json({ error: 'clients not found' });
+  var pid;
+  getUser.getUserById(req.session.userId, 'providers')
+    .then((id) => {
+      if (id !== undefined) {
+        pid = id[0].id;
+        return pid;
+      } else {
+        res.status(401).json({ error: 'You are dumb' });
       }
-      const [{ aid, service_name, sid, pid, date, time, status}] = clients;
-      return Promise.all(
+    })
+      .then((pid) => {return clientsApp.getCLientApp(pid)})
+        .then(clients => {
+          // console.log("clients", clients);
+          if (clients.length === 0) {
+            return res.status(404).json({ error: 'clients not found' });
+          }
+          const [{ aid, service_name, sid, pid, date, time, status}] = clients;
+          return Promise.all(
 
-        clients.map((clients, i) => {
+            clients.map((clients, i) => {
 
-          return ({
+            return ({
                   cid: clients.user_id,
                   name: clients.first_name+" "+ clients.last_name,
                   service_name: service_name,
@@ -112,21 +122,22 @@ app.get("/api/clients",(req,res) => {
                   m_history: clients.m_history,
                   gender: clients.gender,
                   age: clients.age,
-                  report: clients.report
+                  report: clients.report,
+                  id: clients.aid,
+                  service_name: clients.service_name,
+                  service_id: clients.sid,
+                  provider_id: clients.pid,
+                  date: clients.date,
+                  start_time: clients.time,
+                  status: clients.status,
                 })
        })
       )
       .then(clients_of_pid => {
-        res.json({
-              id: aid,
-              service_name: service_name,
-              service_id: sid,
-              provider_id: pid,
-              date: date,
-              start_time: time,
-              status: status,
-              clientList: clients_of_pid
-            });
+        // console.log("clients_of_pid", clients_of_pid);
+        res.json(
+              clients_of_pid
+            );
       })
     })
     .catch(ex => {
@@ -210,11 +221,12 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-  getUserByEmailAndPassword(req.body.email, req.body.password)
+  getUser.getUserByEmailAndPassword(req.body.email, req.body.password)
     .then((user) => {
       // console.log("Loooogin", user);
       if (user) {
-        req.session.userId = user.id;
+        req.session.userId = user[0].id;
+        // console.log("req.session.userId login", req.session.userId);
         res.json(user[0]);
       } else {
         res.status(400).json({ error: 'No user' });
