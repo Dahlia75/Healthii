@@ -203,28 +203,25 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   });
 });
 
-app.post("/appointments/:aid/confirmation", (req, res) => {
+app.post("/api/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
   book.confirm(aid, req.body.status);
   res.json({result:"true"});
 });
 
-app.post("api/reviews/:rid/feedback", (req, res) => {
+app.post("/api/reviews/:rid/feedback", (req, res) => {
 
   // Reading parameters from "cookies" or "req.body.CID";
-  var rid = req.params.rid;
-  var cid = 13;
-  var pid = 6;
-  var rating = '';
-  var description = '';
-  Review.postFeedback(rid, cid, pid, rating, description);
+  var cid = getUser.getUserById(req.session.userId, 'clients');
+  var pid = req.params.pid;
+  var description = req.body.des;
+  var rating = 0;
+  Review.postFeedback(cid, pid, rating, description);
   res.json({result:"true"});
 });
 
-app.post("/services/:sid/providers/:pid/book", (req, res) => {
-	// console.log("Heloooo ", req.body);
-  // var cid = req.body.CID;
-  var cid = 14;
+app.post("/api/services/:sid/providers/:pid/book", (req, res) => {
+  var cid = getUser.getUserById(req.session.userId, 'clients');;
   var pid = req.params.pid;
   var sid = req.params.sid;
   book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
