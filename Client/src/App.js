@@ -61,6 +61,7 @@ class App extends Component {
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/clients/:cid" component={ClientProfile} />
             <Route exact path="/reviews" component={Feedback} />
+
           </Switch>
         </div>
       </BrowserRouter>

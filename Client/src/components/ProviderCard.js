@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 // import "../css/providers.css";
-import "../css/bootstrap.min.css"
+import "../css/bootstrap.min.css";  
+import "../css/providers.css";
+import "../css/main.css";
+
 import { HashLink as Link } from 'react-router-hash-link';
 
 export default class ProviderCard extends Component {
@@ -28,21 +31,22 @@ export default class ProviderCard extends Component {
     <div className="card text-center">
         <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
-            <h4 className="card-title">Name: { name }</h4>
+        <div id="test">
+            <h4 className="card-title">{ name }</h4>
             <p > { age } years old</p>
             <i className= { genderSign }> </i>
-            <p>Job Title: { title }</p>
+            <p>{ title }</p>
             <div className="card-text">
-                <Link to={path} className="btn btn--white">View Profile
+                <Link to={path} className="button-provider-profile">View Profile
                 </Link>
-                <div className="cta">
-                    <button className="btn btn--white" onClick = { this.onBook.bind(this) }>
-                      <span className="btn__visible">Book now</span>
-                      <span className="btn__invisible">NOW!!!!</span>
+                <div className="cta-provider">
+                    <button className="button-provider-book" onClick = { this.onBook.bind(this) }>
+                      <span className="">Book now</span>
                     </button>
                 </div>
             </div>
             <i className = 'fa fa-remove fa-2x float-right hvr-grow' onClick = {this.onRemoveProvider.bind(this)}> </i>
+        </div>
         </div>
     </div>;
     return card;

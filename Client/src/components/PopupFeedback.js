@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import FeedbackForm from "./FeedbackForm";
-// import Api from '../lib/api.js';
+import Api from '../lib/api.js';
 
 // export default () => (
 //   <Popup trigger={<button> Trigger</button>} position="right center">
@@ -12,7 +12,9 @@ import FeedbackForm from "./FeedbackForm";
 export default () => (
     <Popup trigger={<button className="button"> Leave Feedback </button>} modal>
       {close => (
-        <div >
+
+        <div className="">
+
           <div className="content">
           <div><FeedbackForm/></div>
 
