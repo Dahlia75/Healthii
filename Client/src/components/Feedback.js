@@ -4,12 +4,7 @@ import 'react-table/react-table.css'
 import PopupFeedback from './PopupFeedback';
 import Api from '../lib/api.js';
 // import Star from './Star';
-
-
-<<<<<<< HEAD
 import PopupReport from './PopupReport';
-=======
->>>>>>> master
 import '../App.css';
 import Logo from '../img/HC2Go1.png';
 import Sidebar from './Sidebar';
