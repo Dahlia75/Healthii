@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, /*Redirect,*/ Switch} from 'react-router-dom';
 
-// import Api from './lib/api.js';
+import Api from './lib/api.js';
 
 import Home from './components/Home';
 // import Sidebar from './components/Sidebar';
@@ -24,15 +24,17 @@ class App extends Component {
       loading: true };
   }
   componentDidMount() {
-    // Api.get('/api/users/me')
-    //   .then((response) => {
-    //     this.setState({
-    //       loading: false,
-    //       me: response.data });
-    //   })
-    //   .catch((err) => {
-    //     this.setState({ loading: false });
-    //   });
+    console.log("me: hi");
+    Api.get('/api/users/me')
+      .then((response) => {
+        console.log("me: ", response);
+        this.setState({
+          loading: false,
+          me: response.data });
+      })
+      .catch((err) => {
+        this.setState({ loading: false });
+      });
   }
   setUser = (user) => {
     this.setState({

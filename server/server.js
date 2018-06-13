@@ -50,6 +50,19 @@ app.get("/api",(req,res) => {
 	// res.status(200).send(JSON.stringify(Appointment.getAppointmentList()));
 })
 
+app.get('/api/users/me', (req, res) => {
+  if(req.session.userId) {
+    getUser.getUserInfoById(req.session.userId, 'users')
+      .then((user) => {
+        if (user !== undefined) {
+          res.json(user);
+        } else {
+          res.status(401).json({ error: 'You are not authorized' });
+        }
+      });
+  }
+});
+
 app.get("/api/services/:sid/providers",(req,res) => {
 	var selected_provider=[];
 	Provider.getProvidersList(req.params.sid)
@@ -188,6 +201,7 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
     const provider = providerInfo;
     return Provider.getReviews(req.params.pid)
     .then(reviews => {
+    console.log("reviews ",reviews);
       return {
         p_info: providerInfo,
         reviews: reviews

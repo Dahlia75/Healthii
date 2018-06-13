@@ -15,7 +15,13 @@ function getUserById(id, tableName) {
  return knex(tableName)
        .select('id')
        .where('user_id', id)
-}
+};
+
+function getUserInfoById(id, tableName) {
+ return knex(tableName)
+       .select('*')
+       .where('id', id)
+};
 
 const getUserByEmailAndPassword = (email, password) => {
  return knex('users')
@@ -26,4 +32,4 @@ const getUserByEmailAndPassword = (email, password) => {
        })
 };
 
-module.exports = {getUserByEmailAndPassword, getUserById};
+module.exports = {getUserByEmailAndPassword, getUserById, getUserInfoById};
