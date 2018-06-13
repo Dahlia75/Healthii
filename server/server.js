@@ -203,28 +203,41 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   });
 });
 
-app.post("/api/appointments/:aid/confirmation", (req, res) => {
+app.post("/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
   book.confirm(aid, req.body.status);
   res.json({result:"true"});
 });
 
-app.post("/api/reviews/:rid/feedback", (req, res) => {
-
+app.post("/reviews/:pid/feedback", (req, res) => {
   // Reading parameters from "cookies" or "req.body.CID";
-  var cid = getUser.getUserById(req.session.userId, 'clients');
+  var cid = req.session.userId;
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
-  Review.postFeedback(cid, pid, rating, description);
+   
+   
+  if (cid > 10){
+    console.log("\nYou loged in as Client\n\n");
+    Review.postFeedback(cid, pid, rating, description);
+  }else{
+    console.log("\nYou loged in as Provider (Permission denied!)\n\n");
+  }
+  
   res.json({result:"true"});
 });
 
-app.post("/api/services/:sid/providers/:pid/book", (req, res) => {
-  var cid = getUser.getUserById(req.session.userId, 'clients');;
+app.post("/services/:sid/providers/:pid/book", (req, res) => {
+  var cid = req.session.userId;
   var pid = req.params.pid;
   var sid = req.params.sid;
-  book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
+  if (cid > 10){
+    console.log("\nYou loged in as Client\n\n");
+    book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
+  }else{
+    console.log("\nYou loged in as Provider (Permission denied!)\n\n");
+  }
+  
   res.json({result:"true"});
 });
 

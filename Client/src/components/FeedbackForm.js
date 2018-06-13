@@ -16,8 +16,7 @@ class FeedbackForm extends Component {
   postReview(){
     const des = this.state.description;
     const pid = this.props.pid;
-    console.log("PID= ",pid);
-    Api.post(`/api/reviews/${pid}/feedback`, { des });
+    Api.post(`/reviews/${pid}/feedback`, { des });
     // .then(this.closeModal);
   }
 
