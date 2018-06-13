@@ -209,14 +209,21 @@ app.post("/appointments/:aid/confirmation", (req, res) => {
   res.json({result:"true"});
 });
 
-app.post("/api/reviews/:rid/feedback", (req, res) => {
-
+app.post("/reviews/:pid/feedback", (req, res) => {
   // Reading parameters from "cookies" or "req.body.CID";
   var cid = req.session.userId;
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
-  Review.postFeedback(cid, pid, rating, description);
+   
+   
+  if (cid > 10){
+    console.log("\nYou loged in as Client\n\n");
+    Review.postFeedback(cid, pid, rating, description);
+  }else{
+    console.log("\nYou loged in as Provider (Permission denied!)\n\n");
+  }
+  
   res.json({result:"true"});
 });
 
@@ -224,7 +231,13 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
   var cid = req.session.userId;
   var pid = req.params.pid;
   var sid = req.params.sid;
-  book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
+  if (cid > 10){
+    console.log("\nYou loged in as Client\n\n");
+    book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
+  }else{
+    console.log("\nYou loged in as Provider (Permission denied!)\n\n");
+  }
+  
   res.json({result:"true"});
 });
 

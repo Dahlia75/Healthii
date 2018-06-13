@@ -22,11 +22,10 @@ const addReview = (cid, pid, rating, description) => {
   });
 };
 
-const postFeedback = (rid, cid, pid, rating, description) => {
-
+const postFeedback = (cid, pid, rating, description) => {
+  // console.log("CID== ",cid)
   return knex('reviews')
           .insert({client_id: cid, provider_id: pid, rating: rating, description: description})
-          .returning('id')
           .then((arrayOfResults) => arrayOfResults[0])
           .catch(function(err){
             console.error("error appointments query", err);
