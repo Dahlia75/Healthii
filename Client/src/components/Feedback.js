@@ -6,6 +6,10 @@ import Api from '../lib/api.js';
 // import Star from './Star';
 
 
+<<<<<<< HEAD
+import PopupReport from './PopupReport';
+=======
+>>>>>>> master
 import '../App.css';
 import Logo from '../img/HC2Go1.png';
 import Sidebar from './Sidebar';
@@ -38,9 +42,9 @@ class Feedback extends React.Component {
   load() {
       Api.get(`/api/reviews`).then(providers => {
         this.makeData(providers);
-          this.setState({
-            data: providers
-          });
+        this.setState({
+          data: providers
+        });
       })
   }
 
