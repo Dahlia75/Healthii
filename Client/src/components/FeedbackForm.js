@@ -29,7 +29,6 @@ class FeedbackForm extends Component {
           <input type="Feedback" name="" id="" 
                  onChange={(evt) => {this.setState({description: evt.target.value})} } className="Feedback" />
           <button type="submit" onClick={this.postReview.bind(this)}>Leave Feedback</button>
-          <Star/>
         </form>
     </div>
     );

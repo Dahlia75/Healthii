@@ -10,7 +10,7 @@ import ReportForm from "./ReportForm";
 // );
 
 export default () => (
-    <Popup trigger={<button className="button"> Enter Notes from Meeting </button>} modal>
+    <Popup trigger={<button className="clients-button"> Enter Notes from Meeting </button>} modal>
       {close => (
         <div className="">
           <div className="content">
@@ -20,7 +20,7 @@ export default () => (
         </div>
         <div className="actions">
           <button
-            className="button"
+            className="clients-button"
             onClick={() => {
               console.log('modal closed ')
               close()
