@@ -7,7 +7,7 @@ body {
   }
 
 .homepage__clients {
-    background-color: lightpink;
+    background-color: white;
 }
 
 .clients-logo {
@@ -15,3 +15,30 @@ body {
      margin: .5em auto .3em;
      height: 30px;
 }
+
+.clients-button {
+    border-top: 1px solid #052133;
+    background: #white;
+    padding: 4.5px 9px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: blue;
+    font-size: 9px;
+    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+    }
+ .clients-button:hover {
+    border-top-color: #2487c9;
+    background: #2487c9;
+    color: #000000;
+    }
+ .clients-button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+    }
