@@ -146,9 +146,10 @@ app.get("/api/clients",(req,res) => {
 
 app.get("/api/reviews",(req,res) =>{
   // var cid = req.session.userId;
-  var cid = 15;
+  var cid = req.session.userId;
   Review.getReviews(cid)
   .then(allReviews => {
+    console.log("allReviews===",allReviews);
     // const [{ aid, service_name, date}] = allReviews;
     return Promise.all(
 
@@ -164,6 +165,7 @@ app.get("/api/reviews",(req,res) =>{
                 name: providers.first_name+" "+ providers.last_name,
                 m_history: providers.m_history,
                 gender: providers.gender,
+                description: providers.description
               })
      })
     )
@@ -215,7 +217,7 @@ app.post("/reviews/:pid/feedback", (req, res) => {
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
-   
+    console.log("*****",pid);
    
   if (cid > 10){
     console.log("\nYou loged in as Client\n\n");
