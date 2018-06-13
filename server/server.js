@@ -154,7 +154,7 @@ app.get("/api/reviews",(req,res) =>{
 
       allReviews.map((providers, i) => {
         const [{ aid, service_name, date}] = allReviews;
-        
+
         return ({
                 aid: aid,
                 service_name: service_name,
@@ -203,7 +203,7 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
   });
 });
 
-app.post("/api/appointments/:aid/confirmation", (req, res) => {
+app.post("/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
   book.confirm(aid, req.body.status);
   res.json({result:"true"});
@@ -212,7 +212,7 @@ app.post("/api/appointments/:aid/confirmation", (req, res) => {
 app.post("/api/reviews/:rid/feedback", (req, res) => {
 
   // Reading parameters from "cookies" or "req.body.CID";
-  var cid = getUser.getUserById(req.session.userId, 'clients');
+  var cid = req.session.userId;
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
@@ -220,8 +220,8 @@ app.post("/api/reviews/:rid/feedback", (req, res) => {
   res.json({result:"true"});
 });
 
-app.post("/api/services/:sid/providers/:pid/book", (req, res) => {
-  var cid = getUser.getUserById(req.session.userId, 'clients');;
+app.post("/services/:sid/providers/:pid/book", (req, res) => {
+  var cid = req.session.userId;
   var pid = req.params.pid;
   var sid = req.params.sid;
   book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
@@ -231,10 +231,8 @@ app.post("/api/services/:sid/providers/:pid/book", (req, res) => {
 app.post('/api/login', (req, res) => {
   getUser.getUserByEmailAndPassword(req.body.email, req.body.password)
     .then((user) => {
-      // console.log("Loooogin", user);
       if (user) {
         req.session.userId = user[0].id;
-        // console.log("req.session.userId login", req.session.userId);
         res.json(user[0]);
       } else {
         res.status(400).json({ error: 'No user' });

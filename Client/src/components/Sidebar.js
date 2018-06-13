@@ -7,6 +7,7 @@ import '../css/main.css';
 
 function logOut(){
   Api.post('/api/logout');
+  console.log("logedout");
 }
 const Sidebare = () => {
   return(
@@ -22,7 +23,7 @@ const Sidebare = () => {
           <li className="navigation__item"><a href="/clients" className="navigation__link"><span>02</span>Client Reports</a></li>
           <li className="navigation__item"><a href="/services/6/providers" className="navigation__link"><span>03</span>Providers</a></li>
           <li className="navigation__item"><a href="/" className="navigation__link"><span>04</span>Home</a></li>
-          <li className="navigation__item"><a href="#upcoming" className="navigation__link"><span>05</span>Logout</a></li>
+          <li className="navigation__item"><a href="/" className="navigation__link"><span>05</span><button onClick={logOut}> Logout </button></a></li>
         </ul>
       </nav>
     </div>
