@@ -161,8 +161,9 @@ app.get("/api/clients",(req,res) => {
 });
 
 app.get("/api/reviews",(req,res) =>{
-  // var cid = req.session.userId;
+
   var cid = req.session.userId;
+  // var cid = 15;
   Review.getReviews(cid)
   .then(allReviews => {
     console.log("allReviews===",allReviews);
@@ -206,7 +207,6 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
     const provider = providerInfo;
     return Provider.getReviews(req.params.pid)
     .then(reviews => {
-    console.log("reviews ",reviews);
       return {
         p_info: providerInfo,
         reviews: reviews
@@ -237,15 +237,13 @@ app.post("/reviews/:pid/feedback", (req, res) => {
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
-    console.log("*****",pid);
-   
   if (cid > 10){
     console.log("\nYou loged in as Client\n\n");
     Review.postFeedback(cid, pid, rating, description);
   }else{
     console.log("\nYou loged in as Provider (Permission denied!)\n\n");
   }
-  
+
   res.json({result:"true"});
 });
 
@@ -262,7 +260,7 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
   }else{
     console.log("\nYou logged in as Provider (Permission denied!)\n\n");
   }
-  
+
   res.json({result:"true"});
 });
 

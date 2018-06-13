@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import "../css/providers.css";
-import "../css/bootstrap.min.css";  
+import "../css/bootstrap.min.css";
 import "../css/providers.css";
 import "../css/main.css";
 
@@ -32,7 +32,7 @@ export default class ProviderCard extends Component {
     const card =
 
     <div className="card text-center">
-    <nav class="provider-container">
+    <nav className="provider-container">
                 <div className='name-provider'><h4 className="card-title">{ name }</h4></div>
                 <div className='age-provider'><p > { age } years old</p></div>
                 <i className= { genderSign }> </i>
@@ -41,8 +41,8 @@ export default class ProviderCard extends Component {
         <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
         <div id="test">
-            
-            
+
+
             <div className="card-text">
                 <Link to={path} className="button-provider-profile">View Profile
                 </Link>
