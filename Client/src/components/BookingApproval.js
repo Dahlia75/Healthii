@@ -31,7 +31,7 @@ export default class BookingApproval extends React.Component {
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
+        <button className="clients-button" onClick={this.openModal}>
           {this.props.status}
         </button>
         <Popup
@@ -45,10 +45,10 @@ export default class BookingApproval extends React.Component {
             </a>
             Approve or Decline
             <div>
-              <button className="button" onClick={this.acceptBooking}>
+              <button className="clients-button" onClick={this.acceptBooking}>
                 Approve
               </button>
-              <button className="button" onClick={this.declineBooking}>
+              <button className="clients-button" onClick={this.declineBooking}>
                 Decline
               </button>
             </div>

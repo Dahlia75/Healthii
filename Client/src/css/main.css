@@ -275,6 +275,7 @@ form button[type=submit] {
 
   #formfeedback input {
     height: 200px;
+    font-size: 30px;
   }
 
   #formfeedback input, form button {
@@ -287,7 +288,7 @@ form button[type=submit] {
       background-color: rgba(0, 0, 0, 0.2);
       background-repeat: no-repeat;
       padding: 8px 24px 8px 10px;
-      font: bold .875em/1.25em "Open Sans Condensed", sans-serif;
+      font: bold "Open Sans Condensed", sans-serif, 30px;
       letter-spacing: .075em;
       color: #fff;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -331,6 +332,9 @@ form button[type=submit] {
     border-right-color: #1e4d4e;
     cursor: pointer; }
 
+    .Feedback {
+      font-size: 30px;
+    }
 
 .section-bookdate {
   padding: 15rem 0;
@@ -935,4 +939,23 @@ form button[type=submit] {
   background-color: #F1F1F1;
   text-align: center;
   padding: 20px;
+}
+
+.provider-container > div {
+  padding: 3px;
+  text-align: center;
+  font-size: 1em;
+  color: black;
+}
+
+.provider-container > div:nth-child(1) {
+  background-color: #96ceb4;	
+}
+
+.provider-container > div:nth-child(2) {
+  background-color: #ff6f69;
+}
+
+.provider-container > div:nth-child(4) {
+  background-color: #88d8b0;
 }

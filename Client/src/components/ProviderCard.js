@@ -32,13 +32,17 @@ export default class ProviderCard extends Component {
     const card =
 
     <div className="card text-center">
+    <nav class="provider-container">
+                <div className='name-provider'><h4 className="card-title">{ name }</h4></div>
+                <div className='age-provider'><p > { age } years old</p></div>
+                <i className= { genderSign }> </i>
+                <div className='title-provider'><p>{ title }</p></div>
+            </nav>
         <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
         <div id="test">
-            <h4 className="card-title">{ name }</h4>
-            <p > { age } years old</p>
-            <i className= { genderSign }> </i>
-            <p>{ title }</p>
+            
+            
             <div className="card-text">
                 <Link to={path} className="button-provider-profile">View Profile
                 </Link>

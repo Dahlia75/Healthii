@@ -9,6 +9,8 @@ import Logo from '../img/HC2Go1.png';
 import PopupReport from './PopupReport';
 import BookingApproval from './BookingApproval';
 
+import '../css/clients.css';
+
 
 // const range = len => {
 //   const arr = [];
@@ -57,8 +59,8 @@ class Client extends React.Component {
 
   makeData(clients){
     return clients.forEach(function(element){
-      element["button"] = <PopupReport aid={element.aid} />;
-      element["button2"] = <BookingApproval aid={element.aid} status={element.status}/>;
+      element["button"] = <PopupReport aid={element.aid} className='clients-button'/>;
+      element["button2"] = <BookingApproval aid={element.aid} status={element.status} className='clients-button'/>;
     });
   }
 

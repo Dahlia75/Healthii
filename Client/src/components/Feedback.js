@@ -4,6 +4,8 @@ import 'react-table/react-table.css'
 import PopupFeedback from './PopupFeedback';
 import Api from '../lib/api.js';
 // import Star from './Star';
+import '../css/feedback.css';
+
 import PopupReport from './PopupReport';
 import '../App.css';
 import Logo from '../img/HC2Go1.png';
@@ -58,7 +60,6 @@ class Feedback extends React.Component {
 
       <div>
         <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
-        <PopupFeedback />
           <ReactTable
             data={data}
             columns={[

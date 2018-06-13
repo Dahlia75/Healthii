@@ -10,7 +10,7 @@ export default class PopupFeedback extends React.Component {
 
 render(){
 return(
-   <Popup trigger={<button className="button"> Leave Feedback </button>} modal>
+   <Popup trigger={<button className="clients-button"> Leave Feedback </button>} modal>
      {close => (
        <div >
          <div className="content">
