@@ -1,25 +1,28 @@
 "use strict";
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 3001;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const app         = express();
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const pg 		  		= require('pg');
-const knexLogger  = require('knex-logger');
-const Appointment = require("./routes/Appointment");
-const Review 	  	= require("./routes/Review");
-const Service 	  = require("./routes/Service");
-const Provider 	  = require("./routes/Provider");
-const book        = require("./routes/book_App");
-const clientsApp	= require("./routes/client_App");
+const PORT          = process.env.PORT || 3001;
+const ENV           = process.env.ENV || "development";
+const express       = require("express");
+const bodyParser    = require("body-parser");
+const app           = express();
+const knexConfig    = require("./knexfile");
+const knex          = require("knex")(knexConfig[ENV]);
+const morgan        = require('morgan');
+const pg 		  		  = require('pg');
+const knexLogger    = require('knex-logger');
+const Appointment   = require("./routes/Appointment");
+const Review 	  	  = require("./routes/Review");
+const Service 	    = require("./routes/Service");
+const Provider 	    = require("./routes/Provider");
+const book          = require("./routes/book_App");
+const clientsApp	  = require("./routes/client_App");
 const users         = require("./routes/users");
 const cookieSession = require('cookie-session');
-const getUser     = require("./routes/Login");
+const getUser       = require("./routes/Login");
+const textMessages  = require("./routes/textMessages");
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const sendReadySMS  = require("./routes/twilio_appointment");
 
 // const router 	  = express.Router();
 
@@ -158,10 +161,12 @@ app.get("/api/clients",(req,res) => {
 });
 
 app.get("/api/reviews",(req,res) =>{
+
   var cid = req.session.userId;
   // var cid = 15;
   Review.getReviews(cid)
   .then(allReviews => {
+    console.log("allReviews===",allReviews);
     // const [{ aid, service_name, date}] = allReviews;
     return Promise.all(
 
@@ -177,6 +182,7 @@ app.get("/api/reviews",(req,res) =>{
                 name: providers.first_name+" "+ providers.last_name,
                 m_history: providers.m_history,
                 gender: providers.gender,
+                description: providers.description
               })
      })
     )
@@ -218,7 +224,10 @@ app.get("/api/services/:sid/providers/:pid",(req,res) =>{
 
 app.post("/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
-  book.confirm(aid, req.body.status);
+  book.confirm(aid, req.body.status)
+  .then((result) => {
+        sendReadySMS(textMessages.approved)
+    })
   res.json({result:"true"});
 });
 
@@ -228,8 +237,6 @@ app.post("/reviews/:pid/feedback", (req, res) => {
   var pid = req.params.pid;
   var description = req.body.des;
   var rating = 0;
-
-
   if (cid > 10){
     console.log("\nYou loged in as Client\n\n");
     Review.postFeedback(cid, pid, rating, description);
@@ -245,10 +252,13 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
   var pid = req.params.pid;
   var sid = req.params.sid;
   if (cid > 10){
-    console.log("\nYou loged in as Client\n\n");
-    book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime);
+    console.log("\nYou logged in as Client\n\n");
+    book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime)
+    .then((result) => {
+        sendReadySMS(textMessages.requested)
+    })
   }else{
-    console.log("\nYou loged in as Provider (Permission denied!)\n\n");
+    console.log("\nYou logged in as Provider (Permission denied!)\n\n");
   }
 
   res.json({result:"true"});
