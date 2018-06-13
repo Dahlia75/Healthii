@@ -114,24 +114,24 @@ class Providers extends Component {
     return (
       <div>
       <div>
-        <span><a href="/" className='button-providers-home'>Home</a></span>
-        <header className='provider-header'>List of providers</header>
+        <header className='provider-header'>
+          <span><a href="/" className='button-providers-home'>Home</a></span>
+          <span className='inline-b'>
+            <h3 className='providers-available'>
+                { currentProviders.providers.length } Providers Available for { this.state.selectedService }
+            </h3>
+          </span>
+        </header>
       </div>
-
         <div >
         <div className='flexy'>
-        <span className='inline-b'>
-          <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
+          <span className='inline-b'>
+            <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
           </span>
-        <span className='inline-b'>
-        <h3 className='providers-available'>
-            { currentProviders.providers.length } Providers Available for { this.state.selectedService }
-          </h3>
-        </span>
         </div>
         </div>
         <div>
-         
+
         </div>
         <div className="card-columns" >
           <ProviderCardList

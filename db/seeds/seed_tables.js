@@ -148,26 +148,25 @@ exports.seed = function(knex, Promise) {
                 return knex('appointments')
                   .returning('*')
                   .insert([
-                    {client_id: 12, provider_id: 5, service_id: 2, date: 'Jun 8th 18', start_time: '15'},
-                    {client_id: 14, provider_id: 2, service_id: 4, date: 'Jun 7th 18', start_time: '19'},
-                    {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 13, provider_id: 1, service_id: 2, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 18th 18', start_time: '16'},
-                    {client_id: 14, provider_id: 3, service_id: 2, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 15, provider_id: 4, service_id: 3, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 13, provider_id: 3, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 17, provider_id: 4, service_id: 1, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 15, provider_id: 4, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 14, provider_id: 1, service_id: 4, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 18, provider_id: 6, service_id: 6, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 22, provider_id: 5, service_id: 3, date: 'Jun 25th 18', start_time: '16'},
-                    {client_id: 24, provider_id: 1, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 12, provider_id: 5, service_id: 6, date: 'Jun 8th 18', start_time: '10'},
-                    {client_id: 19, provider_id: 7, service_id: 1, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 16, provider_id: 5, service_id: 2, date: 'Jun 20th 18', start_time: '13'},
-                    {client_id: 12, provider_id: 2, service_id: 5, date: 'Jun 8th 18', start_time: '20'},
-                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20'}
-                ]);
+                    {client_id: 12, provider_id: 5, service_id: 2, date: 'Jun 8th 19', start_time: '15' , status: 'Pending'},
+                    {client_id: 14, provider_id: 2, service_id: 4, date: 'Jun 7th 18', start_time: '19' , status: 'Pending'},
+                    {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 13, provider_id: 1, service_id: 2, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 7th 18', start_time: '16' , status: 'Pending'},
+                    {client_id: 14, provider_id: 3, service_id: 2, date: 'Jun 18th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 15, provider_id: 4, service_id: 3, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 13, provider_id: 3, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 17, provider_id: 4, service_id: 1, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 15, provider_id: 4, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 14, provider_id: 1, service_id: 4, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 18, provider_id: 6, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 22, provider_id: 5, service_id: 3, date: 'Jun 25th 18', start_time: '16' , status: 'Pending'},
+                    {client_id: 24, provider_id: 1, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 12, provider_id: 5, service_id: 6, date: 'Jun 8th 18', start_time: '10' , status: 'Pending'},
+                    {client_id: 19, provider_id: 7, service_id: 1, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 16, provider_id: 5, service_id: 2, date: 'Jun 20th 18', start_time: '13' , status: 'Pending'},
+                    {client_id: 12, provider_id: 2, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'}                ]);
               })
               .then(function () {
                 return knex('reviews')
