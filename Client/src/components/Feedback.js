@@ -6,7 +6,6 @@ import Api from '../lib/api.js';
 // import Star from './Star';
 import '../css/feedback.css';
 
-
 import PopupReport from './PopupReport';
 import '../App.css';
 import Logo from '../img/HC2Go1.png';
