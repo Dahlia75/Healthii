@@ -11,7 +11,8 @@
     "morgan": "^1.9.0",
     "node-gyp": "^3.6.2",
     "pg": "^7.4.3",
-    "pg-native": "^3.0.0"
+    "pg-native": "^3.0.0",
+    "twilio": "^3.17.2"
   },
   "scripts": {
     "start": "CHOKIDAR_USEPOLLING=true CHOKIDAR_INTERVAL=500 react-scripts start",
