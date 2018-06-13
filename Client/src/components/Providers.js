@@ -113,9 +113,12 @@ class Providers extends Component {
 
     return (
       <div>
+      <div>
+        <span><a href="/" className='button-providers-home'>Home</a></span>
         <header className='provider-header'>List of providers</header>
+      </div>
+
         <div >
-          <h4>Choose Time</h4>
         <div className='flexy'>
         <span className='inline-b'>
           <Scheduler onDateTimeChanged={this.chooseTime.bind(this)} />
