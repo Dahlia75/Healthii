@@ -59,7 +59,7 @@ class Feedback extends React.Component {
             <div>
 
       <div>
-        <h1>CLIENT GIVES PROVIDER FEEDBACK</h1>
+        <h1>YOUR PROVIDERS</h1>
           <ReactTable
             data={data}
             columns={[
