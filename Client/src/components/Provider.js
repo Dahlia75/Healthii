@@ -92,15 +92,16 @@ class Provider extends Component {
                 <h4> Biography:</h4> { provider.provider_info.bio }
               </div>
             </div>
-              <h1> Reviews </h1>
-            <figure className="provider-reviews">
-              { reviews }
-            </figure>
+              <div className='review-div'>
+                <h1 className='review-header'> Reviews </h1>
+              <figure className="provider-reviews">
+                { reviews }
+              </figure>
+              </div>
           </div>
           <div className="cta">
-            <button className="btn" onClick={ () => this.props.history.goBack() }>
+            <button className="btn-provider" onClick={ () => this.props.history.goBack() }>
               <span className="btn__visible">Back</span>
-              <span className="btn__invisible">To provious page</span>
             </button>
           </div>
 

@@ -367,8 +367,9 @@ form button[type=submit] {
   align-items: center;
   border-bottom: 1px solid lightgrey; }
   .overview__heading {
-    font-size: 2.25rem;
+    font-size: 3rem;
     font-weight: 300;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem; }
@@ -442,7 +443,7 @@ form button[type=submit] {
 
 .description {
   height: 50rem;
-  font-size: 1.4rem;
+  font-size: 2rem;
   background-color: white;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.06);
   padding: 3rem;
@@ -455,6 +456,15 @@ form button[type=submit] {
   display: flex;
   flex-direction: column;
   align-items: center; }
+
+.review-header {
+  text-align: center;
+  margin-bottom:20px;
+}
+
+.review-div {
+  padding-left: 8rem;
+}
 
 .list {
   list-style: none;
@@ -582,6 +592,38 @@ form button[type=submit] {
   border-radius: 100px;
   border: none;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+  .btn > * {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all .2s; }
+  .btn__visible {
+    padding: 2rem 7.5rem; }
+  .btn__invisible {
+    position: absolute;
+    padding: 2rem 0;
+    left: 0;
+    top: -100%; }
+  /* .btn:hover {
+    background-image: linear-gradient(to right, darkblue, lightblue); }
+  .btn:hover .btn__visible {
+    transform: translateY(100%); } */
+  .btn:hover .btn__invisible {
+    top: 0; }
+  .btn:focus {
+    outline: none;
+    animation: pulsate 1s infinite; }
+
+.btn-provider {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  color: black;
   position: relative;
   overflow: hidden;
   cursor: pointer; }
@@ -929,10 +971,12 @@ form button[type=submit] {
 
 .flexy {
   display: flex;
+  padding-top: 15px;
 }
 
 .providers-available {
   padding-left: 100px;
+  font-weight: bold;
 }
 
 .listproviders {
@@ -949,13 +993,16 @@ form button[type=submit] {
 }
 
 .provider-container > div:nth-child(1) {
-  background-color: #96ceb4;	
+  background-color: white;	
+  border: 1px solid black;
 }
 
 .provider-container > div:nth-child(2) {
-  background-color: #ff6f69;
+  background-color: white;
+  border: 1px solid black;
+
 }
 
 .provider-container > div:nth-child(4) {
-  background-color: #88d8b0;
+  background-color: white;
 }
