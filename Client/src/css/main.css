@@ -261,6 +261,7 @@ form button[type=submit] {
 
 
   #formfeedback {
+      height: 30rem;
       position: relative;
       float: none;
       width: 600px;

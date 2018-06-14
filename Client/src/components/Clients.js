@@ -88,22 +88,22 @@ class Client extends React.Component {
           {
             Header: "Name",
             accessor: "name",
-            width: 300
+            width: 200
           },
           {
             Header: "Age",
             accessor: "age",
-            width: 100
+            width: 80
           },
           {
             Header: "Gender",
             accessor: "gender",
-            width: 100
+            width: 80
           },
           {
             Header: "Address",
             accessor: "address",
-            width: 400
+            width: 350
           },
         ]
       },
@@ -114,13 +114,13 @@ class Client extends React.Component {
           {
             Header: "Date",
             accessor: "date",
-            width: 300
+            width: 200
           },
 
           {
             Header: "Time",
             accessor: "start_time",
-            width: 100
+            width: 80
           },
 
         ]
@@ -131,12 +131,12 @@ class Client extends React.Component {
           {
             Header: "Status",
             accessor: "button2",
-            width: 250
+            width: 150
           },
           {
-            Header: "View Report",
+            Header: "Add Report",
             accessor: "button",
-            width: 400
+            width: 200
           }
         ]
       }
