@@ -1,13 +1,13 @@
 import React from 'react';
 // import { NavLink} from "react-router-dom";
-import { HashLink as Link } from 'react-router-hash-link';
-import Api from '../lib/api.js';
+// import { HashLink as Link } from 'react-router-hash-link';
+// import Api from '../lib/api.js';
 import '../css/main.css';
 
-function logOut(){
-  Api.post('/api/logout');
-  console.log("logedout");
-}
+// function logOut(){
+//   Api.post('/api/logout');
+//   console.log("logedout");
+// }
 const Sidebare = () => {
   return(
     <div className="navigation">
