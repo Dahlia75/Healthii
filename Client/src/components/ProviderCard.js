@@ -28,6 +28,7 @@ export default class ProviderCard extends Component {
     const card =
 
     <div className="card text-center">
+
       <nav className="provider-container">
         <div className='name-provider'><h4 className="card-title">{ name }</h4></div>
         {/* <div className='age-provider'><p > { age } years old</p></div> */}
@@ -45,9 +46,12 @@ export default class ProviderCard extends Component {
         </div>
         <div id="test">
 
+
             <i className = 'fa fa-remove fa-2x float-right hvr-grow' onClick = {this.onRemoveProvider.bind(this)}> </i>
         </div>
+
       </div>
+
     </div>;
     return card;
 
