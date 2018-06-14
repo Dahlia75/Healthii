@@ -18,11 +18,10 @@ const Sidebare = () => {
       <div className="navigation__background">&nbsp;</div>
       <nav className="navigation__nav">
         <ul className="navigation__list">
-          <li className="navigation__item"><a href="/#services" className="navigation__link"><span>01</span>Services</a></li>
-          <li className="navigation__item"><a href="/clients" className="navigation__link"><span>02</span>Client Reports</a></li>
-          <li className="navigation__item"><a href="/services/6/providers" className="navigation__link"><span>03</span>Providers</a></li>
-          <li className="navigation__item"><a href="/" className="navigation__link"><span>04</span>Home</a></li>
-          <li className="navigation__item"><a href="/reviews" className="navigation__link"><span>05</span>Reviews</a></li>
+          <li className="navigation__item"><a href="/" className="navigation__link"><span>01</span>Home</a></li>
+          <li className="navigation__item"><a href="/#services" className="navigation__link"><span>02</span>Services</a></li>
+          <li className="navigation__item"><a href="/clients" className="navigation__link"><span>03</span>Clients Details</a></li>
+          <li className="navigation__item"><a href="/reviews" className="navigation__link"><span>04</span>Reviews</a></li>
           <li className="navigation__item"><a href="/login" className="navigation__link"><span></span><button>Login</button></a></li>
           <li className="navigation__item"><a href="/" className="navigation__link"><span></span><button onClick={logOut}> Logout </button></a></li>
         </ul>

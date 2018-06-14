@@ -256,7 +256,7 @@ app.post("/services/:sid/providers/:pid/book", (req, res) => {
     console.log("\nYou logged in as Client\n\n");
     book.addBook(cid, pid, sid, req.body.data.selectedDate, req.body.data.selectedTime)
     .then((result) => {
-        sendReadySMS(textMessages.requested)
+        // sendReadySMS(textMessages.requested)
     })
   }else{
     console.log("\nYou logged in as Provider (Permission denied!)\n\n");

@@ -10,6 +10,7 @@ import PopupReport from './PopupReport';
 import BookingApproval from './BookingApproval';
 
 import '../css/clients.css';
+import Sidebar from './Sidebar';
 
 
 // const range = len => {
@@ -85,24 +86,24 @@ class Client extends React.Component {
         Header: "Client Personal Info",
         columns: [
           {
-            id: "Name",
             Header: "Name",
-            accessor: "name"
+            accessor: "name",
+            width: 300
           },
           {
-            id: "Age",
             Header: "Age",
-            accessor: "age"
+            accessor: "age",
+            width: 100
           },
           {
-            id: "Gender",
             Header: "Gender",
-            accessor: "gender"
+            accessor: "gender",
+            width: 100
           },
           {
-            id: "Address",
             Header: "Address",
-            accessor: "address"
+            accessor: "address",
+            width: 400
           },
         ]
       },
@@ -112,12 +113,14 @@ class Client extends React.Component {
 
           {
             Header: "Date",
-            accessor: "date"
+            accessor: "date",
+            width: 300
           },
 
           {
             Header: "Time",
-            accessor: "start_time"
+            accessor: "start_time",
+            width: 100
           },
 
         ]
@@ -127,11 +130,13 @@ class Client extends React.Component {
         columns: [
           {
             Header: "Status",
-            accessor: "button2"
+            accessor: "button2",
+            width: 250
           },
           {
             Header: "View Report",
-            accessor: "button"
+            accessor: "button",
+            width: 400
           }
         ]
       }
@@ -143,7 +148,7 @@ class Client extends React.Component {
           <header className="header__clients">
             <div>
               <div>
-                <h1>Provider Views Client Profile</h1>
+                <h1>YOUR CLIENTS</h1>
                 <ReactTable
                   data={data}
                   columns={columns}
@@ -156,6 +161,7 @@ class Client extends React.Component {
               </div>
             </div>
           </header>
+          <Sidebar/>
         </section>
       </div>
     );
