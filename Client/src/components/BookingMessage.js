@@ -12,19 +12,6 @@ export default class BookingMessage extends React.Component {
   closeModal = () => {
     this.setState({ open: false });
   };
-  // postBookingResponse(aid, status){
-  //   console.log("postBookingResponse for aid: ", aid, status);
-  //   Api.post(`/appointments/${aid}/confirmation`, { status });
-
-  // };
-  // acceptBooking = () =>{
-  //   console.log("props for booking acceptance", this.props.aid);
-  //   this.postBookingResponse(this.props.aid, 'Approved');
-  // };
-  // declineBooking = () =>{
-  //   console.log("props for booking decline", this.props.aid);
-  //   this.postBookingResponse(this.props.aid, 'Declined');
-  // };
 
   render() {
     return (

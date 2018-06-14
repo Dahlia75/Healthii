@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import "../css/providers.css";
 import "../css/bootstrap.min.css";
 import "../css/providers.css";
 import "../css/main.css";
@@ -17,8 +16,6 @@ export default class ProviderCard extends Component {
 
     onBook(){
         this.props.onBook(this.props.provider.pid);
-        //console.log("pid: ", this.props.provider.pid);
-
     }
 
     render() {

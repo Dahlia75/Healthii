@@ -65,7 +65,6 @@ class Client extends React.Component {
   }
 
   load() {
-    // const sid = this.props.match.params.sid;
     Api.get(`/api/clients`)
     .then(clients => {
       this.makeData(clients);

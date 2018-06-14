@@ -40,7 +40,6 @@ class Scheduler extends Component {
     timeIntervals={60}
     minTime={moment().hours(7).minutes(0)}
     maxTime={moment().hours(20).minutes(0)}
-    // minDate={moment()}
     dateFormat="LLL"
     />
   }

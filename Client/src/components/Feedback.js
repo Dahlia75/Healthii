@@ -3,7 +3,6 @@ import ReactTable from "react-table";
 import 'react-table/react-table.css'
 import PopupFeedback from './PopupFeedback';
 import Api from '../lib/api.js';
-// import Star from './Star';
 import '../css/feedback.css';
 
 import PopupReport from './PopupReport';
@@ -11,8 +10,6 @@ import '../App.css';
 import Logo from '../img/HC2Go1.png';
 import Sidebar from './Sidebar';
 
-//import "../css/feedback.css";
-// import Star from './Star';
 
 const Tips = () =>
   <div style={{ textAlign: "center" }}>

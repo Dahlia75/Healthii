@@ -26,7 +26,6 @@ class Provider extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       provider_info: {},
       reviews: [],
