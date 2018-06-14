@@ -112,7 +112,9 @@ class Providers extends Component {
     }
 
     return (
+      
       <div>
+
       <div>
         <header className='provider-header'>
           <span><a href="/" className='button-providers-home'>Home</a></span>

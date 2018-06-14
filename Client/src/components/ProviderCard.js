@@ -40,7 +40,6 @@ export default class ProviderCard extends Component {
             </nav>
         <img className="card-img-top img-fluid rounded-circle hvr-grow" src= { pimg } alt="Person" />
         <div className="card-block">
-        <div id="test">
 
 
             <div className="card-text">
@@ -53,7 +52,6 @@ export default class ProviderCard extends Component {
                 </div>
             </div>
             <i className = 'fa fa-remove fa-2x float-right hvr-grow' onClick = {this.onRemoveProvider.bind(this)}> </i>
-        </div>
         </div>
     </div>;
     return card;
