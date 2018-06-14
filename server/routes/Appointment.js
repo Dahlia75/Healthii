@@ -12,7 +12,6 @@ const knex = require('knex')({
 });
 
 const addAppointment = (cid, pid, sid) => {
-
   return knex('appointments')
           .insert({client_id: cid, provider_id: pid, service_id: sid})
           .returning('id')
@@ -22,8 +21,17 @@ const addAppointment = (cid, pid, sid) => {
   });
 };
 
-const getAppointmentList = () => {
+const addReport = (aid, report) => {
+  return knex('appointments')
+          .update({report: report})
+          .where('id', aid)
+          .then((arrayOfResults) => arrayOfResults[0])
+          .catch(function(err){
+            console.error("error appointments query", err);
+  });
+};
 
+const getAppointmentList = () => {
   return knex('appointments')
     .select('*')
     .returning('id')
@@ -31,7 +39,6 @@ const getAppointmentList = () => {
         if (err) {
           return console.error("error running query", err);
         }
-         // console.log(result);
           return result;
       })
     .catch(function(err){
@@ -42,4 +49,5 @@ const getAppointmentList = () => {
 
 exports.addAppointment = addAppointment;
 exports.getAppointmentList = getAppointmentList;
+exports.addReport = addReport;
 
