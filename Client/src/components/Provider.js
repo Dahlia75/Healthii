@@ -26,7 +26,6 @@ class Provider extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       provider_info: {},
       reviews: [],
@@ -83,9 +82,9 @@ class Provider extends Component {
           <div className="detail">
             <div className="description">
               <p className="paragraph">
-                <span> Gender: </span>
+                <span className="profile-paragraph"> Gender: </span>
                 <span>{ provider.provider_info.gender } </span>
-                <span> Age: </span>
+                <span className="profile-paragraph"> Age: </span>
                 <span>{ provider.provider_info.age } </span>
               </p>
               <div className="paragraph">

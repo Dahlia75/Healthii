@@ -72,7 +72,7 @@ body {
     letter-spacing: 1.75rem;
     padding-top: 30px;
 
-  
+
   }
 
 .u-margin-bottom-small {
@@ -367,6 +367,7 @@ form button[type=submit] {
   align-items: center;
   border-bottom: 1px solid lightgrey; }
   .overview__heading {
+    color: #fff;
     font-size: 3rem;
     font-weight: 300;
     font-weight: bold;
@@ -455,7 +456,8 @@ form button[type=submit] {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+}
 
 .review-header {
   text-align: center;
@@ -487,12 +489,14 @@ form button[type=submit] {
 .review {
   background-color: #fff;
   box-shadow: lightsalmon;
-  padding: 3rem;
+  padding: 2rem;
   margin-bottom: 3.5rem;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%; }
   .review__text {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
     z-index: 10;
     position: relative; }
   .review__provider {
@@ -992,7 +996,7 @@ form button[type=submit] {
 }
 
 .provider-container > div:nth-child(1) {
-  background-color: white;	
+  background-color: white;
   border: 1px solid black;
 }
 

@@ -46,9 +46,6 @@ class Providers extends Component {
       this.load();
   }
 
-  // componentDidMount() {
-  //   this.load();
-  // }
   openModal = () => {
     console.log("open Popup");
       this.setState({ open: true });
@@ -72,7 +69,7 @@ class Providers extends Component {
 
   findObjectByKey(array, key, key2, value, value2) {
     for (var i = 0; i < array.length; i++) {
-      if (array[i][key] === value /*&& array[i][key2] === value2*/) {
+      if (array[i][key] === value ) {
         return array[i];
       }
     }

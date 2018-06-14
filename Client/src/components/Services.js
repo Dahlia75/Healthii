@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-//import Api from '../lib/api.js';
-
 import '../scss/main.scss';
 import { HashLink as Link } from 'react-router-hash-link';
 

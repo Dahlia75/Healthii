@@ -166,22 +166,23 @@ exports.seed = function(knex, Promise) {
                     {client_id: 19, provider_id: 7, service_id: 1, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
                     {client_id: 16, provider_id: 5, service_id: 2, date: 'Jun 20th 18', start_time: '13' , status: 'Pending'},
                     {client_id: 12, provider_id: 2, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'}                ]);
+                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'}
+                ]);
               })
               .then(function () {
                 return knex('reviews')
                   .returning('*')
                   .insert([
-                    {client_id: 12, provider_id: 7, rating: 4, description:'test --review for provider p7', date: 'Jun 8th 11'},
-                    {client_id: 14, provider_id: 2, rating: 4, description:'test ---review for provider p2', date: 'Jun 7th 14'},
-                    {client_id: 14, provider_id: 3, rating: 5, description:'test review for provider p3', date: 'Jun 8th 12'},
-                    {client_id: 13, provider_id: 1, rating: 3, description:'test review for provider p1', date: 'Jun 8th 16'},
-                    {client_id: 14, provider_id: 5, rating: 5, description:'test ***review for provider p5', date: 'Jun 8th 16'},
-                    {client_id: 14, provider_id: 3, rating: 5, description:'test @@@review for provider p3', date: 'Jun 8th 17'},
-                    {client_id: 15, provider_id: 4, rating: 2, description:'test ***review for provider p4', date: 'Jun 8th 12'},
-                    {client_id: 13, provider_id: 3, rating: 3, description:'test @@review for provider p3', date: 'Jun 8th 19'},
-                    {client_id: 17, provider_id: 4, rating: 4, description:'test !!review for provider p4', date: 'Jun 8th 18'},
-                    {client_id: 22, provider_id: 1, rating: 4, description:'test !!review for provider p1', date: 'Jun 12th 18'}
+                    {client_id: 12, provider_id: 7, rating: 4, description:'he increased my awareness of the health risks and low levels of physical activity.'},
+                    {client_id: 14, provider_id: 2, rating: 4, description:'My provider show me how to change my eating habits and how my health can be affected by it.'},
+                    {client_id: 14, provider_id: 3, rating: 5, description:'Stacey and Tiffany have been our nurses and they were both great! Very clean facility, as well!'},
+                    {client_id: 13, provider_id: 1, rating: 3, description:'This last time, the diagnosed me perfectly and sent me to the ER as a result — thankfully! I highly recommend this care center.'},
+                    {client_id: 14, provider_id: 5, rating: 5, description:'I already got treatment for my broken hand and I’m feeling much better. Thanks for your help.'},
+                    {client_id: 14, provider_id: 3, rating: 5, description:'I left the clinic already feeling much better. Thank you!'},
+                    {client_id: 15, provider_id: 4, rating: 2, description:'I was seen quickly & the nurse was very thorough'},
+                    {client_id: 13, provider_id: 3, rating: 3, description:'We were very impressed with the entire staff, they were very attentive and put us at ease.'},
+                    {client_id: 17, provider_id: 4, rating: 4, description:'Service was quick and efficient! Very helpful.'},
+                    {client_id: 22, provider_id: 1, rating: 4, description:'Fantastic. Fast, easy, clean, professional.Perfect for quick care.'}
                 ]);
               });
     });

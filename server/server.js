@@ -94,7 +94,6 @@ app.get("/api/services/:sid/providers",(req,res) => {
           res.json({
           sid: service_id,
           service_name,
-          // reviews: Provider.getReviews(4),
           providers: providers_with_slots,
         })
       })
@@ -148,7 +147,6 @@ app.get("/api/clients",(req,res) => {
        })
       )
       .then(clients_of_pid => {
-        // console.log("clients_of_pid", clients_of_pid);
         res.json(
               clients_of_pid
             );
@@ -163,11 +161,9 @@ app.get("/api/clients",(req,res) => {
 app.get("/api/reviews",(req,res) =>{
 
   var cid = req.session.userId;
-  // var cid = 15;
   Review.getReviews(cid)
   .then(allReviews => {
-    console.log("allReviews===",allReviews);
-    // const [{ aid, service_name, date}] = allReviews;
+       
     return Promise.all(
 
       allReviews.map((providers, i) => {
@@ -187,12 +183,7 @@ app.get("/api/reviews",(req,res) =>{
      })
     )
     .then(providersList => {
-      res.json(
-            // aid: providersList.aid,
-            // service_name: providersList.service_name,
-            // date: providersList.date,
-            providersList
-          );
+      res.json(providersList);
     })
   })
   .catch(ex => {
@@ -226,7 +217,9 @@ app.post("/appointments/:aid/confirmation", (req, res) => {
   var aid = req.params.aid;
   book.confirm(aid, req.body.status)
   .then((result) => {
-        // sendReadySMS(textMessages.approved)
+      if(req.body.status === 'Approved'){
+        sendReadySMS(textMessages.approved)
+      }
     })
   res.json({result:"true"});
 });
@@ -244,6 +237,14 @@ app.post("/reviews/:pid/feedback", (req, res) => {
     console.log("\nYou loged in as Provider (Permission denied!)\n\n");
   }
 
+  res.json({result:"true"});
+});
+
+app.post("/appointments/:aid/report", (req, res) => {
+  // Reading parameters from "cookies" or "req.body.CID";
+  var aid = req.params.aid;
+  var report = req.body.report;
+  Appointment.addReport(aid, report);
   res.json({result:"true"});
 });
 

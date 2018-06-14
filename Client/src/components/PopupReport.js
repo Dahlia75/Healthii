@@ -3,19 +3,21 @@ import Popup from "reactjs-popup";
 import ReportForm from "./ReportForm";
 // import Api from '../lib/api.js';
 
-// export default () => (
-//   <Popup trigger={<button> Trigger</button>} position="right center">
-//     <div><Report/></div>
-//   </Popup>
-// );
+export default class PopupReport extends React.Component {
 
-export default () => (
+  constructor(props) {
+   super(props);
+  }
+
+render(){
+
+return(
     <Popup trigger={<button className="clients-button"> Enter Notes from Meeting </button>} modal>
       {close => (
         <div className="">
           <div className="content">
 
-          <div><ReportForm/></div>
+          <div><ReportForm aid={this.props.aid} report={this.props.report}/></div>
           <br />
         </div>
         <div className="actions">
@@ -31,4 +33,5 @@ export default () => (
       </div>
     )}
   </Popup>
-);
+);}
+}

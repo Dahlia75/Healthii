@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-// import Api from '../lib/api.js';
-
 import '../scss/main.scss';
 
 export default class Provider extends Component {
