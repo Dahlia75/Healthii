@@ -163,7 +163,7 @@ app.get("/api/reviews",(req,res) =>{
   var cid = req.session.userId;
   Review.getReviews(cid)
   .then(allReviews => {
-       
+
     return Promise.all(
 
       allReviews.map((providers, i) => {
@@ -218,7 +218,7 @@ app.post("/appointments/:aid/confirmation", (req, res) => {
   book.confirm(aid, req.body.status)
   .then((result) => {
       if(req.body.status === 'Approved'){
-        sendReadySMS(textMessages.approved)
+        // sendReadySMS(textMessages.approved)
       }
     })
   res.json({result:"true"});
