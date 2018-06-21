@@ -5,10 +5,6 @@ Healthii is a platform that connects Health Care Providers with clients who need
 
 ## Screenshots
 
-!["Screenshot of Healthii Homepage"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-homepage.png?raw=true)
-!["Screenshot of Healthii Services"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-Services.png?raw=true)
-!["Screenshot of Healthii Profiles"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-Services.png?raw=true)
-
 ![Screenshot of Healthii Homepage](/docs/Healthii-homepage.png?raw=true "Homepage")
 ![Screenshot of Healthii Services](/docs/Healthii-Services.png?raw=true "Services")
 ![Screenshot of Healthii Providers](/docs/Healthii-Providers.png?raw=true "Providers")
