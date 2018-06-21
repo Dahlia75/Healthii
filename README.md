@@ -49,6 +49,17 @@ DB_NAME=hc2go
 DB_PORT=5432
 DB_SSL=true
 
+Add settings.json file to server/routes folder:
+
+{
+"user": "development",
+"password": "development",
+"database": "hc2go",
+"hostname": "localhost",
+"port": 5432,
+"ssl": true
+}
+
 Go to localhost:3000 to access the site in your browser.
 
 ## Dependencies
