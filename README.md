@@ -62,7 +62,7 @@ Add settings.json file to server/routes folder:
 
 Go to localhost:3000 to access the site in your browser.
 
-# Login Information:
+## Login Information:
 
 Go to localhost:3000/login in your browser
 
