@@ -62,6 +62,17 @@ Add settings.json file to server/routes folder:
 
 Go to localhost:3000 to access the site in your browser.
 
+Login Information:
+go to localhost:3000/login
+
+To login as the Provider:
+username: chris@chris.com
+password: pass
+
+To Login as the Client:
+username: linda@linda.com
+password: pass
+
 ## Dependencies
 Server Side:
 
