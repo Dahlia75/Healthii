@@ -113,7 +113,7 @@ exports.seed = function(knex, Promise) {
                   {id: 19, user_id: 19, first_name: 'Mary', last_name: 'Bennett', phone: '6042342020', address:'3456 Dry Pine Bay Rd, NorthVan', gender:'F', age: 31, m_history:'several pan in back'},
                   {id: 20, user_id: 20, first_name: 'Patricia', last_name: 'Ross', phone: '7782347373', address:'1988 Royal Avenue, Surrey', gender:'F', age: 12, m_history:'pain in chest'},
                   {id: 21, user_id: 21, first_name: 'Jennifer', last_name: 'Patterson', phone: '7782343636', address:'2531 Pine Street, WestVan', gender:'F', age: 18, m_history:'pain in eyes'},
-                  {id: 22, user_id: 22, first_name: 'Linda', last_name: 'Hughes', phone: '6042349090', address:'4791 Tolmie St, Delta', gender:'F', age: 24, m_history:'Headache with glass'},
+                  {id: 22, user_id: 22, first_name: 'Chris', last_name: 'Hughes', phone: '6042349090', address:'4791 Tolmie St, Delta', gender:'F', age: 24, m_history:'Headache with glass'},
                   {id: 23, user_id: 23, first_name: 'Susan', last_name: 'Flores', phone: '7782342792', address:'4183 James Street, Richmond', gender:'F', age: 36, m_history:'surgery in heart'},
                   {id: 24, user_id: 24, first_name: 'Margaret', last_name: 'Washington', phone: '6042344000', address:'2561 Maynard Rd, NorthVan', gender:'F', age: 88, m_history:'Headache on morning'},
                   {id: 25, user_id: 25, first_name: 'Charles', last_name: 'Simmons', phone: '7782341030', address:'2191 Reserve St, WestVan', gender:'F', age: 55, m_history:'surgery in neck'}
@@ -151,22 +151,22 @@ exports.seed = function(knex, Promise) {
                     {client_id: 12, provider_id: 5, service_id: 2, date: 'Jun 8th 19', start_time: '15' , status: 'Pending'},
                     {client_id: 14, provider_id: 2, service_id: 4, date: 'Jun 7th 18', start_time: '19' , status: 'Pending'},
                     {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 13, provider_id: 1, service_id: 2, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 13, provider_id: 1, service_id: 2, date: 'Jun 8th 18', start_time: '12' , status: 'Pending'},
                     {client_id: 14, provider_id: 5, service_id: 2, date: 'Jun 7th 18', start_time: '16' , status: 'Pending'},
                     {client_id: 14, provider_id: 3, service_id: 2, date: 'Jun 18th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 15, provider_id: 4, service_id: 3, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 15, provider_id: 4, service_id: 3, date: 'Jun 30th 18', start_time: '17' , status: 'Pending'},
                     {client_id: 13, provider_id: 3, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 17, provider_id: 4, service_id: 1, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 15, provider_id: 4, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 14, provider_id: 1, service_id: 4, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 17, provider_id: 4, service_id: 1, date: 'Jun 8th 18', start_time: '9' , status: 'Pending'},
+                    {client_id: 15, provider_id: 4, service_id: 6, date: 'Jun 12th 18', start_time: '20' , status: 'Pending'},
+                    {client_id: 14, provider_id: 1, service_id: 4, date: 'Jun 8th 18', start_time: '8' , status: 'Pending'},
                     {client_id: 18, provider_id: 6, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
                     {client_id: 22, provider_id: 5, service_id: 3, date: 'Jun 25th 18', start_time: '16' , status: 'Pending'},
                     {client_id: 24, provider_id: 1, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 12, provider_id: 5, service_id: 6, date: 'Jun 8th 18', start_time: '10' , status: 'Pending'},
+                    {client_id: 12, provider_id: 5, service_id: 6, date: 'Jun 5th 18', start_time: '10' , status: 'Pending'},
                     {client_id: 19, provider_id: 7, service_id: 1, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
                     {client_id: 16, provider_id: 5, service_id: 2, date: 'Jun 20th 18', start_time: '13' , status: 'Pending'},
                     {client_id: 12, provider_id: 2, service_id: 5, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'},
-                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 8th 18', start_time: '20' , status: 'Pending'}
+                    {client_id: 13, provider_id: 3, service_id: 6, date: 'Jun 158th 18', start_time: '20' , status: 'Pending'}
                 ]);
               })
               .then(function () {

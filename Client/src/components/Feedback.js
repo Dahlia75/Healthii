@@ -65,19 +65,23 @@ class Feedback extends React.Component {
                 columns: [
                   {
                     Header: "Name",
-                    accessor: "name"
+                    accessor: "name",
+                    width: 200
                   },
                   {
                     Header: "Gender",
-                    accessor: "gender"
+                    accessor: "gender",
+                    width: 80
                   },
                   {
                     Header: "Service",
-                    accessor: "service_name"
+                    accessor: "service_name",
+                    width: 200
                   },
                   {
                     Header: "Date",
-                    accessor: "date"
+                    accessor: "date",
+                    width: 200
                   }
                 ]
               },
@@ -86,7 +90,8 @@ class Feedback extends React.Component {
                 columns: [
                   {
                     Header: "View Report",
-                    accessor: "button"
+                    accessor: "button",
+                    width: 200
                   }
 
                 ]
