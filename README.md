@@ -1,7 +1,7 @@
 Healthii
 =====================
 
-Healthii is a platform that connects Health Care Providers with clients who need those services.  These Providers include Nurse Aides, Physiotherapists, Chiropractors, Massage Therapy and Acupunturists.  The front end was built using Javascript with ReactJS for it's reusable components and fast rendering properties.  Node JS was used for the server.  On the back end the PostGresSQL database was used with Knex as the interface.  There is a SMS sending feature using the Twilio API.  
+Healthii is a platform that connects Health Care Providers with clients who need those services.  These Providers include Nurse Aides, Physiotherapists, Chiropractors, Massage Therapy and Acupunturists.  You can login as either a Client or as a Provider, each with it's own functionality.  The front end was built using Javascript with ReactJS for it's reusable components and fast rendering properties.  Node JS was used for the server.  On the back end the PostGresSQL database was used with Knex as the interface.  There is a SMS sending feature using the Twilio API.  
 
 ## Screenshots
 
