@@ -11,7 +11,7 @@ Healthii is a platform that connects Health Care Providers with clients who need
 
 
 
-## Usage
+## Installation
 
 Clone the repository.  Navigate to Client folder, 
 
@@ -67,13 +67,23 @@ Go to localhost:3000 to access the site in your browser.
 
 Go to localhost:3000/login in your browser
 
-To login as the Provider to see Clients:
+To login as the Provider:
 username: chris@chris.com
 password: pass
 
-To Login as the Clients to leave feedback to Provider(review):
+To Login as the Clients:
 username: linda@linda.com
 password: pass
+
+##  Site Navigation Instructions
+
+Logged in as the Client: To book an appointment, you can click on the services you want to book from the Homepage.  Then, select the calendar time you'd like to book.  This will filter out the list of Providers.  You can view their profile or book them.  Once you book them, the Provider will have to accept or decline the meeting.  
+
+Logged in as the Provider:
+You can go to the clients section from the sidebar.  This will show the client that just booked the appointment.  You can choose accept or decline to change it from pending. 
+
+Back as the Client:
+You can now go to the Reports section.  This will let you leave feedback after the meeting is complete, which will show up on the Providers profile.  
 
 ## Dependencies
 Server Side:
