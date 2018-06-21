@@ -5,9 +5,9 @@ Healthii is a platform that connects Health Care Providers with clients who need
 
 ## Screenshots
 
-!["Screenshot of Healthii Homepage"](Add Link)
-!["Screenshot of Healthii Services"](Add Link)
-!["Screenshot of Healthii Profiles"](Add Link)
+!["Screenshot of Healthii Homepage"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-homepage.png)
+!["Screenshot of Healthii Services"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-Services.png)
+!["Screenshot of Healthii Profiles"](https://github.com/Dahlia75/HC2GO/tree/master/docs/Healthii-Services.png)
 
 
 ## Usage
@@ -40,7 +40,39 @@ Navigate to Client folder in another terminal
 npm start
 ```
 
+Add .env file to server folder:
+
+DB_HOST=localhost
+DB_USER=development
+DB_PASS=development
+DB_NAME=hc2go
+DB_PORT=5432
+DB_SSL=true
+
+Add settings.json file to server/routes folder:
+
+{
+"user": "development",
+"password": "development",
+"database": "hc2go",
+"hostname": "localhost",
+"port": 5432,
+"ssl": true
+}
+
 Go to localhost:3000 to access the site in your browser.
+
+## Login Information:
+
+Go to localhost:3000/login in your browser
+
+To login as the Provider to see Clients:
+username: chris@chris.com
+password: pass
+
+To Login as the Clients to leave feedback to Provider(review):
+username: linda@linda.com
+password: pass
 
 ## Dependencies
 Server Side:
@@ -75,5 +107,4 @@ Client folder:
 *"react-star-rating-component": "^1.4.1",
 *"react-table": "^6.8.6",
 *"reactjs-popup": "^1.1.1"
-
 
