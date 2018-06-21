@@ -40,6 +40,15 @@ Navigate to Client folder in another terminal
 npm start
 ```
 
+Add .env file to server folder:
+
+DB_HOST=localhost
+DB_USER=development
+DB_PASS=development
+DB_NAME=hc2go
+DB_PORT=5432
+DB_SSL=true
+
 Go to localhost:3000 to access the site in your browser.
 
 ## Dependencies
