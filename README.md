@@ -20,7 +20,7 @@ npm install
 
 Navigate to server folder and repeat the same command.  
 
-**ADD THE DATABASE STEPS HERE
+Database seeding:
 ```
 psql
 CREATE DATABASE hc2go;
@@ -28,17 +28,19 @@ CREATE DATABASE hc2go;
 
 knex migrate:latest
 knex seed:run
+```
+
+Navigate to server folder:
+```
 node server.js
 ```
 
-navigate to Client folder in another terminal
-
+Navigate to Client folder in another terminal
 ```
 npm start
 ```
 
-Go to localhost:3000 to access the site.  
-
+Go to localhost:3000 to access the site in your browser.
 
 ## Dependencies
 Server Side:
